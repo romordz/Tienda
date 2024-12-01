@@ -1,0 +1,23 @@
+.confirmation-section {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.confirmation-section h2 {
+    font-size: 24px;
+    color: green;
+}
+
+.confirmation-section p {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.btn-back {
+    margin-top: 30px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}

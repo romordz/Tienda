@@ -1,0 +1,60 @@
+/* ---------------------------- ESTILO CHAT ---------------------------- */
+.chat-section {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1e272e;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chat-box {
+    height: 400px;
+    border: 1px solid #ccc;
+    overflow-y: scroll;
+    padding: 10px;
+    background-color: #2d3436;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.chat-message {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #34495e;
+    color: #ecf0f1;
+}
+
+.chat-message strong {
+    color: #f39c12; /* Naranja brillante para el nombre del usuario */
+}
+
+#chat-form {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+#mensaje {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #ecf0f1;
+    color: #2c3e50;
+}
+
+#chat-form button {
+    padding: 10px 20px;
+    background-color: #f39c12; /* Naranja brillante */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#chat-form button:hover {
+    background-color: #f1c40f; /* Naranja más claro */
+}

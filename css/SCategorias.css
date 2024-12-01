@@ -1,0 +1,62 @@
+/*-------------------------CATEGORÍAS-------------------- */
+.category-list {
+    padding: 20px;
+    text-align: center;
+}
+
+.category-list h2 {
+    margin-bottom: 20px;
+    color: #f39c12; /* Naranja brillante */
+}
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.category-item {
+    background-color: #1e272e;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 220px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.category-item:hover {
+    transform: scale(1.05);
+}
+
+.category-item img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.category-item h3 {
+    color: #f39c12; /* Naranja brillante */
+    margin-bottom: 10px;
+}
+
+.category-item p {
+    color: #dcdde1; /* Gris claro */
+}
+
+.btn-category {
+    background-color: #f39c12; /* Naranja brillante */
+    color: white;
+    border: none;
+    padding: 10px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-category:hover {
+    background-color: #f1c40f; /* Naranja más claro */
+}

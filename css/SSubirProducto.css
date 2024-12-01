@@ -1,0 +1,270 @@
+/*-------------------------SUBIR PRODUCTO-------------------- */
+.upload-section {
+    padding: 20px;
+    text-align: center;
+}
+
+.upload-card {
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    padding: 20px;
+    width: 400px;
+}
+
+.upload-card h2 {
+    margin-bottom: 20px;
+    color: #ff9800;
+}
+
+.upload-card label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #f0f0f0;
+}
+
+.upload-card input,
+.upload-card select,
+.upload-card textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: #2e2e2e;
+    color: #f0f0f0;
+}
+
+.upload-card textarea {
+    resize: none;
+}
+
+.btn-submit {
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #ffb74d;
+}
+.btn-agregar-categoria {
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+}
+
+.btn-agregar-categoria:hover {
+    background-color: #e68900;
+}
+
+.btn-agregar-categoria:active {
+    background-color: #cc7a00;
+}
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: #2e2e2e;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 90%;
+}
+
+.popup-content h3 {
+    margin-top: 0;
+}
+
+.close-popup {
+    cursor: pointer;
+    float: right;
+    font-size: 24px;
+}
+
+.close-popup:hover {
+    color: red;
+}
+
+.popup-content label {
+    display: block;
+    margin-top: 10px;
+}
+
+h3 {
+    color: #ff9800;
+}
+.popup-content label {
+    display: block;
+    margin-top: 10px;
+    color: #ff9800;
+    font-weight: bold;
+}
+
+.popup-content input, 
+.popup-content textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.popup-content button {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.popup-content button:hover {
+    background-color: #45a049;
+}
+
+.error-message {
+    color: rgb(255, 64, 64);
+    font-size: 0.9em;
+    display: none;
+    margin-top: 5px;
+}
+
+input:invalid {
+    border-color: #ff4d4d;
+}
+
+input:focus:invalid {
+    box-shadow: 0 0 5px 1px #ff4d4d;
+}
+
+input:valid {
+    border-color: #4CAF50;
+}
+
+input:focus:valid {
+    box-shadow: 0 0 5px 1px #4CAF50;
+}
+
+.imagenes-actuales {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.imagen-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
+
+.preview-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.eliminar-imagen {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 5px;
+}
+
+.imagen-container {
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.preview-imagen {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.preview-imagen:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.eliminar-imagen {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #f44336;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.eliminar-imagen:hover {
+    background-color: #d32f2f;
+}
+
+.eliminar-imagen:active {
+    background-color: #b71c1c;
+}
+
+.btn-submit {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-submit:hover {
+    background-color: #45a049;
+}
+
+.mensaje-exito {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    margin: 15px 0;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+}
