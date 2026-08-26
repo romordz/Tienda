@@ -10,9 +10,8 @@ try {
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     ];
 
-    // Aiven requiere SSL; en local (sin DB_HOST definido) no se activa
     if (getenv('DB_HOST')) {
-        $options[PDO::MYSQL_ATTR_SSL_CA] = null; // ver nota abajo
+        $options[PDO::MYSQL_ATTR_SSL_CA] = null;
     }
 
     $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8", $username, $password, $options);
