@@ -44,7 +44,7 @@ session_start();
                     <a href="Mensajes.php" onclick="return checkSession('Mensajes.php')">mensajes</a>
                     <a href="php/cerrar_sesion.php">Cerrar sesión</a>
                 <?php else: ?>
-                    <a href="login.php">Iniciar Sesión</a>
+                    <a href="Login.php">Iniciar Sesión</a>
                 <?php endif; ?>
             </div>
         </div>
