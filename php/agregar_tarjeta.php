@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $fecha_vencimiento = date('Y-m-t', strtotime($fecha_vencimiento));
 
     try {
-        $sqlTarjeta = "INSERT INTO Tarjetas (usuario_id, numero_tarjeta, nombre_tarjeta, fecha_vencimiento, cvv) 
+        $sqlTarjeta = "INSERT INTO tarjetas (usuario_id, numero_tarjeta, nombre_tarjeta, fecha_vencimiento, cvv) 
                        VALUES (:usuario_id, :numero_tarjeta, :nombre_tarjeta, :fecha_vencimiento, :cvv)";
         $stmtTarjeta = $pdo->prepare($sqlTarjeta);
         $stmtTarjeta->bindParam(':usuario_id', $usuario_id);

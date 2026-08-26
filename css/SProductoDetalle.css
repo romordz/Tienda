@@ -403,7 +403,7 @@ select#lista:focus {
     transform: scale(1.05);
 }
 
-/* Productos relacionados */
+/* productos relacionados */
 .related-products {
     max-width: 900px;
     margin: 30px auto;

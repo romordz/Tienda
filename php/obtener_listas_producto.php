@@ -10,7 +10,7 @@ $query = "
             JOIN productos p ON lp.producto_id = p.id 
             WHERE lp.lista_id = l.id 
             LIMIT 1) AS imagen_preview
-    FROM Listas l
+    FROM listas l
     WHERE l.usuario_id = :usuario_id
     AND (l.privacidad = 'pública' OR :is_owner = 1)
 ";

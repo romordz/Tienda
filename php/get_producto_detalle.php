@@ -63,8 +63,8 @@ function obtener_comentarios_producto($producto_id)
     include 'php/conexion.php';
 
     $sql = "SELECT c.id, c.comentario, u.nombre_usuario, u.avatar, c.fecha, c.usuario_id
-            FROM Comentarios c 
-            JOIN Usuarios u ON c.usuario_id = u.id 
+            FROM comentarios c 
+            JOIN usuarios u ON c.usuario_id = u.id 
             WHERE c.producto_id = :producto_id 
              AND c.estado = 'activo' 
             ORDER BY c.fecha DESC";

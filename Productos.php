@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'php/get_productos.php';
+include 'php/get_Productos.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -9,13 +9,13 @@ include 'php/get_productos.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/SPrincipal.css">
-    <link rel="stylesheet" href="css/SProductos.css">
-    <title>Productos</title>
+    <link rel="stylesheet" href="css/Sproductos.css">
+    <title>productos</title>
 </head>
 
 <body>
     <header>
-        <h1>Productos Disponibles</h1>
+        <h1>productos Disponibles</h1>
         <nav>
             <ul>
                 <li><a href="Principal.php">Inicio</a></li>
@@ -37,7 +37,7 @@ include 'php/get_productos.php';
             </div>
             <div id="profile-dropdown" class="profile-dropdown">
                 <a href="Perfil.php" onclick="return checkSession('Perfil.php')">Revisar perfil</a>
-                <a href="mensajes.php" onclick="return checkSession('mensajes.php')">Mensajes</a>
+                <a href="Mensajes.php" onclick="return checkSession('Mensajes.php')">mensajes</a>
                 <a href="php/cerrar_sesion.php">Cerrar sesión</a>
             </div>
         </div>

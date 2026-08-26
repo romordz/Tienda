@@ -17,11 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!empty($_FILES['avatar']['tmp_name'])) {
         $avatar = file_get_contents($_FILES['avatar']['tmp_name']);
-        $sql = "UPDATE Usuarios SET nombre_usuario = :username, correo = :email, fecha_nacimiento = :birthdate, sexo = :gender, privacidad = :privacy, avatar = :avatar WHERE id = :user_id";
+        $sql = "UPDATE usuarios SET nombre_usuario = :username, correo = :email, fecha_nacimiento = :birthdate, sexo = :gender, privacidad = :privacy, avatar = :avatar WHERE id = :user_id";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':avatar', $avatar, PDO::PARAM_LOB);
     } else {
-        $sql = "UPDATE Usuarios SET nombre_usuario = :username, correo = :email, fecha_nacimiento = :birthdate, sexo = :gender, privacidad = :privacy WHERE id = :user_id";
+        $sql = "UPDATE usuarios SET nombre_usuario = :username, correo = :email, fecha_nacimiento = :birthdate, sexo = :gender, privacidad = :privacy WHERE id = :user_id";
         $stmt = $pdo->prepare($sql);
     }
 

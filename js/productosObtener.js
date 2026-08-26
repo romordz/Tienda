@@ -1,4 +1,4 @@
-function obtenerProductosDestacados() {
+function obtenerproductosDestacados() {
     fetch('php/get_productos_destacados.php')
         .then(response => {
             if (!response.ok) {
@@ -7,7 +7,7 @@ function obtenerProductosDestacados() {
             return response.json();
         })
         .then(productos => {
-            console.log("Productos destacados obtenidos:", productos);
+            console.log("productos destacados obtenidos:", productos);
 
             const productsContainer = document.querySelector('.products_destacados');
             productsContainer.innerHTML = '';
@@ -46,7 +46,7 @@ function obtenerProductosDestacados() {
 }
 
 
-function obtenerProductosRecientes() {
+function obtenerproductosRecientes() {
     fetch('php/get_productos_recientes.php')
         .then(response => {
             if (!response.ok) {
@@ -55,7 +55,7 @@ function obtenerProductosRecientes() {
             return response.json();
         })
         .then(productos => {
-            console.log("Productos recientes obtenidos:", productos);
+            console.log("productos recientes obtenidos:", productos);
 
             const productsContainer = document.querySelector('.products_recientes');
             productsContainer.innerHTML = '';
@@ -95,6 +95,6 @@ function obtenerProductosRecientes() {
 
 
 window.onload = function() {
-    obtenerProductosDestacados();
-    obtenerProductosRecientes();
+    obtenerproductosDestacados();
+    obtenerproductosRecientes();
 };

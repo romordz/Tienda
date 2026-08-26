@@ -10,7 +10,7 @@ if (!$usuario_id) {
 }
 
 try {
-    $sql = "SELECT id FROM Tarjetas WHERE usuario_id = :usuario_id";
+    $sql = "SELECT id FROM tarjetas WHERE usuario_id = :usuario_id";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':usuario_id', $usuario_id);
     $stmt->execute();

@@ -3,7 +3,7 @@ session_start();
 require 'conexion.php';
 //iba el asterisco
 $query = "SELECT id, nombre, descripcion, imagenes, imagenes_json, precio, para_cotizar, likes 
-          FROM Productos 
+          FROM productos 
           WHERE estado = 'aprobado' 
           ORDER BY likes DESC 
           LIMIT 3";

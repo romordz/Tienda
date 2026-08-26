@@ -25,7 +25,7 @@ foreach ($carrito as $producto) {
 try {
     $pdo->beginTransaction();
     
-    $sqlCompra = "INSERT INTO Compras (usuario_id, total) VALUES (:usuario_id, :total)";
+    $sqlCompra = "INSERT INTO compras (usuario_id, total) VALUES (:usuario_id, :total)";
     $stmtCompra = $pdo->prepare($sqlCompra);
     $stmtCompra->bindParam(':usuario_id', $usuario_id);
     $stmtCompra->bindParam(':total', $total);
@@ -34,7 +34,7 @@ try {
     $compra_id = $pdo->lastInsertId();
 
     foreach ($carrito as $producto_id => $producto) {
-        $sqlVerificarStock = "SELECT cantidad_disponible FROM Productos WHERE id = :producto_id";
+        $sqlVerificarStock = "SELECT cantidad_disponible FROM productos WHERE id = :producto_id";
         $stmtVerificarStock = $pdo->prepare($sqlVerificarStock);
         $stmtVerificarStock->bindParam(':producto_id', $producto_id);
         $stmtVerificarStock->execute();
@@ -44,14 +44,14 @@ try {
             throw new Exception('No hay suficiente inventario para el producto ' . $producto['nombre']);
         }
 
-        $sqlDetalle = "INSERT INTO detalles_Compras (compra_id, producto_id, cantidad) VALUES (:compra_id, :producto_id, :cantidad)";
+        $sqlDetalle = "INSERT INTO detalles_compras (compra_id, producto_id, cantidad) VALUES (:compra_id, :producto_id, :cantidad)";
         $stmtDetalle = $pdo->prepare($sqlDetalle);
         $stmtDetalle->bindParam(':compra_id', $compra_id);
         $stmtDetalle->bindParam(':producto_id', $producto_id);
         $stmtDetalle->bindParam(':cantidad', $producto['cantidad']);
         $stmtDetalle->execute();
 
-        $sqlActualizarStock = "UPDATE Productos SET cantidad_disponible = cantidad_disponible - :cantidad WHERE id = :producto_id";
+        $sqlActualizarStock = "UPDATE productos SET cantidad_disponible = cantidad_disponible - :cantidad WHERE id = :producto_id";
         $stmtActualizarStock = $pdo->prepare($sqlActualizarStock);
         $stmtActualizarStock->bindParam(':cantidad', $producto['cantidad']);
         $stmtActualizarStock->bindParam(':producto_id', $producto_id);

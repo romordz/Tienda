@@ -7,17 +7,17 @@ $mensajes = include 'php/obtener_mensajes_usuario.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mensajes</title>
+    <title>mensajes</title>
     <link rel="stylesheet" href="css/SPrincipal.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Tus Mensajes</h1>
+        <h1>Tus mensajes</h1>
         <nav>
             <ul>
                 <li><a href="Principal.php">Inicio</a></li>
-                <li><a href="Productos.php">Productos</a></li>
+                <li><a href="Productos.php">productos</a></li>
                 <li><a href="Categorias.php">Categorías</a></li>
                 <li><a href="carrito.php" onclick="return checkSession('carrito.php');">Carrito</a></li>
                 <li><a href="php/cerrar_sesion.php">Cerrar Sesión</a></li>
@@ -37,7 +37,7 @@ $mensajes = include 'php/obtener_mensajes_usuario.php';
             <div id="profile-dropdown" class="profile-dropdown">
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <a href="Perfil.php" onclick="return checkSession('Perfil.php')">Revisar perfil</a>
-                    <a href="mensajes.php" onclick="return checkSession('mensajes.php')">Mensajes</a>
+                    <a href="Mensajes.php" onclick="return checkSession('Mensajes.php')">mensajes</a>
                     <a href="php/cerrar_sesion.php">Cerrar sesión</a>
                 <?php else: ?>
                     <a href="login.php">Iniciar Sesión</a>
@@ -47,7 +47,7 @@ $mensajes = include 'php/obtener_mensajes_usuario.php';
     </header>
     <main>
         <section class="message-list">
-            <h2>Mensajes Recibidos</h2>
+            <h2>mensajes Recibidos</h2>
             <?php if (empty($mensajes)): ?>
                 <p>No tienes mensajes nuevos.</p>
             <?php else: ?>

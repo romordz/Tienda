@@ -23,16 +23,16 @@ $rol_usuario = isset($_SESSION['role']) ? $_SESSION['role'] : null;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/SCart.css">
     <link rel="stylesheet" href="css/SPrincipal.css">
-    <title>Carrito de Compras</title>
+    <title>Carrito de compras</title>
 </head>
 
 <body>
     <header>
-        <h1>Tu Carrito de Compras</h1>
+        <h1>Tu Carrito de compras</h1>
         <nav>
             <ul>
                 <li><a href="Principal.php">Inicio</a></li>
-                <li><a href="Productos.php">Productos</a></li>
+                <li><a href="Productos.php">productos</a></li>
                 <li><a href="Categorias.php">Categorías</a></li>
                 <li><a href="php/cerrar_sesion.php">Cerrar Sesión</a></li>
             </ul>
@@ -50,7 +50,7 @@ $rol_usuario = isset($_SESSION['role']) ? $_SESSION['role'] : null;
             </div>
             <div id="profile-dropdown" class="profile-dropdown">
                 <a href="Perfil.php" onclick="return checkSession('Perfil.php')">Revisar perfil</a>
-                <a href="mensajes.php" onclick="return checkSession('mensajes.php')">Mensajes</a>
+                <a href="Mensajes.php" onclick="return checkSession('Mensajes.php')">mensajes</a>
                 <a href="php/cerrar_sesion.php">Cerrar sesión</a>
             </div>
         </div>
@@ -59,7 +59,7 @@ $rol_usuario = isset($_SESSION['role']) ? $_SESSION['role'] : null;
     <div class="cart-section">
         <?php if (!empty($mensaje))
             echo $mensaje; ?>
-        <h2>Productos en tu Carrito</h2>
+        <h2>productos en tu Carrito</h2>
         <table class="cart-table">
             <thead>
                 <tr>

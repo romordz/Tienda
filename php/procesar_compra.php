@@ -12,14 +12,14 @@ if (!empty($_SESSION['carrito']) && isset($_SESSION['id'])) {
             $total += $producto['precio'] * $producto['cantidad'];
         }
 
-        $sqlCompra = "INSERT INTO Compras (usuario_id, total) VALUES (?, ?)";
+        $sqlCompra = "INSERT INTO compras (usuario_id, total) VALUES (?, ?)";
         $stmtCompra = $pdo->prepare($sqlCompra);
         $stmtCompra->execute([$usuario_id, $total]);
 
         $compra_id = $pdo->lastInsertId();
 
         foreach ($_SESSION['carrito'] as $producto_id => $producto) {
-            $sqlDetalle = "INSERT INTO Detalles_Compras (compra_id, producto_id, cantidad) VALUES (?, ?, ?)";
+            $sqlDetalle = "INSERT INTO detalles_compras (compra_id, producto_id, cantidad) VALUES (?, ?, ?)";
             $stmtDetalle = $pdo->prepare($sqlDetalle);
             $stmtDetalle->execute([$compra_id, $producto_id, $producto['cantidad']]);
         }

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    fetch('php/get_categorias.php')
+    fetch('php/get_Categorias.php')
         .then(response => response.json())
         .then(categorias => {
             const container = document.getElementById('categories-container');
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 categoryItem.innerHTML = `
                     <h3>${categoria.nombre}</h3>
                     <p>${categoria.descripcion}</p>
-                    <a href="productos.php?categoria_id=${categoria.id}" class="btn-category">Ver Productos</a>
+                    <a href="Productos.php?categoria_id=${categoria.id}" class="btn-category">Ver productos</a>
                 `;
                 container.appendChild(categoryItem);
             });
@@ -18,27 +18,27 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => console.error('Error al cargar las categorías:', error));
 });
 
-async function cargarCategorias() {
+async function cargarcategorias() {
     try {
-        const response = await fetch('php/get_categorias.php');
+        const response = await fetch('php/get_Categorias.php');
         const categorias = await response.json();
         
-        const categoriaSelect = document.getElementById('categoria');
-        categoriaSelect.innerHTML = '<option value="">Selecciona una categoría</option>';
+        const categoriaselect = document.getElementById('categoria');
+        categoriaselect.innerHTML = '<option value="">Selecciona una categoría</option>';
 
         if (categorias && !categorias.error) {
             categorias.forEach(categoria => {
                 const option = document.createElement('option');
                 option.value = categoria.id;
                 option.textContent = categoria.nombre;
-                categoriaSelect.appendChild(option);
+                categoriaselect.appendChild(option);
             });
         } else {
-            categoriaSelect.innerHTML = '<option value="">No se encontraron categorías</option>';
+            categoriaselect.innerHTML = '<option value="">No se encontraron categorías</option>';
         }
     } catch (error) {
         console.error('Error al cargar categorías:', error);
         document.getElementById('categoria').innerHTML = '<option value="">Error al cargar categorías</option>';
     }
 }
-window.onload = cargarCategorias;
+window.onload = cargarcategorias;

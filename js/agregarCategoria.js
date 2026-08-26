@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const result = await response.json();
             if (result.success) {
                 cerrarPopup();
-                cargarCategorias();
+                cargarcategorias();
             } else {
                 alert('Error al agregar la categoría: ' + result.error);
             }

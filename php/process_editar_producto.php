@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Actualizar el producto en la base de datos
-    $sql = "UPDATE Productos 
+    $sql = "UPDATE productos 
             SET nombre = :nombre, descripcion = :descripcion, categoria_id = :categoria_id, 
                 precio = :precio, cantidad_disponible = :cantidad, para_cotizar = :para_cotizar, 
                 video = :video, imagenes_json = :imagenes_json 

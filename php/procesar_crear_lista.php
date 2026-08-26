@@ -11,7 +11,7 @@ $nombre_lista = $_POST['nombre_lista'];
 $descripcion = $_POST['descripcion'];
 $privacidad = $_POST['privacidad'];
 
-$query = "INSERT INTO Listas (usuario_id, nombre_lista, descripcion, privacidad) VALUES (:usuario_id, :nombre_lista, :descripcion, :privacidad)";
+$query = "INSERT INTO listas (usuario_id, nombre_lista, descripcion, privacidad) VALUES (:usuario_id, :nombre_lista, :descripcion, :privacidad)";
 $stmt = $pdo->prepare($query);
 $stmt->bindParam(':usuario_id', $usuario_id, PDO::PARAM_INT);
 $stmt->bindParam(':nombre_lista', $nombre_lista, PDO::PARAM_STR);

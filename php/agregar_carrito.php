@@ -2,7 +2,7 @@
 session_start();
 
 require __DIR__ . '/conexion.php';
-require __DIR__ . '/get_productos.php';
+require __DIR__ . '/get_Productos.php';
 
 if (!isset($_SESSION['carrito'])) {
     $_SESSION['carrito'] = [];

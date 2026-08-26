@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    $sql = "INSERT INTO Productos (nombre, descripcion, imagenes_json, video, categoria_id, para_cotizar, precio, cantidad_disponible, vendedor_id) 
+    $sql = "INSERT INTO productos (nombre, descripcion, imagenes_json, video, categoria_id, para_cotizar, precio, cantidad_disponible, vendedor_id) 
         VALUES (:nombre, :descripcion, :imagenes_json, :video, :categoria_id, :para_cotizar, :precio, :cantidad_disponible, :vendedor_id)";
 
     $stmt = $pdo->prepare($sql);

@@ -4,7 +4,7 @@ require 'conexion.php';
 if (isset($_GET['username'])) {
     $username = $_GET['username'];
 
-    $checkUserSql = "SELECT COUNT(*) FROM Usuarios WHERE nombre_usuario = :username";
+    $checkUserSql = "SELECT COUNT(*) FROM usuarios WHERE nombre_usuario = :username";
     $checkUserStmt = $pdo->prepare($checkUserSql);
     $checkUserStmt->bindParam(':username', $username);
     $checkUserStmt->execute();

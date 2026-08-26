@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['producto_id']) && iss
     $lista_id = $_POST['lista_id'];
 
     try {
-        $sql = "UPDATE Lista_Productos SET estado = 'eliminado' WHERE lista_id = :lista_id AND producto_id = :producto_id";
+        $sql = "UPDATE lista_productos SET estado = 'eliminado' WHERE lista_id = :lista_id AND producto_id = :producto_id";
         $stmt = $pdo->prepare($sql);
         
         $stmt->bindParam(':lista_id', $lista_id, PDO::PARAM_INT);

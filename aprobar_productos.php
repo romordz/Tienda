@@ -13,7 +13,7 @@ if ($_SESSION['role'] !== 'administrador') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aprobar Productos</title>
+    <title>Aprobar productos</title>
     <link rel="stylesheet" href="css/Sprincipal.css">
     <link rel="stylesheet" href="css/SAprobar.css">
 </head>
@@ -24,7 +24,7 @@ if ($_SESSION['role'] !== 'administrador') {
         <nav>
             <ul>
                 <li><a href="Principal.php">Inicio</a></li>
-                <li><a href="Productos.php">Productos</a></li>
+                <li><a href="Productos.php">productos</a></li>
                 <li><a href="Categorias.php">Categorías</a></li>
                 <li><a href="carrito.php" onclick="return checkSession('carrito.php');">Carrito</a></li>
             </ul>
@@ -42,12 +42,12 @@ if ($_SESSION['role'] !== 'administrador') {
             </div>
             <div id="profile-dropdown" class="profile-dropdown">
                 <a href="Perfil.php" onclick="return checkSession('Perfil.php')">Revisar perfil</a>
-                <a href="mensajes.php" onclick="return checkSession('mensajes.php')">Mensajes</a>
+                <a href="Mensajes.php" onclick="return checkSession('Mensajes.php')">mensajes</a>
                 <a href="php/cerrar_sesion.php">Cerrar sesión</a>
             </div>
         </div>
     </header>
-    <h1>Productos Pendientes</h1>
+    <h1>productos Pendientes</h1>
     <table>
     <tr>
         <th>Nombre</th>

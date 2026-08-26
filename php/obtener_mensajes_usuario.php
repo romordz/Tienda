@@ -10,10 +10,10 @@ $sql = "
     SELECT m.id, m.producto_id, m.mensaje, m.fecha, p.nombre AS producto_nombre,
            r.nombre_usuario AS remitente_nombre, r.id AS usuario_id,
            c.comprador_id, c.vendedor_id, c.id AS conversacion_id  -- Aquí estamos seleccionando el conversacion_id
-    FROM Mensajes m
-    INNER JOIN Productos p ON m.producto_id = p.id
-    INNER JOIN Usuarios r ON m.usuario_id = r.id 
-    INNER JOIN Conversaciones c ON m.conversacion_id = c.id
+    FROM mensajes m
+    INNER JOIN productos p ON m.producto_id = p.id
+    INNER JOIN usuarios r ON m.usuario_id = r.id 
+    INNER JOIN conversaciones c ON m.conversacion_id = c.id
     WHERE c.comprador_id = :user_id OR c.vendedor_id = :user_id
     ORDER BY m.producto_id, m.fecha ASC
 ";

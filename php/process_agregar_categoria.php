@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     try {
-        $sql = "INSERT INTO Categorias (nombre, descripcion, usuario_creador) VALUES (:nombre, :descripcion, :usuario_creador)";
+        $sql = "INSERT INTO categorias (nombre, descripcion, usuario_creador) VALUES (:nombre, :descripcion, :usuario_creador)";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':nombre', $nombre);
         $stmt->bindParam(':descripcion', $descripcion);

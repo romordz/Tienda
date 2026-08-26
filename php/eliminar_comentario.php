@@ -4,7 +4,7 @@ require 'conexion.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $comentario_id = $_POST['comentario_id'];
 
-    $sql = "SELECT producto_id FROM Comentarios WHERE id = :comentario_id";
+    $sql = "SELECT producto_id FROM comentarios WHERE id = :comentario_id";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':comentario_id', $comentario_id, PDO::PARAM_INT);
     $stmt->execute();
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    $sql = "UPDATE Comentarios SET estado = 'eliminado' WHERE id = :comentario_id";
+    $sql = "UPDATE comentarios SET estado = 'eliminado' WHERE id = :comentario_id";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':comentario_id', $comentario_id, PDO::PARAM_INT);
 
