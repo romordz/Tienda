@@ -4,7 +4,7 @@ require 'conexion.php';
 header('Content-Type: application/json');
 
 try {
-    $sql = "SELECT id, nombre_usuario, correo FROM Usuarios WHERE rol = 'vendedor'";
+    $sql = "SELECT id, nombre_usuario, correo FROM usuarios WHERE rol = 'vendedor'";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
 

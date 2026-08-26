@@ -3,7 +3,7 @@ session_start();
 include 'conexion.php';
 
 try {
-    $sql = "SELECT id, nombre, descripcion FROM Categorias";
+    $sql = "SELECT id, nombre, descripcion FROM categorias";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     

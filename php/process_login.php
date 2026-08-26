@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
 
     $sql = "SELECT id, correo, nombre_usuario, contraseña, rol, avatar, nombre_completo, fecha_nacimiento, sexo, privacidad 
-            FROM Usuarios 
+            FROM usuarios 
             WHERE correo = :email 
             LIMIT 1";
     $stmt = $pdo->prepare($sql);

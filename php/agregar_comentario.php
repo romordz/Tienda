@@ -7,7 +7,7 @@ if (isset($_POST['comentario']) && isset($_SESSION['user_id'])) {
     $usuario_id = $_SESSION['user_id'];
     $comentario = $_POST['comentario'];
 
-    $sql = "INSERT INTO Comentarios (producto_id, usuario_id, comentario) VALUES (:producto_id, :usuario_id, :comentario)";
+    $sql = "INSERT INTO comentarios (producto_id, usuario_id, comentario) VALUES (:producto_id, :usuario_id, :comentario)";
     $stmt = $pdo->prepare($sql);
     
     $stmt->bindParam(':producto_id', $producto_id, PDO::PARAM_INT);

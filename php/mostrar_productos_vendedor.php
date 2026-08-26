@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 $vendedor_id = $_GET['id'] ?? $_SESSION['user_id'];
 
 $sql = "SELECT id, nombre, descripcion, precio, cantidad_disponible, likes, dislikes, imagenes_json, video, para_cotizar 
-        FROM Productos 
+        FROM productos 
         WHERE vendedor_id = :vendedor_id AND estado = 'aprobado'";
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(':vendedor_id', $vendedor_id, PDO::PARAM_INT);

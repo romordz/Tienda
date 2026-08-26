@@ -4,8 +4,8 @@ require 'conexion.php';
 try {
     $sql = "
         SELECT p.*, c.nombre AS categoria_nombre 
-        FROM Productos p 
-        JOIN Categorias c ON p.categoria_id = c.id 
+        FROM productos p 
+        JOIN categorias c ON p.categoria_id = c.id 
         WHERE p.estado = 'aprobado'
         ORDER BY c.nombre, p.nombre
     ";

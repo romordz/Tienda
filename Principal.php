@@ -18,7 +18,7 @@ session_start();
         <nav>
             <ul>
                 <li><a href="Principal.php">Inicio</a></li>
-                <li><a href="Productos.php">Productos</a></li>
+                <li><a href="Productos.php">productos</a></li>
                 <li><a href="Categorias.php">Categorías</a></li>
                 <li><a href="carrito.php" onclick="return checkSession('carrito.php');">Carrito</a></li>
             </ul>
@@ -41,7 +41,7 @@ session_start();
             <div id="profile-dropdown" class="profile-dropdown">
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <a href="Perfil.php" onclick="return checkSession('Perfil.php')">Revisar perfil</a>
-                    <a href="mensajes.php" onclick="return checkSession('mensajes.php')">Mensajes</a>
+                    <a href="Mensajes.php" onclick="return checkSession('Mensajes.php')">mensajes</a>
                     <a href="php/cerrar_sesion.php">Cerrar sesión</a>
                 <?php else: ?>
                     <a href="login.php">Iniciar Sesión</a>
@@ -60,11 +60,11 @@ session_start();
             <div id="search-results" class="search-results">
                 <!-- Los resultados de búsqueda se cargarán aquí -->
             </div>
-            <h2>Productos Destacados</h2>
+            <h2>productos Destacados</h2>
             <div class="products_destacados">
                 <!-- Los productos destacados se cargarán aquí -->
             </div>
-            <h2>Productos Recientes</h2>
+            <h2>productos Recientes</h2>
             <div class="products_recientes">
                 <!-- Los productos recientes se cargarán aquí -->
             </div>

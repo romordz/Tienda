@@ -5,7 +5,7 @@ require '../php/conexion.php';
 $producto_id = $_GET['producto_id'] ?? null;
 
 if ($producto_id) {
-    $sql = "SELECT vendedor_id FROM Productos WHERE id = :producto_id";
+    $sql = "SELECT vendedor_id FROM productos WHERE id = :producto_id";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':producto_id', $producto_id);
     $stmt->execute();
@@ -17,11 +17,11 @@ if ($producto_id) {
         $usuario_id = $_SESSION['user_id'];
 
         if ($usuario_id === $vendedor_id) {
-            $sql_convo = "SELECT id FROM Conversaciones WHERE producto_id = :producto_id 
+            $sql_convo = "SELECT id FROM conversaciones WHERE producto_id = :producto_id 
                           AND comprador_id != :usuario_id 
                           AND vendedor_id = :usuario_id";
         } else {
-            $sql_convo = "SELECT id FROM Conversaciones WHERE producto_id = :producto_id 
+            $sql_convo = "SELECT id FROM conversaciones WHERE producto_id = :producto_id 
                           AND comprador_id = :usuario_id 
                           AND vendedor_id = :vendedor_id";
         }
@@ -35,8 +35,8 @@ if ($producto_id) {
 
         if ($convo) {
             $sql = "SELECT m.mensaje, m.fecha, u.nombre_usuario
-                    FROM Mensajes m
-                    JOIN Usuarios u ON m.usuario_id = u.id
+                    FROM mensajes m
+                    JOIN usuarios u ON m.usuario_id = u.id
                     WHERE m.conversacion_id = :conversacion_id
                     ORDER BY m.fecha ASC";
             $stmt = $pdo->prepare($sql);

@@ -40,7 +40,7 @@ include 'php/obtener_listas.php';
         <nav>
             <ul>
                 <li><a href="Principal.php">Inicio</a></li>
-                <li><a href="Productos.php">Productos</a></li>
+                <li><a href="Productos.php">productos</a></li>
                 <li><a href="Categorias.php">Categorías</a></li>
                 <li><a href="carrito.php" onclick="return checkSession('carrito.php');">Carrito</a></li>
                 <li><a href="php/cerrar_sesion.php">Cerrar Sesión</a></li>
@@ -59,7 +59,7 @@ include 'php/obtener_listas.php';
             </div>
             <div id="profile-dropdown" class="profile-dropdown">
                 <a href="Perfil.php" onclick="return checkSession('Perfil.php')">Revisar perfil</a>
-                <a href="mensajes.php" onclick="return checkSession('mensajes.php')">Mensajes</a>
+                <a href="Mensajes.php" onclick="return checkSession('Mensajes.php')">mensajes</a>
                 <a href="php/cerrar_sesion.php">Cerrar sesión</a>
             </div>
         </div>
@@ -101,7 +101,7 @@ include 'php/obtener_listas.php';
 
                 <?php if ($_SESSION['role'] === 'administrador'): ?>
                     <br>
-                    <a href="aprobar_productos.php" class="btn-approve">Aprobar Productos</a>
+                    <a href="aprobar_Productos.php" class="btn-approve">Aprobar productos</a>
                 <?php endif; ?>
             </div>
 
@@ -177,7 +177,7 @@ include 'php/obtener_listas.php';
                 </div>
             </div>
             <?php if ($_SESSION['role'] === 'cliente'): ?>
-                <h2>Listas Creadas</h2>
+                <h2>listas Creadas</h2>
                 <div id="listas-container">
                     <?php if ($is_private && $session_user_id != $profile_user_id): ?>
                         <p>🔒 Este perfil es privado, no puedes ver sus listas.</p>
@@ -226,7 +226,7 @@ include 'php/obtener_listas.php';
                 ?>
 
                 <?php if ($perfil_usuario['rol'] === 'vendedor'): ?>
-                    <h3>Productos Publicados</h3>
+                    <h3>productos Publicados</h3>
                     <?php if ($is_private): ?>
                         <p class="private-message">🔒 Este perfil es privado</p>
                     <?php else: ?>
@@ -248,7 +248,7 @@ include 'php/obtener_listas.php';
                 ?>
 
                 <?php if ($perfil_usuario['rol'] === 'vendedor'): ?>
-                    <h3>Productos Publicados</h3>
+                    <h3>productos Publicados</h3>
                     <?php
                     $vendedor_id = $profile_user_id;
                     include 'php/mostrar_productos_vendedor.php';
@@ -256,7 +256,7 @@ include 'php/obtener_listas.php';
                 <?php endif; ?>
 
                 <?php if ($_SESSION['role'] === 'administrador'): ?>
-                    <h3>Productos Aprobados</h3>
+                    <h3>productos Aprobados</h3>
                     <?php include 'php/mostrar_productos_aprobados.php'; ?>
                 <?php endif; ?>
             <?php endif; ?>
@@ -271,7 +271,7 @@ include 'php/obtener_listas.php';
     </script>
 
     <script src="js/sessionCheck.js"></script>
-    <script src="js/Listas.js"></script>
+    <script src="js/listas.js"></script>
     <script src="js/JEditPerfil.js"></script>
 </body>
 

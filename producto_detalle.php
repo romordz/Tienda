@@ -56,7 +56,7 @@ $imagenesArray = !empty($producto['imagenes_json']) ? json_decode($producto['ima
             </div>
             <div id="profile-dropdown" class="profile-dropdown">
                 <a href="Perfil.php" onclick="return checkSession('Perfil.php')">Revisar perfil</a>
-                <a href="mensajes.php" onclick="return checkSession('mensajes.php')">Mensajes</a>
+                <a href="Mensajes.php" onclick="return checkSession('Mensajes.php')">mensajes</a>
                 <a href="php/cerrar_sesion.php">Cerrar sesión</a>
             </div>
         </div>
@@ -173,7 +173,7 @@ $imagenesArray = !empty($producto['imagenes_json']) ? json_decode($producto['ima
 
     <!--Comentar -->
     <section class="product-comments">
-        <h3>Comentarios</h3>
+        <h3>comentarios</h3>
         <?php if (isset($_SESSION['user_id'])): ?>
             <form method="post" action="php/agregar_comentario.php">
                 <textarea name="comentario" rows="4" cols="50" placeholder="Escribe tu comentario aquí..."
@@ -214,9 +214,9 @@ $imagenesArray = !empty($producto['imagenes_json']) ? json_decode($producto['ima
         </div>
     </section>
 
-    <!-- Productos relacionados -->
+    <!-- productos relacionados -->
     <section class="related-products">
-        <h3>Productos del mismo vendedor</h3>
+        <h3>productos del mismo vendedor</h3>
         <div class="related-products-container">
             <?php if (!empty($productos_vendedor)): ?>
                 <?php foreach ($productos_vendedor as $producto): ?>
@@ -239,7 +239,7 @@ $imagenesArray = !empty($producto['imagenes_json']) ? json_decode($producto['ima
         <?php endif; ?>
         </div>
 
-        <h3>Productos de la misma categoría</h3>
+        <h3>productos de la misma categoría</h3>
         <div class="related-products-container">
             <?php if (!empty($productos_categoria)): ?>
                 <?php foreach ($productos_categoria as $producto): ?>
@@ -262,7 +262,7 @@ $imagenesArray = !empty($producto['imagenes_json']) ? json_decode($producto['ima
         <?php endif; ?>
         </div>
 
-        <h3>Productos con más likes</h3>
+        <h3>productos con más likes</h3>
         <div class="related-products-container">
             <?php if (!empty($productos_likes)): ?>
                 <?php foreach ($productos_likes as $producto): ?>

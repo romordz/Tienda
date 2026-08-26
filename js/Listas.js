@@ -87,7 +87,7 @@ function mostrarDetallesLista(listaId) {
                         `<h3>${response.lista.nombre_lista}</h3>
                         <p>${response.lista.descripcion}</p>
                         <p>Privacidad: ${response.lista.privacidad}</p>
-                        <h4>Productos en la lista:</h4>
+                        <h4>productos en la lista:</h4>
                         ${productosHtml}`;
                     console.log("exitoso!")
                 } else {

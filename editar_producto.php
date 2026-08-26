@@ -7,7 +7,7 @@ $producto_id = $_GET['id'] ?? null;
 
 if ($producto_id) {
     $sql = "SELECT id, nombre, descripcion, precio, cantidad_disponible, para_cotizar, video, imagenes_json, categoria_id 
-            FROM Productos 
+            FROM productos 
             WHERE id = :producto_id";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':producto_id', $producto_id, PDO::PARAM_INT);
@@ -22,10 +22,10 @@ if ($producto_id) {
     echo "ID de producto no proporcionado.";
     exit();
 }
-$sqlCategorias = "SELECT id, nombre FROM Categorias";
-$stmtCategorias = $pdo->prepare($sqlCategorias);
-$stmtCategorias->execute();
-$categorias = $stmtCategorias->fetchAll(PDO::FETCH_ASSOC);
+$sqlcategorias = "SELECT id, nombre FROM categorias";
+$stmtcategorias = $pdo->prepare($sqlcategorias);
+$stmtcategorias->execute();
+$categorias = $stmtcategorias->fetchAll(PDO::FETCH_ASSOC);
 
 $imagenes = [];
 if (!empty($producto['imagenes_json'])) {
@@ -50,7 +50,7 @@ if (!empty($producto['imagenes_json'])) {
         <nav>
             <ul>
                 <li><a href="Principal.php">Inicio</a></li>
-                <li><a href="Productos.php">Productos</a></li>
+                <li><a href="Productos.php">productos</a></li>
                 <li><a href="Categorias.php">Categorías</a></li>
                 <li><a href="carrito.php" onclick="return checkSession('carrito.php');">Carrito</a></li>
                 <li><a href="php/cerrar_sesion.php">Cerrar Sesión</a></li>
@@ -69,7 +69,7 @@ if (!empty($producto['imagenes_json'])) {
             </div>
             <div id="profile-dropdown" class="profile-dropdown">
                 <a href="Perfil.php" onclick="return checkSession('Perfil.php')">Revisar perfil</a>
-                <a href="mensajes.php" onclick="return checkSession('mensajes.php')">Mensajes</a>
+                <a href="Mensajes.php" onclick="return checkSession('Mensajes.php')">mensajes</a>
                 <a href="php/cerrar_sesion.php">Cerrar sesión</a>
             </div>
         </div>

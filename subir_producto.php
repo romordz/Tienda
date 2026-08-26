@@ -18,7 +18,7 @@ session_start();
         <nav>
             <ul>
                 <li><a href="Principal.php">Inicio</a></li>
-                <li><a href="Productos.php">Productos</a></li>
+                <li><a href="Productos.php">productos</a></li>
                 <li><a href="Categorias.php">Categorías</a></li>
                 <li><a href="carrito.php" onclick="return checkSession('carrito.php');">Carrito</a></li>
                 <li><a href="php/cerrar_sesion.php">Cerrar Sesión</a></li>
@@ -37,7 +37,7 @@ session_start();
             </div>
             <div id="profile-dropdown" class="profile-dropdown">
                 <a href="Perfil.php" onclick="return checkSession('Perfil.php')">Revisar perfil</a>
-                <a href="mensajes.php" onclick="return checkSession('mensajes.php')">Mensajes</a>
+                <a href="Mensajes.php" onclick="return checkSession('Mensajes.php')">mensajes</a>
                 <a href="php/cerrar_sesion.php">Cerrar sesión</a>
             </div>
         </div>
@@ -102,7 +102,7 @@ session_start();
     <footer>
         <p>&copy; 2024 Tienda en Línea. Todos los derechos reservados.</p>
     </footer>
-    <script src="js/getCategorias.js"></script>
+    <script src="js/getcategorias.js"></script>
     <script src="js/agregarCategoria.js"></script>
     <script src="js/sessionCheck.js"></script>
     <script src="js/JSubirProducto.js"></script>

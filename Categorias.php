@@ -8,17 +8,17 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/SPrincipal.css">
-    <link rel="stylesheet" href="css/SCategorias.css">
+    <link rel="stylesheet" href="css/Scategorias.css">
     <title>Categorías</title>
 </head>
 
 <body>
     <header>
-        <h1>Categorías de Productos</h1>
+        <h1>Categorías de productos</h1>
         <nav>
             <ul>
                 <li><a href="Principal.php">Inicio</a></li>
-                <li><a href="productos.php">Productos</a></li>
+                <li><a href="Productos.php">productos</a></li>
                 <li><a href="carrito.php" onclick="return checkSession('carrito.php');">Carrito</a></li>
                 <li><a href="php/cerrar_sesion.php">Cerrar Sesión</a></li>
             </ul>
@@ -36,7 +36,7 @@ session_start();
             </div>
             <div id="profile-dropdown" class="profile-dropdown">
                 <a href="Perfil.php" onclick="return checkSession('Perfil.php')">Revisar perfil</a>
-                <a href="mensajes.php" onclick="return checkSession('mensajes.php')">Mensajes</a>
+                <a href="Mensajes.php" onclick="return checkSession('Mensajes.php')">mensajes</a>
                 <a href="php/cerrar_sesion.php">Cerrar sesión</a>
             </div>
         </div>
@@ -51,7 +51,7 @@ session_start();
     <footer>
         <p>© 2024 Tu Tienda. Todos los derechos reservados.</p>
     </footer>
-    <script src="js/getCategorias.js"></script>
+    <script src="js/getcategorias.js"></script>
     <script src="js/sessionCheck.js"></script>
 </body>
 </html>

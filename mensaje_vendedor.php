@@ -57,10 +57,10 @@ if (!$producto || empty($producto['producto']['nombre'])) {
     </footer>
 
     <script>
-        function cargarMensajes() {
+        function cargarmensajes() {
             var productoId = document.getElementById('producto_id').value;
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", "php/obtener_mensajes.php?producto_id=" + productoId, true);
+            xhr.open("GET", "php/obtener_Mensajes.php?producto_id=" + productoId, true);
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     document.getElementById('chat-box').innerHTML = xhr.responseText;
@@ -80,14 +80,14 @@ if (!$producto || empty($producto['producto']['nombre'])) {
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     document.getElementById('mensaje').value = '';
-                    cargarMensajes();
+                    cargarmensajes();
                 }
             };
             xhr.send("producto_id=" + productoId + "&mensaje=" + mensaje);
         });
 
-        setInterval(cargarMensajes, 3000);
-        cargarMensajes();
+        setInterval(cargarmensajes, 3000);
+        cargarmensajes();
     </script>
 </body>
 </html>

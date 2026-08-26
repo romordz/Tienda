@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $mensaje = $_POST['mensaje'];
 
     if (!empty($mensaje)) {
-        $sql = "SELECT vendedor_id FROM Productos WHERE id = :producto_id";
+        $sql = "SELECT vendedor_id FROM productos WHERE id = :producto_id";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':producto_id', $producto_id, PDO::PARAM_INT);
         $stmt->execute();
@@ -18,13 +18,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $vendedor_id = $vendedor['vendedor_id'];
 
             if ($usuario_id == $vendedor_id) {
-                $sql_check_convo = "SELECT id FROM Conversaciones WHERE producto_id = :producto_id 
+                $sql_check_convo = "SELECT id FROM conversaciones WHERE producto_id = :producto_id 
                                     AND vendedor_id = :vendedor_id";
                 $stmt_check_convo = $pdo->prepare($sql_check_convo);
                 $stmt_check_convo->bindParam(':producto_id', $producto_id);
                 $stmt_check_convo->bindParam(':vendedor_id', $vendedor_id);
             } else {
-                $sql_check_convo = "SELECT id FROM Conversaciones WHERE producto_id = :producto_id 
+                $sql_check_convo = "SELECT id FROM conversaciones WHERE producto_id = :producto_id 
                                     AND comprador_id = :comprador_id AND vendedor_id = :vendedor_id";
                 $stmt_check_convo = $pdo->prepare($sql_check_convo);
                 $stmt_check_convo->bindParam(':producto_id', $producto_id);
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $convo = $stmt_check_convo->fetch(PDO::FETCH_ASSOC);
 
             if (!$convo) {
-                $sql_insert_convo = "INSERT INTO Conversaciones (producto_id, comprador_id, vendedor_id) 
+                $sql_insert_convo = "INSERT INTO conversaciones (producto_id, comprador_id, vendedor_id) 
                                      VALUES (:producto_id, :comprador_id, :vendedor_id)";
                 $stmt_insert_convo = $pdo->prepare($sql_insert_convo);
                 $stmt_insert_convo->bindParam(':producto_id', $producto_id);
@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $conversacion_id = $convo['id'];
             }
 
-            $sql_insert_msg = "INSERT INTO Mensajes (conversacion_id, usuario_id, mensaje, producto_id) 
+            $sql_insert_msg = "INSERT INTO mensajes (conversacion_id, usuario_id, mensaje, producto_id) 
                                VALUES (:conversacion_id, :usuario_id, :mensaje, :producto_id)";
             $stmt_insert_msg = $pdo->prepare($sql_insert_msg);
             $stmt_insert_msg->bindParam(':conversacion_id', $conversacion_id);
