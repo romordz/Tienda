@@ -6,7 +6,7 @@ function checkSession(redirectPage) {
             var isLoggedIn = xhr.responseText === 'true';
             
             if (!isLoggedIn) {
-                window.location.href = "login.php?redirect=" + encodeURIComponent(redirectPage);
+                window.location.href = "Login.php?redirect=" + encodeURIComponent(redirectPage);
             } else {
                 window.location.href = redirectPage;
             }
