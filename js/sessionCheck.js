@@ -33,5 +33,3 @@ window.onclick = function(event) {
         dropdown.style.display = "none";
     }
 };
-
-

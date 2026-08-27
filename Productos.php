@@ -65,9 +65,9 @@ include 'php/get_Productos.php';
                     <?php $categoriaActual = $producto['categoria_nombre']; ?>
                 <?php endif; ?>
 
-                <div class="product-item">
+                <div class="product-item" onclick="checkSession('producto_detalle.php?id=<?php echo $producto['id']; ?>');">
                     <a href="javascript:void(0);"
-                        onclick="checkSession('producto_detalle.php?id=<?php echo $producto['id']; ?>');">
+                        >
                         <?php
                         $imagenes = json_decode($producto['imagenes_json'], true);
                         if (!empty($imagenes) && isset($imagenes[0])): ?>
