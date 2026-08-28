@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../php/conexion.php';
+require 'conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['user'];
