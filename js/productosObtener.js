@@ -29,8 +29,8 @@ function obtenerproductosDestacados() {
                         : `<span class="price">$${parseFloat(producto.precio).toFixed(2)}</span>`;
 
                     const productItem = `
-                        <div class="product-item">
-                            <a href="javascript:void(0);" onclick="checkSession('producto_detalle.php?id=${producto.id}');">
+                        <div class="product-item" onclick="checkSession('producto_detalle.php?id=<?php echo $producto['id']; ?>');">
+                            <a href="javascript:void(0);">
                                 <img src="${imagenPrincipal}" alt="${producto.nombre}">
                             </a>
                             <h3>${producto.nombre}</h3>
@@ -79,8 +79,8 @@ function obtenerproductosRecientes() {
                         : `<span class="price">$${parseFloat(producto.precio).toFixed(2)}</span>`;
 
                     const productItem = `
-                        <div class="product-item">
-                            <a href="javascript:void(0);" onclick="checkSession('producto_detalle.php?id=${producto.id}');">
+                        <div class="product-item" onclick="checkSession('producto_detalle.php?id=<?php echo $producto['id']; ?>');">
+                            <a href="javascript:void(0);">
                                 <img src="${imagenPrincipal}" alt="${producto.nombre}">
                             </a>
                             <h3>${producto.nombre}</h3>
