@@ -68,9 +68,7 @@ $page_title = "Productos";
     <?php endif; ?>
 </section>
 
-    <footer>
-        <p>© 2024 Tu Tienda. Todos los derechos reservados.</p>
-    </footer>
+    <?php require 'componentes/Footer/Footer.php'; ?>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
