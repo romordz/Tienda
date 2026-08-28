@@ -1,5 +1,5 @@
 <?php
-include 'php/conexion.php';
+include '..php/DB/..php/DB/conexion.php';
 include 'php/actualizar_carrito.php';
 
 $carrito = isset($_SESSION['carrito']) ? $_SESSION['carrito'] : [];
