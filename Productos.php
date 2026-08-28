@@ -10,7 +10,8 @@ $page_title = "Productos";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/Sproductos.css">
+    <!-- <link rel="stylesheet" href="css/SPrincipal.css"> -->
+    <link rel="stylesheet" href="css/SProductos.css">
     <title>productos</title>
 </head>
 
