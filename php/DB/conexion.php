@@ -11,7 +11,7 @@ try {
     ];
 
     if (getenv('DB_HOST')) {
-        $options[PDO::MYSQL_ATTR_SSL_CA] = __DIR__ . '/../Config/ca.pem';
+        $options[PDO::MYSQL_ATTR_SSL_CA] = __DIR__ . '/../../Config/ca.pem';
     }
 
     $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8", $username, $password, $options);

@@ -44,7 +44,7 @@ function validateUsername() {
         return false;
     }
 
-    fetch('php/check_username.php?username=' + encodeURIComponent(username))
+    fetch('php/sesion/check_username.php?username=' + encodeURIComponent(username))
         .then(response => response.text())
         .then(data => {
             if (data !== 'available') {
@@ -72,7 +72,7 @@ function validateEmail() {
         return false;
     }
 
-    fetch('php/check_email.php?email=' + encodeURIComponent(email))
+    fetch('php/sesion/check_email.php?email=' + encodeURIComponent(email))
         .then(response => response.text())
         .then(data => {
             if (data !== 'available') {

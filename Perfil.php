@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-include 'php/Perfil_process.php';
+include __DIR__ . '/php/perfil/Perfil_process.php';
 
 $session_user_id = $_SESSION['user_id'];
 $profile_user_id = $_GET['id'] ?? $session_user_id;
@@ -19,7 +19,7 @@ $profile_privacy = $stmt->fetchColumn();
 $is_private = $profile_privacy === 'privado' && $session_user_id != $profile_user_id;
 
 $listas = [];
-include 'php/obtener_listas.php';
+include __DIR__ . '/php/listas/obtener_listas.php';
 
 $page_title = "Detalle del Producto";
 ?>
@@ -81,7 +81,7 @@ $page_title = "Detalle del Producto";
             <?php if ($session_user_id == $profile_user_id): ?>
                 <div id="edit-form" style="display: none;">
                     <h2>Editar Perfil</h2>
-                    <form method="POST" action="php/actualizar_perfil.php" enctype="multipart/form-data">
+                    <form method="POST" action="php/perfil/actualizar_perfil.php" enctype="multipart/form-data">
                         <label for="username">Nombre de Usuario</label>
                         <input type="text" id="username" name="username" value="<?php echo $_SESSION['username']; ?>"
                             data-current-username="<?php echo $_SESSION['username']; ?>" required
@@ -130,7 +130,7 @@ $page_title = "Detalle del Producto";
                     <span class="close" id="close-popup">&times;</span>
                     <div class="create-list-section">
                         <h2>Crear Nueva Lista</h2>
-                        <form method="POST" action="php/procesar_crear_lista.php">
+                        <form method="POST" action="php/listas/procesar_crear_lista.php">
                             <label for="nombre_lista">Nombre de la Lista:</label>
                             <input type="text" id="nombre_lista" name="nombre_lista" required>
 
@@ -205,7 +205,7 @@ $page_title = "Detalle del Producto";
                     <?php else: ?>
                         <?php
                         $vendedor_id = $profile_user_id;
-                        include 'php/mostrar_productos_vendedor.php';
+                        include __DIR__ . '/php/productos/mostrar_productos_vendedor.php';
                         ?>
                     <?php endif; ?>
                 <?php endif; ?>
@@ -230,7 +230,7 @@ $page_title = "Detalle del Producto";
 
                 <?php if ($_SESSION['role'] === 'administrador'): ?>
                     <h3>productos Aprobados</h3>
-                    <?php include 'php/mostrar_productos_aprobados.php'; ?>
+                    <?php include __DIR__ . '/php/productos/mostrar_productos_aprobados.php'; ?>
                 <?php endif; ?>
             <?php endif; ?>
         </div>

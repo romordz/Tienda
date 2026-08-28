@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '..php/DB/conexion.php';
+include __DIR__ . '/../DB/conexion.php';
 
 if (!isset($_POST['lista_id'])) {
     echo json_encode(['success' => false, 'message' => 'Falta el ID de la lista.']);

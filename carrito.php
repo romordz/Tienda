@@ -1,6 +1,6 @@
 <?php
-include '..php/DB/..php/DB/conexion.php';
-include 'php/actualizar_carrito.php';
+require __DIR__ . '/php/DB/conexion.php';
+require __DIR__ . '/php/pago/actualizar_carrito.php';
 
 $carrito = isset($_SESSION['carrito']) ? $_SESSION['carrito'] : [];
 

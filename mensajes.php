@@ -1,6 +1,6 @@
 <?php
-require 'php/obtener_mensajes_usuario.php';
-$mensajes = include 'php/obtener_mensajes_usuario.php';
+require __DIR__ . '/php/mensajes/obtener_mensajes_usuario.php';
+$mensajes = include __DIR__ . '/php/mensajes/obtener_mensajes_usuario.php';
 
 $page_title = "Detalle del Producto";
 ?>

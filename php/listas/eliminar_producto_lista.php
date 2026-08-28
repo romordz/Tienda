@@ -1,5 +1,5 @@
 <?php
-require '..php/DB/conexion.php';
+require __DIR__ . '/../DB/conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['producto_id']) && isset($_POST['lista_id'])) {
     $producto_id = $_POST['producto_id'];

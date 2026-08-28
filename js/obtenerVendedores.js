@@ -8,7 +8,7 @@ function obtenerVendedores() {
         document.getElementById('mostrar-vendedores-button').textContent = 'Mostrar Vendedores';
         vendedoresMostrados = false;
     } else {
-        fetch('php/obtener_vendedores.php')
+        fetch('php/vendedores/obtener_vendedores.php')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Error al obtener los vendedores.');

@@ -4,11 +4,11 @@ function toggleFormularioTarjeta() {
 }
 
 function verificarTarjeta() {
-    fetch('php/verificar_tarjeta.php')
+    fetch('php/pago/verificar_tarjeta.php')
         .then(response => response.json())
         .then(data => {
             if (data.tiene_tarjeta) {
-                location.href = 'php/pagar.php';
+                location.href = 'php/pago/pagar.php';
             } else {
                 alert('No tienes una tarjeta registrada. Agrega una tarjeta para proceder con el pago.');
                 document.getElementById('btn-add-card').style.display = 'block';

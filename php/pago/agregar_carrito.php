@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require __DIR__ . '/..php/DB/conexion.php';
+require __DIR__ . '/../DB/conexion.php';
 require __DIR__ . '/get_Productos.php';
 
 if (!isset($_SESSION['carrito'])) {

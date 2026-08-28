@@ -1,6 +1,6 @@
 function checkSession(redirectPage) {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'php/sessionCheck.php', true);
+    xhr.open('GET', 'php/sesion/sessionCheck.php', true);
     xhr.onload = function() {
         if (xhr.status === 200) {
             var isLoggedIn = xhr.responseText === 'true';

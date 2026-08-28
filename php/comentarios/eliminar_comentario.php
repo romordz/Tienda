@@ -1,5 +1,5 @@
 <?php
-require '..php/DB/conexion.php';
+require __DIR__ . '/../DB/conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $comentario_id = $_POST['comentario_id'];

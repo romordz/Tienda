@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '..php/DB/conexion.php';
+include __DIR__ . '/../DB/conexion.php';
 
 if (!isset($_SESSION['user_id'])) {
     die("Usuario no autenticado.");

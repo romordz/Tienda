@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const descripcion = document.getElementById('descripcion_categoria').value;
 
         try {
-            const response = await fetch('php/process_agregar_categoria.php', {
+            const response = await fetch('php/categorias/process_agregar_categoria.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

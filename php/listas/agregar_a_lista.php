@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '..php/DB/conexion.php';
+include __DIR__ . '/../DB/conexion.php';
 
 if (!isset($_SESSION['user_id'])) {
     echo json_encode(['success' => false, 'message' => 'Debes iniciar sesión para agregar productos a una lista.']);

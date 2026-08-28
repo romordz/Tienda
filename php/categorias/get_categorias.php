@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '..php/DB/conexion.php';
+include __DIR__ . '/../DB/conexion.php';
 
 try {
     $sql = "SELECT id, nombre, descripcion FROM categorias";

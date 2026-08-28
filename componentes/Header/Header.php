@@ -32,7 +32,7 @@
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <a href="Perfil.php" onclick="return checkSession('Perfil.php')">Revisar perfil</a>
                     <a href="Mensajes.php" onclick="return checkSession('Mensajes.php')">mensajes</a>
-                    <a href="php/cerrar_sesion.php">Cerrar sesión</a>
+                    <a href="php/sesion/cerrar_sesion.php">Cerrar sesión</a>
                 <?php else: ?>
                     <a href="Login.php">Iniciar Sesión</a>
                 <?php endif; ?>
@@ -48,7 +48,7 @@
             <li><a href="Productos.php">productos</a></li>
             <li><a href="Categorias.php">Categorías</a></li>
             <li><a href="carrito.php" onclick="return checkSession('carrito.php');">Carrito</a></li>
-            <li><a href="php/cerrar_sesion.php">Cerrar Sesión</a></li>
+            <li><a href="php/sesion/cerrar_sesion.php">Cerrar Sesión</a></li>
         </ul>
     </nav>
     <div class="profile-container">
@@ -63,9 +63,9 @@
             </div>
         </div>
         <div id="profile-dropdown" class="profile-dropdown">
-            <a href="Perfil.php" onclick="return checkSession('../Perfil.php')">Revisar perfil</a>
-            <a href="Mensajes.php" onclick="return checkSession('../Mensajes.php')">mensajes</a>
-            <a href="php/cerrar_sesion.php">Cerrar sesión</a>
+            <a href="Perfil.php" onclick="return checkSession('Perfil.php')">Revisar perfil</a>
+            <a href="Mensajes.php" onclick="return checkSession('Mensajes.php')">mensajes</a>
+            <a href="php/sesion/cerrar_sesion.php">Cerrar sesión</a>
         </div>
     </div>
 </header>

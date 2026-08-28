@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '..php/DB/..php/DB/conexion.php';
+require __DIR__ . '/php/DB/conexion.php';
 
 $producto_id = $_GET['id'] ?? null;
 
@@ -59,7 +59,7 @@ if (isset($_SESSION['mensaje'])) {
         <section class="upload-section">
             <div class="upload-card">
                 <h2>Información del Producto</h2>
-                <form action="php/process_editar_producto.php" method="POST" enctype="multipart/form-data">
+                <form action="php/productos/process_editar_producto.php" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?php echo htmlspecialchars($producto['id']); ?>">
     <input type="hidden" name="imagenes_actuales" value='<?php echo json_encode($imagenes); ?>'>
 
@@ -105,7 +105,7 @@ if (isset($_SESSION['mensaje'])) {
                 
                 <?php if ($index === 0 && count($imagenes) > 2): ?>
                     <!-- Solo mostrar el botón de eliminar si hay más de una imagen -->
-                    <form action="php/process_editar_producto.php" method="POST" style="display:inline;">
+                    <form action="php/productos/process_editar_producto.php" method="POST" style="display:inline;">
                         <input type="hidden" name="id" value="<?php echo htmlspecialchars($producto['id']); ?>">
                         <input type="hidden" name="imagen_a_eliminar" value="<?php echo $index; ?>">
                         <button type="submit" class="eliminar-imagen">Eliminar Imagen</button>
