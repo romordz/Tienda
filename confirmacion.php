@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+$page_title = "Gracias por tu compra!";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -11,17 +13,7 @@ session_start();
     <title>Confirmación de Compra</title>
 </head>
 <body>
-    <header>
-        <h1>¡Gracias por tu Compra!</h1>
-        <nav>
-            <ul>
-                <li><a href="Principal.php">Inicio</a></li>
-                <li><a href="Productos.php">productos</a></li>
-                <li><a href="Categorias.php">Categorías</a></li>
-                <li><a href="carrito.php">Carrito</a></li>
-            </ul>
-        </nav>
-    </header>
+     <?php require 'php/header.php'; ?>
 
     <div class="confirmation-section">
         <h2>Tu compra ha sido registrada correctamente. 🎉</h2>

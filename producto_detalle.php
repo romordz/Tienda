@@ -20,6 +20,8 @@ if (isset($_SESSION['user_id'])) {
     include 'php/obtener_listas_producto.php';
 }
 $imagenesArray = !empty($producto['imagenes_json']) ? json_decode($producto['imagenes_json'], true) : [];
+
+$page_title = "Detalle del Producto";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -33,34 +35,7 @@ $imagenesArray = !empty($producto['imagenes_json']) ? json_decode($producto['ima
 </head>
 
 <body>
-    <header>
-        <h1>Detalle del Producto</h1>
-        <nav>
-            <ul>
-                <li><a href="Principal.php">Inicio</a></li>
-                <li><a href="Categorias.php">Categorías</a></li>
-                <li><a href="carrito.php" onclick="return checkSession('carrito.php');">Carrito</a></li>
-                <li><a href="php/cerrar_sesion.php">Cerrar Sesión</a></li>
-            </ul>
-        </nav>
-        <div class="profile-container">
-            <div class="user-profile" onclick="toggleDropdown(event)">
-                <img src="<?php echo isset($_SESSION['avatar']) && !empty($_SESSION['avatar']) ? $_SESSION['avatar'] : 'Recursos/default.jpg'; ?>"
-                    alt="Avatar" class="profile-avatar">
-                <div class="profile-info">
-                    <p class="profile-name">
-                        <?php echo isset($_SESSION['username']) ? $_SESSION['username'] : 'Nombre'; ?>
-                    </p>
-                    <p class="profile-role"><?php echo isset($_SESSION['role']) ? $_SESSION['role'] : 'Rol'; ?></p>
-                </div>
-            </div>
-            <div id="profile-dropdown" class="profile-dropdown">
-                <a href="Perfil.php" onclick="return checkSession('Perfil.php')">Revisar perfil</a>
-                <a href="Mensajes.php" onclick="return checkSession('Mensajes.php')">mensajes</a>
-                <a href="php/cerrar_sesion.php">Cerrar sesión</a>
-            </div>
-        </div>
-    </header>
+    <?php require 'php/header.php'; ?>
 
     <section class="product-detail">
         <div class="seller-info">
