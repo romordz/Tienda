@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['user'];
     $password = $_POST['password'];
 
-    $sql = "SELECT id, correo, nombre_usuario, contraseña, rol, avatar_url, nombre_completo, fecha_nacimiento, sexo, privacidad 
+    $sql = "SELECT id, correo, nombre_usuario, contrasena, rol, avatar_url, nombre_completo, fecha_nacimiento, sexo, privacidad 
         FROM usuarios 
         WHERE correo = :email 
         LIMIT 1";
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($stmt->rowCount() === 1) {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if (password_verify($password, $user['contraseña'])) {
+        if (password_verify($password, $user['contrasena'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['nombre_usuario'];
             $_SESSION['full_name'] = $user['nombre_completo'];
