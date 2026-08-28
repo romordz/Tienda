@@ -41,7 +41,7 @@ $page_title = "Detalle del Producto";
     <main>
         <section class="profile-section">
             <div class="profile-card">
-                <img src="data:image/jpeg;base64,<?php echo isset($profile_avatar) ? $profile_avatar : 'img/user-avatar.jpg'; ?>"
+                <img src="<?php echo isset($_SESSION['avatar']) && !empty($_SESSION['avatar']) ? $_SESSION['avatar'] : 'Recursos/default.jpg'; ?>"
                     alt="Avatar de Usuario" class="profile-avatar">
                 <h2><?php echo isset($profile_username) ? $profile_username : 'Nombre del Usuario'; ?></h2>
 
