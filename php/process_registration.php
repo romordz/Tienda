@@ -18,12 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
 
-        $fileType = mime_content_type($_FILES['photo']['tmp_name']);
-        if ($fileType !== 'image/jpeg') {
-            echo "Solo se permiten archivos JPG.";
-            exit();
-        }
-
         $uploader = new CloudinaryUploader();
         $photo_url = $uploader->subirImagen($_FILES['photo']['tmp_name']);
     }
