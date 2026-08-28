@@ -21,7 +21,7 @@ $page_title = "";
 </head>
 
 <body>
-     <?php require 'componentes/header.php'; ?>
+     <?php require 'componentes/Header/Header.php'; ?>
     <h1>productos Pendientes</h1>
     <table>
     <tr>

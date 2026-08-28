@@ -47,7 +47,7 @@ $page_title = "Detalle del Producto";
 </head>
 
 <body>
-    <?php require 'componentes/header.php'; ?>
+    <?php require 'componentes/Header/Header.php'; ?>
 
     <?php
 if (isset($_SESSION['mensaje'])) {

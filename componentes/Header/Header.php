@@ -1,3 +1,8 @@
+<head>
+    <link rel="stylesheet" href="css/SHeader.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
 <!-- <header>
         <h1>Bienvenido a Nuestra Tienda</h1>
         <nav>
