@@ -6,7 +6,7 @@ if ($_SESSION['role'] !== 'administrador') {
     exit();
 }
 
-$page_title = "";
+$page_title = "Estado de productos";
 ?>
 
 <!DOCTYPE html>
