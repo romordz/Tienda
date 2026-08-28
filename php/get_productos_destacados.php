@@ -1,7 +1,6 @@
 <?php 
 session_start();
 require 'conexion.php';
-//iba el asterisco
 $query = "SELECT id, nombre, descripcion, imagenes, imagenes_json, precio, para_cotizar, likes 
           FROM productos 
           WHERE estado = 'aprobado' 

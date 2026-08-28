@@ -6,10 +6,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['user'];
     $password = $_POST['password'];
 
-    $sql = "SELECT id, correo, nombre_usuario, contraseña, rol, avatar, nombre_completo, fecha_nacimiento, sexo, privacidad 
-            FROM usuarios 
-            WHERE correo = :email 
-            LIMIT 1";
+    $sql = "SELECT id, correo, nombre_usuario, contraseña, rol, avatar_url, nombre_completo, fecha_nacimiento, sexo, privacidad 
+        FROM usuarios 
+        WHERE correo = :email 
+        LIMIT 1";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':email', $email);
     $stmt->execute();
@@ -27,8 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['role'] = $user['rol'];
             $_SESSION['privacy'] = $user['privacidad'];
 
-            if ($user['avatar']) {
-                $_SESSION['avatar'] = base64_encode($user['avatar']);
+            if ($user['avatar_url']) {
+                $_SESSION['avatar'] = $user['avatar_url'];
             } else {
                 $_SESSION['avatar'] = null;
             }

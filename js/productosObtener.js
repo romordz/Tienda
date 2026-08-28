@@ -31,7 +31,7 @@ function obtenerproductosDestacados() {
                     const productItem = `
                         <div class="product-item">
                             <a href="javascript:void(0);" onclick="checkSession('producto_detalle.php?id=${producto.id}');">
-                                <img src="data:image/jpeg;base64,${imagenPrincipal}" alt="${producto.nombre}">
+                                <img src="${imagenPrincipal}" alt="${producto.nombre}">
                             </a>
                             <h3>${producto.nombre}</h3>
                             <p>${producto.descripcion}</p>
@@ -79,7 +79,7 @@ function obtenerproductosRecientes() {
                     const productItem = `
                         <div class="product-item">
                             <a href="javascript:void(0);" onclick="checkSession('producto_detalle.php?id=${producto.id}');">
-                                <img src="data:image/jpeg;base64,${imagenPrincipal}" alt="${producto.nombre}">
+                                <img src="${imagenPrincipal}" alt="${producto.nombre}">
                             </a>
                             <h3>${producto.nombre}</h3>
                             <p>${producto.descripcion}</p>
