@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($stmt->execute()) {
         echo "Registro exitoso. Redirigiendo...";
-        //header("Location: ../Login.php");
+        header("Location: Login.php");
         exit();
     } else {
         echo "Error al registrar el usuario.";
