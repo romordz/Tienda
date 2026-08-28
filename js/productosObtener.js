@@ -32,10 +32,10 @@ function obtenerproductosDestacados() {
                         <div class="product-item" onclick="checkSession('producto_detalle.php?id=<?php echo $producto['id']; ?>');">
                             <a href="javascript:void(0);">
                                 <img src="${imagenPrincipal}" alt="${producto.nombre}">
-                            </a>
                             <h3>${producto.nombre}</h3>
                             <p>${producto.descripcion}</p>
                             ${priceDisplay}
+                            </a>
                         </div>
                     `;
                     productsContainer.innerHTML += productItem;
@@ -82,10 +82,11 @@ function obtenerproductosRecientes() {
                         <div class="product-item" onclick="checkSession('producto_detalle.php?id=<?php echo $producto['id']; ?>');">
                             <a href="javascript:void(0);">
                                 <img src="${imagenPrincipal}" alt="${producto.nombre}">
-                            </a>
+                            
                             <h3>${producto.nombre}</h3>
                             <p>${producto.descripcion}</p>
                             ${priceDisplay}
+                            </a>
                         </div>
                     `;
                     productsContainer.innerHTML += productItem;
