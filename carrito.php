@@ -29,7 +29,7 @@ $page_title = "Tu carrito";
 </head>
 
 <body>
-    <?php require 'componentes/Header/header.php'; ?>
+    <?php require 'componentes/Header/Header.php'; ?>
 
     <div class="cart-section">
         <?php if (!empty($mensaje))
