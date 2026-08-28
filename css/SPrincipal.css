@@ -70,6 +70,18 @@ body {
     border-radius: 5px;
 }
 
+.product-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.product-item a:hover,
+.product-item a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+
 .description {
     color: #dcdde1;
     font-size: 0.9rem;

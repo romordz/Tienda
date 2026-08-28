@@ -1,4 +1,15 @@
 /*-------------------------CATEGORÍAS-------------------- */
+.product-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.product-item a:hover,
+.product-item a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
 .category-list {
     padding: 20px;
     text-align: center;
