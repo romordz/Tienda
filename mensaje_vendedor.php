@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'php/conexion.php';
+require '..php/DB/..php/DB/conexion.php';
 
 if (!isset($_SESSION['user_id'])) {
     echo "Error: No estás logueado. La variable de sesión no está disponible.";

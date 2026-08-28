@@ -1,5 +1,5 @@
 <?php
-include 'php/conexion.php';
+include '..php/DB/..php/DB/conexion.php';
 session_start();
 
 if (empty($_SESSION['carrito'])) {
