@@ -149,4 +149,3 @@ function validatePassword() {
 
     return true;
 }
-

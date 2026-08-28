@@ -1,6 +1,7 @@
 <?php
 session_start();
 require '../php/conexion.php';
+require '../php/CloudinaryUploader.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = $_POST['nombre'];
@@ -13,15 +14,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (isset($_FILES['imagenes']) && count($_FILES['imagenes']['tmp_name']) >= 3) {
         $imagenesArray = [];
-
-        if (!empty($producto['imagenes_json'])) {
-            $imagenesArray = json_decode($producto['imagenes_json'], true);
-        }
+        $uploader = new CloudinaryUploader();
 
         foreach ($_FILES['imagenes']['tmp_name'] as $key => $tmp_name) {
             if ($_FILES['imagenes']['error'][$key] === UPLOAD_ERR_OK) {
-                $imagen = file_get_contents($tmp_name);
-                $imagenesArray[] = base64_encode($imagen);
+                $imagenesArray[] = $uploader->subirImagen($tmp_name);
             }
         }
 
@@ -56,7 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindParam(':cantidad_disponible', $cantidad_disponible);
     $stmt->bindParam(':vendedor_id', $usuario_creador, PDO::PARAM_INT);
 
-
     try {
         if ($stmt->execute()) {
             echo "Producto subido exitosamente. Redirigiendo...";
@@ -69,4 +65,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Error: " . $e->getMessage();
     }
 }
-?>

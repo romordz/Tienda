@@ -1,6 +1,7 @@
 <?php
 session_start();
 require 'conexion.php';
+require 'CloudinaryUploader.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isset($_POST['nombre'], $_POST['descripcion'], $_POST['categoria_id'], $_POST['precio'], $_POST['cantidad'], $_POST['para_cotizar'], $_POST['video'])) {
@@ -17,39 +18,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $para_cotizar = $_POST['para_cotizar'];
     $video = $_POST['video'];
 
-    // Obtener las imágenes actuales
     $imagenes_actuales = isset($_POST['imagenes_actuales']) ? json_decode($_POST['imagenes_actuales'], true) : [];
 
-    // Procesar las imágenes a eliminar
     if (isset($_POST['imagen_a_eliminar'])) {
         $indice_imagen_a_eliminar = $_POST['imagen_a_eliminar'];
         if (isset($imagenes_actuales[$indice_imagen_a_eliminar])) {
             unset($imagenes_actuales[$indice_imagen_a_eliminar]);
-            $imagenes_actuales = array_values($imagenes_actuales); // Reindexar
+            $imagenes_actuales = array_values($imagenes_actuales);
         }
     }
 
-    // Verificar si se han subido nuevas imágenes
     $imagenes_nuevas = [];
     if (!empty($_FILES['imagenes']['name'][0])) {
+        $uploader = new CloudinaryUploader();
         foreach ($_FILES['imagenes']['tmp_name'] as $index => $tmp_name) {
-            $imagen_data = file_get_contents($tmp_name);
-            $imagenes_nuevas[] = base64_encode($imagen_data);
+            $imagenes_nuevas[] = $uploader->subirImagen($tmp_name);
         }
     }
 
-    // Combinar las imágenes actuales y las nuevas
     $imagenes_finales = array_merge($imagenes_actuales, $imagenes_nuevas);
 
-    // Si no hay nuevas imágenes y no se eliminó ninguna, no actualizamos las imágenes en la base de datos
     if (empty($imagenes_nuevas) && empty($_POST['imagen_a_eliminar'])) {
-        // No actualizar las imágenes
         $imagenes_json = json_encode($imagenes_actuales);
     } else {
         $imagenes_json = json_encode($imagenes_finales);
     }
 
-    // Actualizar el producto en la base de datos
     $sql = "UPDATE productos 
             SET nombre = :nombre, descripcion = :descripcion, categoria_id = :categoria_id, 
                 precio = :precio, cantidad_disponible = :cantidad, para_cotizar = :para_cotizar, 

@@ -1,6 +1,7 @@
 <?php
 session_start();
 require 'conexion.php';
+require 'CloudinaryUploader.php';
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../Login.php");
@@ -16,10 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $privacy = $_POST['privacy'];
 
     if (!empty($_FILES['avatar']['tmp_name'])) {
-        $avatar = file_get_contents($_FILES['avatar']['tmp_name']);
-        $sql = "UPDATE usuarios SET nombre_usuario = :username, correo = :email, fecha_nacimiento = :birthdate, sexo = :gender, privacidad = :privacy, avatar = :avatar WHERE id = :user_id";
+        $uploader = new CloudinaryUploader();
+        $avatar_url = $uploader->subirImagen($_FILES['avatar']['tmp_name']);
+        $sql = "UPDATE usuarios SET nombre_usuario = :username, correo = :email, fecha_nacimiento = :birthdate, sexo = :gender, privacidad = :privacy, avatar_url = :avatar_url WHERE id = :user_id";
         $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':avatar', $avatar, PDO::PARAM_LOB);
+        $stmt->bindParam(':avatar_url', $avatar_url);
     } else {
         $sql = "UPDATE usuarios SET nombre_usuario = :username, correo = :email, fecha_nacimiento = :birthdate, sexo = :gender, privacidad = :privacy WHERE id = :user_id";
         $stmt = $pdo->prepare($sql);
@@ -39,8 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['gender'] = $gender;
         $_SESSION['privacy'] = $privacy;
 
-        if (isset($avatar)) {
-            $_SESSION['avatar'] = base64_encode($avatar);
+        if (isset($avatar_url)) {
+            $_SESSION['avatar'] = $avatar_url;
         }
 
         header("Location: ../Perfil.php?success=1");
@@ -48,4 +50,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Error al actualizar el perfil.";
     }
 }
-?>

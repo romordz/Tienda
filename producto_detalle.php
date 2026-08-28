@@ -45,7 +45,7 @@ $imagenesArray = !empty($producto['imagenes_json']) ? json_decode($producto['ima
         </nav>
         <div class="profile-container">
             <div class="user-profile" onclick="toggleDropdown(event)">
-                <img src="<?php echo isset($_SESSION['avatar']) && !empty($_SESSION['avatar']) ? 'data:image/jpeg;base64,' . $_SESSION['avatar'] : 'Recursos/default.jpg'; ?>"
+                <img src="<?php echo isset($_SESSION['avatar']) && !empty($_SESSION['avatar']) ? $_SESSION['avatar'] : 'Recursos/default.jpg'; ?>"
                     alt="Avatar" class="profile-avatar">
                 <div class="profile-info">
                     <p class="profile-name">
@@ -67,8 +67,8 @@ $imagenesArray = !empty($producto['imagenes_json']) ? json_decode($producto['ima
             <h3>Vendedor</h3>
             <div class="seller-profile" onclick="irAPerfil(<?php echo $producto['vendedor_id']; ?>)"
                 style="cursor: pointer;">
-                <?php if (!empty($producto['vendedor_avatar'])): ?>
-                    <img src="data:image/jpeg;base64,<?php echo base64_encode($producto['vendedor_avatar']); ?>"
+               <?php if (!empty($producto['vendedor_avatar'])): ?>
+                    <img src="<?php echo htmlspecialchars($producto['vendedor_avatar']); ?>"
                         alt="Avatar del Vendedor" class="seller-avatar">
                 <?php else: ?>
                     <img src="Recursos/default.jpg" alt="Avatar por Defecto" class="seller-avatar">
@@ -83,7 +83,7 @@ $imagenesArray = !empty($producto['imagenes_json']) ? json_decode($producto['ima
                     <div class="carousel-inner">
                         <?php foreach ($imagenesArray as $index => $imagenBase64): ?>
                             <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
-                                <img src="data:image/jpeg;base64,<?php echo htmlspecialchars($imagenBase64); ?>"
+                                <img src="<?php echo htmlspecialchars($imagenBase64); ?>"
                                     alt="Imagen del Producto">
                             </div>
                         <?php endforeach; ?>
@@ -193,7 +193,7 @@ $imagenesArray = !empty($producto['imagenes_json']) ? json_decode($producto['ima
                 foreach ($comentarios as $comentario) {
                     echo "<div class='comment'>";
                     if (!empty($comentario['avatar'])) {
-                        echo "<img src='data:image/jpeg;base64," . base64_encode($comentario['avatar']) . "' alt='Avatar del Usuario' class='comment-avatar' onclick='irAPerfil(" . $comentario['usuario_id'] . ")' style='cursor: pointer;'>";
+                        echo "<img src='" . htmlspecialchars($comentario['avatar']) . "' alt='Avatar del Usuario' class='comment-avatar' onclick='irAPerfil(" . $comentario['usuario_id'] . ")' style='cursor: pointer;'>";
                     } else {
                         echo "<img src='Recursos/default.jpg' alt='Avatar por Defecto' class='comment-avatar' onclick='irAPerfil(" . $comentario['usuario_id'] . ")' style='cursor: pointer;'>";
                     }
@@ -227,7 +227,7 @@ $imagenesArray = !empty($producto['imagenes_json']) ? json_decode($producto['ima
                         $imagenPrincipal = $imagenes[0] ?? 'Recursos/default.jpg';
                         ?>
                         <div class="related-product-item">
-                            <img src="data:image/jpeg;base64,<?php echo htmlspecialchars($imagenPrincipal); ?>"
+                            <img src="<?php echo htmlspecialchars($imagenPrincipal); ?>"
                                 alt="Imagen de <?php echo htmlspecialchars($producto['nombre']); ?>">
                     </a>
                     <p><?php echo htmlspecialchars($producto['nombre']); ?></p>
@@ -250,7 +250,7 @@ $imagenesArray = !empty($producto['imagenes_json']) ? json_decode($producto['ima
                         $imagenPrincipal = $imagenes[0] ?? 'Recursos/default.jpg';
                         ?>
                         <div class="related-product-item">
-                            <img src="data:image/jpeg;base64,<?php echo htmlspecialchars($imagenPrincipal); ?>"
+                            <img src="<?php echo htmlspecialchars($imagenPrincipal); ?>"
                                 alt="Imagen de <?php echo htmlspecialchars($producto['nombre']); ?>">
                     </a>
                     <p><?php echo htmlspecialchars($producto['nombre']); ?></p>
@@ -273,7 +273,7 @@ $imagenesArray = !empty($producto['imagenes_json']) ? json_decode($producto['ima
                         $imagenPrincipal = $imagenes[0] ?? 'Recursos/default.jpg';
                         ?>
                         <div class="related-product-item">
-                            <img src="data:image/jpeg;base64,<?php echo htmlspecialchars($imagenPrincipal); ?>"
+                            <img src="<?php echo htmlspecialchars($imagenPrincipal); ?>"
                                 alt="Imagen de <?php echo htmlspecialchars($producto['nombre']); ?>">
                     </a>
                     <p><?php echo htmlspecialchars($producto['nombre']); ?></p>
