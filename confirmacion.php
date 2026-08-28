@@ -13,7 +13,7 @@ $page_title = "Gracias por tu compra!";
     <title>Confirmación de Compra</title>
 </head>
 <body>
-     <?php require 'php/header.php'; ?>
+     <?php require 'componentes/header.php'; ?>
 
     <div class="confirmation-section">
         <h2>Tu compra ha sido registrada correctamente. 🎉</h2>
