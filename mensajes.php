@@ -14,7 +14,7 @@ $page_title = "Detalle del Producto";
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <?php require 'php/header.php'; ?>
+    <?php require 'componentes/header.php'; ?>
     <main>
         <section class="message-list">
             <h2>mensajes Recibidos</h2>

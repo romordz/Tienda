@@ -15,7 +15,7 @@ $page_title = "Detalle del Producto";
 </head>
 
 <body>
-    <?php require 'php/header.php'; ?>
+    <?php require 'componentes/header.php'; ?>
 
     <main>
         <section class="product-list">
