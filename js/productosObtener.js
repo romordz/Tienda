@@ -22,7 +22,7 @@ function obtenerproductosDestacados() {
             } else {
                 productos.forEach(producto => {
                     const imagenes = JSON.parse(producto.imagenes_json);
-                    const imagenPrincipal = imagenes.length > 0 ? imagenes[0] : 'Recursos/default.jpg';
+                    const imagenPrincipal = imagenes.length > 0 ? (imagenes[0].startsWith('http') ? imagenes[0] : `data:image/jpeg;base64,${imagenes[0]}`) : 'Recursos/default.jpg';
 
                     const priceDisplay = producto.para_cotizar == 1 
                         ? `<span class="price">Cotización disponible</span>` 
@@ -70,7 +70,9 @@ function obtenerproductosRecientes() {
             } else {
                 productos.forEach(producto => {
                     const imagenes = JSON.parse(producto.imagenes_json);
-                    const imagenPrincipal = imagenes.length > 0 ? imagenes[0] : 'Recursos/default.jpg';
+                    const imagenPrincipal = imagenes.length > 0 
+    ? (imagenes[0].startsWith('http') ? imagenes[0] : `data:image/jpeg;base64,${imagenes[0]}`)
+    : 'Recursos/default.jpg';
 
                     const priceDisplay = producto.para_cotizar == 1 
                         ? `<span class="price">Cotización disponible</span>` 

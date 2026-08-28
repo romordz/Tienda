@@ -83,7 +83,7 @@ $imagenesArray = !empty($producto['imagenes_json']) ? json_decode($producto['ima
                     <div class="carousel-inner">
                         <?php foreach ($imagenesArray as $index => $imagenBase64): ?>
                             <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
-                                <img src="<?php echo htmlspecialchars($imagenBase64); ?>"
+                                <img src="<?php echo str_starts_with($imagenBase64, 'http') ? htmlspecialchars($imagenBase64) : 'data:image/jpeg;base64,' . htmlspecialchars($imagenBase64); ?>" ...>
                                     alt="Imagen del Producto">
                             </div>
                         <?php endforeach; ?>
