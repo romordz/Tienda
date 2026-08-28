@@ -35,7 +35,7 @@ $page_title = "Detalle del Producto";
 </head>
 
 <body>
-    <?php require 'componentes/header.php'; ?>
+    <?php require 'componentes/Header/Header.php'; ?>
 
     <section class="product-detail">
         <div class="seller-info">
