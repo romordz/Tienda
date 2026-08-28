@@ -22,8 +22,6 @@ $page_title = "Gracias por tu compra!";
         <a href="Productos.php" class="btn-back">Volver a la tienda</a>
     </div>
 
-    <!-- <footer>
-        <p>&copy; 2024 Tu Tienda. Todos los derechos reservados.</p>
-    </footer> -->
+    <?php require 'componentes/Footer/Footer.php'; ?>
 </body>
 </html>

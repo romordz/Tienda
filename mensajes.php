@@ -45,9 +45,7 @@ $page_title = "Detalle del Producto";
             <?php endif; ?>
         </section>
     </main>
-    <footer>
-        <p>&copy; 2024 Tienda en Línea. Todos los derechos reservados.</p>
-    </footer>
+    <?php require 'componentes/Footer/Footer.php'; ?>
     <script src="js/sessionCheck.js"></script>
 </body>
 </html>

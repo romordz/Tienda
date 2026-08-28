@@ -235,9 +235,8 @@ $page_title = "Detalle del Producto";
             <?php endif; ?>
         </div>
     </main>
-    <footer>
-        <p>&copy; 2024 Tienda en Línea. Todos los derechos reservados.</p>
-    </footer>
+    
+    <?php require 'componentes/Footer/Footer.php'; ?>
 
     <script>
         var isOwner = <?php echo ($session_user_id == $profile_user_id) ? 'true' : 'false'; ?>;

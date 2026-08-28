@@ -260,9 +260,8 @@ $page_title = "Detalle del Producto";
         </div>
     </section>
 
-    <footer>
-        <p>© 2024 Tu Tienda. Todos los derechos reservados.</p>
-    </footer>
+    <?php require 'componentes/Footer/Footer.php'; ?>
+    
     <script src="js/producto_detalle.js"></script>
     <script src="js/obtenerVendedores.js"></script>
     <script src="js/sessionCheck.js"></script>

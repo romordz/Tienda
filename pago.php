@@ -11,6 +11,8 @@ $total = 0;
 foreach ($_SESSION['carrito'] as $producto) {
     $total += $producto['precio'] * $producto['cantidad'];
 }
+
+$page_title = "Pago";
 ?>
 
 <!DOCTYPE html>
@@ -23,9 +25,8 @@ foreach ($_SESSION['carrito'] as $producto) {
     <title>Pagar</title>
 </head>
 <body>
-    <header>
-        <h1>Confirmación de Pago</h1>
-    </header>
+    <?php require 'componentes/Header/Header.php'; ?>
+
     <div class="payment-section">
         <h2>Total a Pagar: $<?php echo number_format($total, 2); ?></h2>
         <p>Gracias por tu compra, <?php echo $_SESSION['username']; ?>! 🎉</p>
@@ -33,8 +34,6 @@ foreach ($_SESSION['carrito'] as $producto) {
         <a href="Principal.php" class="btn-add">Volver a Inicio</a>
     </div>
 
-    <footer>
-        <p>© 2024 Tu Tienda. Todos los derechos reservados.</p>
-    </footer>
+    <?php require 'componentes/Footer/Footer.php'; ?>
 </body>
 </html>
