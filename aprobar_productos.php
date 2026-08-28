@@ -5,6 +5,8 @@ if ($_SESSION['role'] !== 'administrador') {
     echo "Acceso denegado.";
     exit();
 }
+
+$page_title = "";
 ?>
 
 <!DOCTYPE html>
@@ -19,34 +21,7 @@ if ($_SESSION['role'] !== 'administrador') {
 </head>
 
 <body>
-    <header>
-        <h1>Bienvenido a Nuestra Tienda</h1>
-        <nav>
-            <ul>
-                <li><a href="Principal.php">Inicio</a></li>
-                <li><a href="Productos.php">productos</a></li>
-                <li><a href="Categorias.php">Categorías</a></li>
-                <li><a href="carrito.php" onclick="return checkSession('carrito.php');">Carrito</a></li>
-            </ul>
-        </nav>
-        <div class="profile-container">
-            <div class="user-profile" onclick="toggleDropdown(event)">
-                <img src="<?php echo isset($_SESSION['avatar']) && !empty($_SESSION['avatar']) ? 'data:image/jpeg;base64,' . $_SESSION['avatar'] : 'Recursos/default.jpg'; ?>"
-                    alt="Avatar" class="profile-avatar">
-                <div class="profile-info">
-                    <p class="profile-name">
-                        <?php echo isset($_SESSION['username']) ? $_SESSION['username'] : 'Nombre'; ?>
-                    </p>
-                    <p class="profile-role"><?php echo isset($_SESSION['role']) ? $_SESSION['role'] : 'Rol'; ?></p>
-                </div>
-            </div>
-            <div id="profile-dropdown" class="profile-dropdown">
-                <a href="Perfil.php" onclick="return checkSession('Perfil.php')">Revisar perfil</a>
-                <a href="Mensajes.php" onclick="return checkSession('Mensajes.php')">mensajes</a>
-                <a href="php/cerrar_sesion.php">Cerrar sesión</a>
-            </div>
-        </div>
-    </header>
+     <?php require 'php/header.php'; ?>
     <h1>productos Pendientes</h1>
     <table>
     <tr>
