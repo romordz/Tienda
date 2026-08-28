@@ -1,5 +1,5 @@
 <?php
-require '..php/DB/conexion.php';
+require __DIR__ . '/../DB/conexion.php';
 
 header('Content-Type: application/json');
 

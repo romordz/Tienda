@@ -1,5 +1,5 @@
 <?php
-include '..php/DB/conexion.php';
+include __DIR__ . '/../DB/conexion.php';
 
 $usuario_id = $profile_user_id;
 

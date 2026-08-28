@@ -1,6 +1,6 @@
 <?php
-require '../..php/DB/..php/DB/conexion.php';
-require '../php/CloudinaryUploader.php';
+require __DIR__ . '/../DB/conexion.php';
+require __DIR__ . '/../cloudinary/CloudinaryUploader.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];

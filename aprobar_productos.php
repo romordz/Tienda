@@ -1,5 +1,5 @@
 <?php
-require 'php/aprobar_producto.php';
+require 'php/productos/aprobar_producto.php';
 
 if ($_SESSION['role'] !== 'administrador') {
     echo "Acceso denegado.";
@@ -59,7 +59,7 @@ $page_title = "Estado de productos";
                 <?php endif; ?>
             </td>
             <td>
-                <form method="post" action="php/aprobar_producto.php">
+                <form method="post" action="php/productos/aprobar_producto.php">
                     <input type="hidden" name="producto_id" value="<?php echo $producto['id']; ?>">
                     <button type="submit" class="btn-approve">Aprobar</button>
                 </form>

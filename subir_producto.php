@@ -21,7 +21,7 @@ session_start();
                 <li><a href="Productos.php">productos</a></li>
                 <li><a href="Categorias.php">Categorías</a></li>
                 <li><a href="carrito.php" onclick="return checkSession('carrito.php');">Carrito</a></li>
-                <li><a href="php/cerrar_sesion.php">Cerrar Sesión</a></li>
+                <li><a href="php/sesion/cerrar_sesion.php">Cerrar Sesión</a></li>
             </ul>
         </nav>
         <div class="profile-container">
@@ -38,7 +38,7 @@ session_start();
             <div id="profile-dropdown" class="profile-dropdown">
                 <a href="Perfil.php" onclick="return checkSession('Perfil.php')">Revisar perfil</a>
                 <a href="Mensajes.php" onclick="return checkSession('Mensajes.php')">mensajes</a>
-                <a href="php/cerrar_sesion.php">Cerrar sesión</a>
+                <a href="php/sesion/cerrar_sesion.php">Cerrar sesión</a>
             </div>
         </div>
     </header>
@@ -47,7 +47,7 @@ session_start();
         <section class="upload-section">
             <div class="upload-card">
                 <h2>Información del Producto</h2>
-                <form action="php/process_subir_producto.php" method="POST" enctype="multipart/form-data">
+                <form action="php/productos/process_subir_producto.php" method="POST" enctype="multipart/form-data">
                     <label for="nombre">Nombre del Producto:</label>
                     <input type="text" id="nombre" name="nombre" required>
 

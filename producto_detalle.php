@@ -17,7 +17,7 @@ $productos_likes = $detalles_producto['productos_likes'];
 
 $listas = [];
 if (isset($_SESSION['user_id'])) {
-    include 'php/obtener_listas_producto.php';
+    include __DIR__ . '/php/listas/obtener_listas_producto.php';
 }
 $imagenesArray = !empty($producto['imagenes_json']) ? json_decode($producto['imagenes_json'], true) : [];
 
@@ -90,7 +90,7 @@ $page_title = "Detalle del Producto";
                 <p class="quantity-available">Cantidad disponible: <?php echo $producto['cantidad_disponible'] ?? 'N/A'; ?>
                 </p>
                 <p class="price">$<?php echo number_format($producto['precio'], 2); ?></p>
-                <form method="post" action="php/agregar_carrito.php">
+                <form method="post" action="php/pago/agregar_carrito.php">
                     <input type="hidden" name="producto_id" value="<?php echo $producto['id']; ?>">
                     <button type="submit" name="add_to_cart" class="btn-add">Añadir al Carrito</button>
                 </form>
@@ -149,7 +149,7 @@ $page_title = "Detalle del Producto";
     <section class="product-comments">
         <h3>comentarios</h3>
         <?php if (isset($_SESSION['user_id'])): ?>
-            <form method="post" action="php/agregar_comentario.php">
+            <form method="post" action="php/comentarios/agregar_comentario.php">
                 <textarea name="comentario" rows="4" cols="50" placeholder="Escribe tu comentario aquí..."
                     required></textarea>
                 <input type="hidden" name="producto_id" value="<?php echo $producto['id']; ?>">
@@ -174,7 +174,7 @@ $page_title = "Detalle del Producto";
                     echo "<strong>" . htmlspecialchars($comentario['nombre_usuario']) . "</strong> <p> <br>" . htmlspecialchars($comentario['comentario']) . "</p>";
                     echo "<p class='comment-date'>" . $comentario['fecha'] . "</p>";
                     if ($_SESSION['role'] == 'administrador') {
-                        echo "<form method='post' action='php/eliminar_comentario.php'>";
+                        echo "<form method='post' action='php/comentarios/eliminar_comentario.php'>";
                         echo "<input type='hidden' name='comentario_id' value='" . $comentario['id'] . "'>";
                         echo "<button type='submit' class='btn-delete'>Eliminar</button>";
                         echo "</form>";

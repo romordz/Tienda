@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../..php/DB/..php/DB/conexion.php';
+require __DIR__ . '/../DB/conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario_id = $_SESSION['user_id'];

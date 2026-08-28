@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '..php/DB/..php/DB/conexion.php';
+require __DIR__ . '/php/DB/conexion.php';
 
 if (!isset($_SESSION['user_id'])) {
     echo "Error: No estás logueado. La variable de sesión no está disponible.";
@@ -15,7 +15,7 @@ if (!$producto_id) {
     exit();
 }
 
-include 'php/get_producto_detalle.php';
+include __DIR__ . '/php/productos/get_producto_detalle.php';
 $producto = obtener_producto_detalle($producto_id);
 
 if (!$producto || empty($producto['producto']['nombre'])) {
@@ -59,7 +59,7 @@ if (!$producto || empty($producto['producto']['nombre'])) {
         function cargarmensajes() {
             var productoId = document.getElementById('producto_id').value;
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", "php/obtener_Mensajes.php?producto_id=" + productoId, true);
+            xhr.open("GET", "php/mensajes/obtener_mensajes.php?producto_id=" + productoId, true);
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     document.getElementById('chat-box').innerHTML = xhr.responseText;
@@ -74,7 +74,7 @@ if (!$producto || empty($producto['producto']['nombre'])) {
             var mensaje = document.getElementById('mensaje').value;
             var productoId = document.getElementById('producto_id').value;
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "php/enviar_mensaje_chat.php", true);
+            xhr.open("POST", "php/mensajes/enviar_mensaje_chat.php", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4 && xhr.status == 200) {

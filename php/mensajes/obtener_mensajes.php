@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../..php/DB/..php/DB/conexion.php';
+require __DIR__ . '/../DB/conexion.php';
 
 $producto_id = $_GET['producto_id'] ?? null;
 

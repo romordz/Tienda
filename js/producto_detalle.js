@@ -24,7 +24,7 @@ document.getElementById("btn-agregar").addEventListener("click", function () {
   var listaId = document.querySelector('select[name="lista_id"]').value;
 
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "php/agregar_a_lista.php", true);
+  xhr.open("POST", "php/listas/agregar_a_lista.php", true);
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
   xhr.onreadystatechange = function () {
@@ -62,7 +62,7 @@ window.onclick = function (event) {
 
 function rateProduct(productId, ratingType) {
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "php/rate_producto.php", true);
+  xhr.open("POST", "php/productos/rate_producto.php", true);
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4 && xhr.status == 200) {

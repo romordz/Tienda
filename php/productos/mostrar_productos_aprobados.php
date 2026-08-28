@@ -1,5 +1,5 @@
 <?php
-require '..php/DB/conexion.php';
+require __DIR__ . '/../DB/conexion.php';
 
 $sql = "SELECT id, nombre, descripcion, precio, cantidad_disponible, likes, dislikes, imagenes_json, video, para_cotizar
 FROM productos 

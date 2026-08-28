@@ -1,5 +1,5 @@
 <?php
-require '..php/DB/conexion.php';
+require __DIR__ . '/../DB/conexion.php';
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: Login.php");

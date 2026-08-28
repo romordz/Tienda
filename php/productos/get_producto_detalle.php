@@ -1,7 +1,7 @@
 <?php
 function obtener_producto_detalle($producto_id)
 {
-    include '..php/DB/..php/DB/conexion.php';
+    include __DIR__ . '/../DB/conexion.php';
 
     if (!$producto_id) {
         return null;
@@ -60,7 +60,7 @@ function obtener_producto_detalle($producto_id)
 
 function obtener_comentarios_producto($producto_id)
 {
-    include '..php/DB/..php/DB/conexion.php';
+    include __DIR__ . '/../DB/conexion.php';
 
     $sql = "SELECT c.id, c.comentario, u.nombre_usuario, u.avatar_url, c.fecha, c.usuario_id
             FROM comentarios c 

@@ -1,5 +1,5 @@
 function obtenerproductosDestacados() {
-  fetch("php/get_productos_destacados.php")
+  fetch("php/productos/get_productos_destacados.php")
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -55,7 +55,7 @@ function obtenerproductosDestacados() {
 }
 
 function obtenerproductosRecientes() {
-  fetch("php/get_productos_recientes.php")
+  fetch("php/productos/get_productos_recientes.php")
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");

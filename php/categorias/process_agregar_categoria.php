@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '..php/DB/conexion.php';
+require __DIR__ . '/../DB/conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents("php://input"), true);

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'php/get_productos.php';
+include __DIR__ . '/php/productos/get_productos.php';
 
 $page_title = "Productos";
 ?>

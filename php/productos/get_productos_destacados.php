@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require '..php/DB/conexion.php';
+require __DIR__ . '/../DB/conexion.php';
 $query = "SELECT id, nombre, descripcion, imagenes_json, precio, para_cotizar, likes 
           FROM productos 
           WHERE estado = 'aprobado' 

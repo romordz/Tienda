@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include '..php/DB/conexion.php';
+include __DIR__ . '/../DB/conexion.php';
 
 if (isset($_POST['actualizar_cantidad'])) {
     $producto_id = $_POST['producto_id'];
