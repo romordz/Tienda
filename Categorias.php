@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$page_title = "";
+$page_title = "Categorias";
 ?>
 <!DOCTYPE html>
 <html lang="es">
