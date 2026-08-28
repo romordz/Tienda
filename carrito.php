@@ -125,9 +125,8 @@ $page_title = "Tu carrito";
 
     </div>
 
-    <!-- <footer>
-        <p>© 2024 Tu Tienda. Todos los derechos reservados.</p>
-    </footer> -->
+    <?php require 'componentes/Footer/Footer.php'; ?>
+    
     <script src="js/sessionCheck.js"></script>
     <script src="js/tarjeta.js"></script>
 </body>

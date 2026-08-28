@@ -52,11 +52,10 @@ if (!$producto || empty($producto['producto']['nombre'])) {
         </form>
     </section>
 
-    <footer>
-        <p>© 2024 Tu Tienda. Todos los derechos reservados.</p>
-    </footer>
+    <?php require 'componentes/Footer/Footer.php'; ?>
 
-    <script>
+    <script src="js/cargarMensajes.js"></script>
+    <!-- <script>
         function cargarmensajes() {
             var productoId = document.getElementById('producto_id').value;
             var xhr = new XMLHttpRequest();
@@ -88,6 +87,6 @@ if (!$producto || empty($producto['producto']['nombre'])) {
 
         setInterval(cargarmensajes, 3000);
         cargarmensajes();
-    </script>
+    </script> -->
 </body>
 </html>

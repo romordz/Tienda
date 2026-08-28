@@ -23,9 +23,8 @@ $page_title = "";
     </section>
 
 
-    <footer>
-        <p>© 2024 Tu Tienda. Todos los derechos reservados.</p>
-    </footer>
+    <?php require 'componentes/Footer/Footer.php'; ?>
+    
     <script src="js/getcategorias.js"></script>
     <script src="js/sessionCheck.js"></script>
 </body>
