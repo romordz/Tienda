@@ -15,7 +15,7 @@ $page_title = "";
 </head>
 
 <body>
-    <?php require 'componentes/Header/header.php'; ?>
+    <?php require 'componentes/Header/Header.php'; ?>
 
     <section class="category-list">
         <h2>Explora nuestras categorías</h2>
