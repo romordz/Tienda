@@ -41,13 +41,11 @@ $page_title = "Productos";
                 <?php endif; ?>
 
                 <div class="product-item" onclick="checkSession('producto_detalle.php?id=<?php echo $producto['id']; ?>');">
-                    <a href="javascript:void(0);"
-                        >
+                    <a href="javascript:void(0);">
                         <?php
                         $imagenes = json_decode($producto['imagenes_json'], true);
                         if (!empty($imagenes) && isset($imagenes[0])): ?>
-                            <img src="data:image/jpeg;base64,<?php echo $imagenes[0]; ?>"
-                                alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
+                             <img src="<?php echo str_starts_with($imagenes[0], 'http') ? htmlspecialchars($imagenes[0]) : 'data:image/jpeg;base64,' . htmlspecialchars($imagenes[0]); ?>" alt="Imagen del Producto">
                         <?php else: ?>
                             <img src="Recursos/default.jpg" alt="Imagen no disponible">
                         <?php endif; ?>
