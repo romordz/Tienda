@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $gender = $_POST['gender'];
     $birthdate = $_POST['birthdate'];
     $email = $_POST['email'];
-    $password = password_hash($_POST['contrasena'], PASSWORD_DEFAULT);
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $role = $_POST['role'];
 
     $photo_url = null;
