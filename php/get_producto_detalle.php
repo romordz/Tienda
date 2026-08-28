@@ -8,7 +8,7 @@ function obtener_producto_detalle($producto_id)
     }
 
     $stmt = $pdo->prepare("
-        SELECT p.*, u.nombre_usuario AS vendedor_nombre, u.avatar AS vendedor_avatar, u.id AS vendedor_id
+        SELECT p.*, u.nombre_usuario AS vendedor_nombre, u.avatar_url AS vendedor_avatar, u.id AS vendedor_id
         FROM productos p 
         JOIN usuarios u ON p.vendedor_id = u.id 
         WHERE p.id = :id
@@ -62,7 +62,7 @@ function obtener_comentarios_producto($producto_id)
 {
     include 'php/conexion.php';
 
-    $sql = "SELECT c.id, c.comentario, u.nombre_usuario, u.avatar, c.fecha, c.usuario_id
+    $sql = "SELECT c.id, c.comentario, u.nombre_usuario, u.avatar_url, c.fecha, c.usuario_id
             FROM comentarios c 
             JOIN usuarios u ON c.usuario_id = u.id 
             WHERE c.producto_id = :producto_id 
