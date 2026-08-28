@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    fetch('php/get_Categorias.php')
+    fetch('php/get_categorias.php')
         .then(response => response.json())
         .then(categorias => {
             const container = document.getElementById('categories-container');
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 async function cargarcategorias() {
     try {
-        const response = await fetch('php/get_Categorias.php');
+        const response = await fetch('php/get_categorias.php');
         const categorias = await response.json();
         
         const categoriaselect = document.getElementById('categoria');
