@@ -22,7 +22,7 @@
                 ?>
             </div>
         <?php endif; ?>
-        <form action="php/process_Login.php<?php echo isset($_GET['redirect']) ? '?redirect=' . urlencode($_GET['redirect']) : ''; ?>" method="POST">
+        <form action="php/process_login.php<?php echo isset($_GET['redirect']) ? '?redirect=' . urlencode($_GET['redirect']) : ''; ?>" method="POST">
             <div class="form-group">
                 <label for="user">Correo Electronico:</label>
                 <input type="user" id="user" name="user" required>
