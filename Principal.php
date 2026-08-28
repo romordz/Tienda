@@ -38,7 +38,7 @@ $page_title = "Detalle del Producto";
 
         </section>
     </main>
-    
+    <?php require 'componentes/Footer/Header.php'; ?>
 
     <script src="js/sessionCheck.js"></script>
     <script src="js/productosObtener.js"></script>
