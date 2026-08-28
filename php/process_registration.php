@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $gender = $_POST['gender'];
     $birthdate = $_POST['birthdate'];
     $email = $_POST['email'];
-    $password = password_hash($_POST['contraseña'], PASSWORD_DEFAULT);
+    $password = password_hash($_POST['contrasena'], PASSWORD_DEFAULT);
     $role = $_POST['role'];
 
     $photo_url = null;
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    $sql = "INSERT INTO usuarios (nombre_usuario, nombre_completo, sexo, fecha_nacimiento, avatar_url, correo, contraseña, rol) 
+    $sql = "INSERT INTO usuarios (nombre_usuario, nombre_completo, sexo, fecha_nacimiento, avatar_url, correo, contrasena, rol) 
             VALUES (:username, :full_name, :gender, :birthdate, :photo_url, :email, :password, :role)";
 
     $stmt = $pdo->prepare($sql);
