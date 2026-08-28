@@ -46,7 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindParam(':role', $role);
 
     if ($stmt->execute()) {
-        echo "Registro exitoso. Redirigiendo...";
         header("Location: Login.php");
         exit();
     } else {
