@@ -58,9 +58,11 @@
             </div>
         </div>
         <div id="profile-dropdown" class="profile-dropdown">
-            <a href="Perfil.php" onclick="return checkSession('Perfil.php')">Revisar perfil</a>
-            <a href="Mensajes.php" onclick="return checkSession('Mensajes.php')">mensajes</a>
+            <a href="Perfil.php" onclick="return checkSession('../Perfil.php')">Revisar perfil</a>
+            <a href="Mensajes.php" onclick="return checkSession('../Mensajes.php')">mensajes</a>
             <a href="php/cerrar_sesion.php">Cerrar sesión</a>
         </div>
     </div>
 </header>
+
+<script src="js/sessionCheck.js"></script>

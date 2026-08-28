@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'php/get_Productos.php';
+include 'php/get_productos.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
