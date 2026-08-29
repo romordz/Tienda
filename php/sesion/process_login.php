@@ -35,10 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if (isset($_GET['redirect'])) {
                 $redirect_url = filter_var($_GET['redirect'], FILTER_SANITIZE_URL);
-
-                if (strpos($redirect_url, 'http') === false) {
-                    $redirect_url = '/Tienda/' . ltrim($redirect_url, '/');
-                }
                 header("Location: " . $redirect_url);
             } else {
                 header("Location: ../Principal.php");
