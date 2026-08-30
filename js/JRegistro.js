@@ -30,62 +30,66 @@ function validateImage() {
     return true;
 }
 
-const API_BASE = window.location.pathname.includes('/pantallas/') ? '../' : '';
+(function () {
+    const API_BASE = window.location.pathname.includes('/pantallas/') ? '../' : '';
 
-function validateUsername() {
-    var usernameInput = document.getElementById('username');
-    var errorMessage = document.getElementById('username-error');
-    var username = usernameInput.value;
+    function validateUsername() {
+        var usernameInput = document.getElementById('username');
+        var errorMessage = document.getElementById('username-error');
+        var username = usernameInput.value;
 
-    errorMessage.style.display = 'none';
-    errorMessage.textContent = '';
+        errorMessage.style.display = 'none';
+        errorMessage.textContent = '';
 
-    if (username.length < 3) {
-        errorMessage.style.display = 'block';
-        errorMessage.textContent = 'El nombre de usuario debe tener al menos 3 caracteres.';
-        return false;
+        if (username.length < 3) {
+            errorMessage.style.display = 'block';
+            errorMessage.textContent = 'El nombre de usuario debe tener al menos 3 caracteres.';
+            return false;
+        }
+
+        fetch(`${API_BASE}php/sesion/check_username.php?username=` + encodeURIComponent(username))
+            .then(response => response.text())
+            .then(data => {
+                if (data !== 'available') {
+                    errorMessage.style.display = 'block';
+                    errorMessage.textContent = data;
+                }
+            });
+
+        return true;
     }
 
-    fetch(`${API_BASE}php/sesion/check_username.php?username=` + encodeURIComponent(username))
-        .then(response => response.text())
-        .then(data => {
-            if (data !== 'available') {
-                errorMessage.style.display = 'block';
-                errorMessage.textContent = data;
-            }
-        });
+    function validateEmail() {
+        var emailInput = document.getElementById('email');
+        var errorMessage = document.getElementById('email-error');
+        var email = emailInput.value;
 
-    return true;
-}
+        errorMessage.style.display = 'none';
+        errorMessage.textContent = '';
 
-function validateEmail() {
-    var emailInput = document.getElementById('email');
-    var errorMessage = document.getElementById('email-error');
-    var email = emailInput.value;
+        var emailPattern = /^[^\s@]+@(outlook\.com|hotmail\.com|gmail\.com|yahoo\.com)$/i;
+        
+        if (!emailPattern.test(email)) {
+            errorMessage.style.display = 'block';
+            errorMessage.textContent = 'Por favor, ingresa un correo electrónico de un dominio válido (outlook, hotmail, gmail, yahoo).';
+            return false;
+        }
 
-    errorMessage.style.display = 'none';
-    errorMessage.textContent = '';
+        fetch(`${API_BASE}php/sesion/check_email.php?email=` + encodeURIComponent(email))
+            .then(response => response.text())
+            .then(data => {
+                if (data !== 'available') {
+                    errorMessage.style.display = 'block';
+                    errorMessage.textContent = data;
+                }
+            });
 
-    var emailPattern = /^[^\s@]+@(outlook\.com|hotmail\.com|gmail\.com|yahoo\.com)$/i;
-    
-    if (!emailPattern.test(email)) {
-        errorMessage.style.display = 'block';
-        errorMessage.textContent = 'Por favor, ingresa un correo electrónico de un dominio válido (outlook, hotmail, gmail, yahoo).';
-        return false;
+        return true;
     }
 
-    fetch(`${API_BASE}php/sesion/check_email.php?email=` + encodeURIComponent(email))
-        .then(response => response.text())
-        .then(data => {
-            if (data !== 'available') {
-                errorMessage.style.display = 'block';
-                errorMessage.textContent = data;
-            }
-        });
-
-    return true;
-}
-
+    window.validateUsername = validateUsername;
+    window.validateEmail = validateEmail;
+})();
 
 function validateBirthdate() {
     var birthdateInput = document.getElementById('birthdate');

@@ -41,7 +41,7 @@ $page_title = "Detalle del Producto";
     <main>
         <section class="profile-section">
             <div class="profile-card">
-                <img src="<?php echo isset($_SESSION['avatar']) && !empty($_SESSION['avatar']) ? $_SESSION['avatar'] : 'Recursos/default.jpg'; ?>"
+                <img src="<?php echo isset($_SESSION['avatar']) && !empty($_SESSION['avatar']) ? $_SESSION['avatar'] : '/Recursos/default.jpg'; ?>"
                     alt="Avatar de Usuario" class="profile-avatar">
                 <h2><?php echo isset($profile_username) ? $profile_username : 'Nombre del Usuario'; ?></h2>
 
@@ -164,7 +164,7 @@ $page_title = "Detalle del Producto";
                                     <p><?php echo htmlspecialchars($lista['descripcion']); ?></p>
                                     <div class="lista-imagenes">
                                         <?php
-                                        $imagenes = isset($lista['imagen_preview']) ? json_decode($lista['imagen_preview'], true) : ['Recursos/default.jpg'];
+                                        $imagenes = isset($lista['imagen_preview']) ? json_decode($lista['imagen_preview'], true) : ['/Recursos/default.jpg'];
 
                                         foreach ($imagenes as $imagen) {
                                             echo "<img src='data:image/jpeg;base64," . $imagen . "' alt=''>";

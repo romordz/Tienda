@@ -46,7 +46,7 @@ $page_title = "Detalle del Producto";
                     <img src="<?php echo htmlspecialchars($producto['vendedor_avatar']); ?>"
                         alt="Avatar del Vendedor" class="seller-avatar">
                 <?php else: ?>
-                    <img src="Recursos/default.jpg" alt="Avatar por Defecto" class="seller-avatar">
+                    <img src="/Recursos/default.jpg" alt="Avatar por Defecto" class="seller-avatar">
                 <?php endif; ?>
                 <p><?php echo htmlspecialchars($producto['vendedor_nombre']); ?></p>
             </div>
@@ -169,7 +169,7 @@ $page_title = "Detalle del Producto";
                     if (!empty($comentario['avatar'])) {
                         echo "<img src='" . htmlspecialchars($comentario['avatar']) . "' alt='Avatar del Usuario' class='comment-avatar' onclick='irAPerfil(" . $comentario['usuario_id'] . ")' style='cursor: pointer;'>";
                     } else {
-                        echo "<img src='Recursos/default.jpg' alt='Avatar por Defecto' class='comment-avatar' onclick='irAPerfil(" . $comentario['usuario_id'] . ")' style='cursor: pointer;'>";
+                        echo "<img src='/Recursos/default.jpg' alt='Avatar por Defecto' class='comment-avatar' onclick='irAPerfil(" . $comentario['usuario_id'] . ")' style='cursor: pointer;'>";
                     }
                     echo "<strong>" . htmlspecialchars($comentario['nombre_usuario']) . "</strong> <p> <br>" . htmlspecialchars($comentario['comentario']) . "</p>";
                     echo "<p class='comment-date'>" . $comentario['fecha'] . "</p>";
@@ -198,7 +198,7 @@ $page_title = "Detalle del Producto";
                         onclick="checkSession('producto_detalle.php?id=<?php echo $producto['id']; ?>');">
                         <?php
                         $imagenes = json_decode($producto['imagenes_json'], true);
-                        $imagenPrincipal = $imagenes[0] ?? 'Recursos/default.jpg';
+                        $imagenPrincipal = $imagenes[0] ?? '/Recursos/default.jpg';
                         ?>
                         <div class="related-product-item">
                             <img src="<?php echo htmlspecialchars($imagenPrincipal); ?>"
@@ -221,7 +221,7 @@ $page_title = "Detalle del Producto";
                         onclick="checkSession('producto_detalle.php?id=<?php echo $producto['id']; ?>');">
                         <?php
                         $imagenes = json_decode($producto['imagenes_json'], true);
-                        $imagenPrincipal = $imagenes[0] ?? 'Recursos/default.jpg';
+                        $imagenPrincipal = $imagenes[0] ?? '/Recursos/default.jpg';
                         ?>
                         <div class="related-product-item">
                             <img src="<?php echo htmlspecialchars($imagenPrincipal); ?>"
@@ -244,7 +244,7 @@ $page_title = "Detalle del Producto";
                         onclick="checkSession('producto_detalle.php?id=<?php echo $producto['id']; ?>');">
                         <?php
                         $imagenes = json_decode($producto['imagenes_json'], true);
-                        $imagenPrincipal = $imagenes[0] ?? 'Recursos/default.jpg';
+                        $imagenPrincipal = $imagenes[0] ?? '/Recursos/default.jpg';
                         ?>
                         <div class="related-product-item">
                             <img src="<?php echo htmlspecialchars($imagenPrincipal); ?>"
