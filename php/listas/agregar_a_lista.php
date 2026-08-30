@@ -13,7 +13,6 @@ if (isset($_POST['producto_id']) && isset($_POST['lista_id'])) {
     $usuario_id = $_SESSION['user_id'];
 
     try {
-        //iba el asterisco
         $stmt = $pdo->prepare("SELECT id FROM listas WHERE id = :lista_id AND usuario_id = :usuario_id");
         $stmt->execute(['lista_id' => $lista_id, 'usuario_id' => $usuario_id]);
         $lista = $stmt->fetch();

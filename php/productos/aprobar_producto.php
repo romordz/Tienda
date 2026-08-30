@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($stmt->execute()) {
         echo "Producto aprobado exitosamente.";
-        header("Location: ../aprobar_Productos.php");
+        header("Location: ../pantallas/aprobar_Productos.php");
         exit();
     } else {
         echo "Error al aprobar el producto.";

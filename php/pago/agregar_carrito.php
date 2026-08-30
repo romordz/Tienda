@@ -2,7 +2,7 @@
 session_start();
 
 require __DIR__ . '/../DB/conexion.php';
-require __DIR__ . '/get_Productos.php';
+require __DIR__ . '/php/productos/get_Productos.php';
 
 if (!isset($_SESSION['carrito'])) {
     $_SESSION['carrito'] = [];
@@ -37,6 +37,6 @@ if (isset($_POST['add_to_cart'])) {
         $mensaje_confirmacion = "¡El producto ha sido añadido al carrito con éxito! 🛒✨";
     }
 
-    echo "<script>window.location.href = '/producto_detalle.php?id=$producto_id';</script>";
+    echo "<script>window.location.href = '/pantallas/producto_detalle.php?id=$producto_id';</script>";
 }
 ?>
