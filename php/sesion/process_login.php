@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $redirect_url = filter_var($_GET['redirect'], FILTER_SANITIZE_URL);
                 header("Location: " . $redirect_url);
             } else {
-                header("Location: /Principal.php");
+                header("Location: /pantallas/Principal.php");
             }
 
             exit();
