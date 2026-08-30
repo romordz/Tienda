@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
-    <link rel="stylesheet" href="css/SLoRe.css">
+    <link rel="stylesheet" href="../css/SLoRe.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -22,7 +22,7 @@
                 ?>
             </div>
         <?php endif; ?>
-        <form action="php/sesion/process_login.php<?php echo isset($_GET['redirect']) ? '?redirect=' . urlencode($_GET['redirect']) : ''; ?>" method="POST">
+        <form action="../php/sesion/process_login.php<?php echo isset($_GET['redirect']) ? '?redirect=' . urlencode($_GET['redirect']) : ''; ?>" method="POST">
             <div class="form-group">
                 <label for="user">Correo Electronico:</label>
                 <input type="user" id="user" name="user" required>
@@ -38,11 +38,11 @@
             <button type="submit" class="btn-register">Iniciar Sesión</button>
 
             <div class="login-link">
-                <p>¿No tienes cuenta? <a href="pantallas/Registro.html">Regístrate aquí</a></p>
+                <p>¿No tienes cuenta? <a href="../Registro.html">Regístrate aquí</a></p>
             </div>
         </form>
     </div>
     
-    <script src="js/JLogin.js"></script>
+    <script src="../js/JLogin.js"></script>
 </body>
 </html>

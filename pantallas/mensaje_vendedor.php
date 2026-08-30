@@ -1,6 +1,6 @@
 <?php
 session_start();
-require __DIR__ . '/php/DB/conexion.php';
+require __DIR__ . '/../php/DB/conexion.php';
 
 if (!isset($_SESSION['user_id'])) {
     echo "Error: No estás logueado. La variable de sesión no está disponible.";
@@ -11,11 +11,11 @@ $usuario_id = $_SESSION['user_id'];
 $producto_id = $_POST['producto_id'] ?? null;
 
 if (!$producto_id) {
-    header("Location: pantallas/Principal.php");
+    header("Location: Principal.php");
     exit();
 }
 
-include __DIR__ . '/php/productos/get_producto_detalle.php';
+include __DIR__ . '/../php/productos/get_producto_detalle.php';
 $producto = obtener_producto_detalle($producto_id);
 
 if (!$producto || empty($producto['producto']['nombre'])) {
@@ -30,8 +30,8 @@ if (!$producto || empty($producto['producto']['nombre'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/SPrincipal.css">
-    <link rel="stylesheet" href="css/SChat.css">
+    <link rel="stylesheet" href="../css/SPrincipal.css">
+    <link rel="stylesheet" href="../css/SChat.css">
     <title>Chat con el Vendedor</title>
 </head>
 
@@ -52,9 +52,9 @@ if (!$producto || empty($producto['producto']['nombre'])) {
         </form>
     </section>
 
-    <?php require 'componentes/Footer/Footer.php'; ?>
+    <?php require '../componentes/Footer/Footer.php'; ?>
 
-    <script src="js/cargarMensajes.js"></script>
+    <script src="../js/cargarMensajes.js"></script>
     <!-- <script>
         function cargarmensajes() {
             var productoId = document.getElementById('producto_id').value;
