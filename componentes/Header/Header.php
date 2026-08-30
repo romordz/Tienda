@@ -1,10 +1,11 @@
 <?php
-$basePath = preg_replace('#/(?:pantallas|php)(?:/.*)?$#', '', $_SERVER['PHP_SELF'] ?? '/');
-$basePath = $basePath ?: '';
+if (!function_exists('urlFor')) {
+    require_once __DIR__ . '/../../php/config.php';
+}
 ?>
 
 <head>
-    <link rel="stylesheet" href="<?= $basePath ?>/componentes/Header/SHeader.css">
+    <link rel="stylesheet" href="<?= urlFor('componentes/Header/SHeader.css') ?>">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 
@@ -12,11 +13,11 @@ $basePath = $basePath ?: '';
     <h1><?php echo $page_title ?? 'Tienda'; ?></h1>
     <nav>
         <ul>
-            <li><a href="<?= $basePath ?>/pantallas/Principal.php">Inicio</a></li>
-            <li><a href="<?= $basePath ?>/pantallas/Productos.php">productos</a></li>
-            <li><a href="<?= $basePath ?>/pantallas/Categorias.php">Categorías</a></li>
-            <li><a href="<?= $basePath ?>/pantallas/carrito.php" onclick="return checkSession('<?= $basePath ?>/pantallas/carrito.php');">Carrito</a></li>
-            <li><a href="<?= $basePath ?>/php/sesion/cerrar_sesion.php">Cerrar Sesión</a></li>
+            <li><a href="<?= urlFor('pantallas/Principal.php') ?>">Inicio</a></li>
+            <li><a href="<?= urlFor('pantallas/Productos.php') ?>">productos</a></li>
+            <li><a href="<?= urlFor('pantallas/Categorias.php') ?>">Categorías</a></li>
+            <li><a href="<?= urlFor('pantallas/carrito.php') ?>" onclick="return checkSession('<?= urlFor('pantallas/carrito.php') ?>');">Carrito</a></li>
+            <li><a href="<?= urlFor('php/sesion/cerrar_sesion.php') ?>">Cerrar Sesión</a></li>
         </ul>
     </nav>
     <div class="profile-container">

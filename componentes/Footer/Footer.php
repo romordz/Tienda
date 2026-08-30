@@ -1,10 +1,12 @@
 <?php
-$basePath = preg_replace('#/(?:pantallas|php)(?:/.*)?$#', '', $_SERVER['PHP_SELF'] ?? '/');
-$basePath = $basePath ?: '';
+// Ensure config is loaded
+if (!function_exists('urlFor')) {
+    require_once __DIR__ . '/../../php/config.php';
+}
 ?>
 
 <head>
-    <link rel="stylesheet" href="<?= $basePath ?>/componentes/Footer/SFooter.css">
+    <link rel="stylesheet" href="<?= urlFor('componentes/Footer/SFooter.css') ?>">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 
