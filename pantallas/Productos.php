@@ -1,6 +1,6 @@
 <?php
 session_start();
-include __DIR__ . '/php/productos/get_productos.php';
+include __DIR__ . '/../php/productos/get_productos.php';
 
 $page_title = "Productos";
 ?>
@@ -10,13 +10,13 @@ $page_title = "Productos";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/SPrincipal.css">
-    <link rel="stylesheet" href="css/SProductos.css">
+    <link rel="stylesheet" href="../css/SPrincipal.css">
+    <link rel="stylesheet" href="../css/SProductos.css">
     <title>productos</title>
 </head>
 
 <body>
-    <?php require 'componentes/Header/Header.php'; ?>
+    <?php require '../componentes/Header/Header.php'; ?>
 
     <?php if (!empty($mensaje_confirmacion)): ?>
         <div class="confirmacion">
@@ -68,7 +68,7 @@ $page_title = "Productos";
     <?php endif; ?>
 </section>
 
-    <?php require 'componentes/Footer/Footer.php'; ?>
+    <?php require '../componentes/Footer/Footer.php'; ?>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -82,7 +82,7 @@ $page_title = "Productos";
             }
         });
     </script>
-    <script src="js/sessionCheck.js"></script>
+    <script src="../js/sessionCheck.js"></script>
 </body>
 
 </html>

@@ -8,8 +8,8 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Subir Producto</title>
-    <link rel="stylesheet" href="css/SPrincipal.css">
-    <link rel="stylesheet" href="css/SSubirProducto.css">
+    <link rel="stylesheet" href="../css/SPrincipal.css">
+    <link rel="stylesheet" href="../css/SSubirProducto.css">
 </head>
 
 <body>
@@ -17,11 +17,11 @@ session_start();
         <h1>Subir Producto</h1>
         <nav>
             <ul>
-                <li><a href="pantallas/Principal.php">Inicio</a></li>
-                <li><a href="pantallas/Productos.php">productos</a></li>
-                <li><a href="pantallas/Categorias.php">Categorías</a></li>
-                <li><a href="pantallas/carrito.php" onclick="return checkSession('pantallas/carrito.php');">Carrito</a></li>
-                <li><a href="php/sesion/cerrar_sesion.php">Cerrar Sesión</a></li>
+                <li><a href="Principal.php">Inicio</a></li>
+                <li><a href="Productos.php">productos</a></li>
+                <li><a href="Categorias.php">Categorías</a></li>
+                <li><a href="carrito.php" onclick="return checkSession('carrito.php');">Carrito</a></li>
+                <li><a href="../php/sesion/cerrar_sesion.php">Cerrar Sesión</a></li>
             </ul>
         </nav>
         <div class="profile-container">
@@ -36,9 +36,9 @@ session_start();
                 </div>
             </div>
             <div id="profile-dropdown" class="profile-dropdown">
-                <a href="pantallas/Perfil.php" onclick="return checkSession('pantallas/Perfil.php')">Revisar perfil</a>
-                <a href="pantallas/Mensajes.php" onclick="return checkSession('pantallas/Mensajes.php')">mensajes</a>
-                <a href="php/sesion/cerrar_sesion.php">Cerrar sesión</a>
+                <a href="Perfil.php" onclick="return checkSession('Perfil.php')">Revisar perfil</a>
+                <a href="Mensajes.php" onclick="return checkSession('Mensajes.php')">mensajes</a>
+                <a href="../php/sesion/cerrar_sesion.php">Cerrar sesión</a>
             </div>
         </div>
     </header>
@@ -47,7 +47,7 @@ session_start();
         <section class="upload-section">
             <div class="upload-card">
                 <h2>Información del Producto</h2>
-                <form action="php/productos/process_subir_producto.php" method="POST" enctype="multipart/form-data">
+                <form action="../php/productos/process_subir_producto.php" method="POST" enctype="multipart/form-data">
                     <label for="nombre">Nombre del Producto:</label>
                     <input type="text" id="nombre" name="nombre" required>
 
@@ -102,10 +102,10 @@ session_start();
     <footer>
         <p>&copy; 2024 Tienda en Línea. Todos los derechos reservados.</p>
     </footer>
-    <script src="js/getcategorias.js"></script>
-    <script src="js/agregarCategoria.js"></script>
-    <script src="js/sessionCheck.js"></script>
-    <script src="js/JSubirProducto.js"></script>
+    <script src="../js/getCategorias.js"></script>
+    <script src="../js/agregarCategoria.js"></script>
+    <script src="../js/sessionCheck.js"></script>
+    <script src="../js/JSubirProducto.js"></script>
 </body>
 
 </html>

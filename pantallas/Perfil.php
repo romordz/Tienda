@@ -2,11 +2,11 @@
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: pantallas/Login.php?redirect=" . urlencode($_SERVER['REQUEST_URI']));
+    header("Location: Login.php?redirect=" . urlencode($_SERVER['REQUEST_URI']));
     exit();
 }
 
-include __DIR__ . '/php/perfil/Perfil_process.php';
+include __DIR__ . '/../php/perfil/Perfil_process.php';
 
 $session_user_id = $_SESSION['user_id'];
 $profile_user_id = $_GET['id'] ?? $session_user_id;
@@ -19,7 +19,7 @@ $profile_privacy = $stmt->fetchColumn();
 $is_private = $profile_privacy === 'privado' && $session_user_id != $profile_user_id;
 
 $listas = [];
-include __DIR__ . '/php/listas/obtener_listas.php';
+include __DIR__ . '/../php/listas/obtener_listas.php';
 
 $page_title = "Detalle del Producto";
 ?>
@@ -30,13 +30,13 @@ $page_title = "Detalle del Producto";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Usuario</title>
-    <link rel="stylesheet" href="css/SPrincipal.css">
-    <link rel="stylesheet" href="css/SPerfil.css">
+    <link rel="stylesheet" href="../css/SPrincipal.css">
+    <link rel="stylesheet" href="../css/SPerfil.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <?php require 'componentes/Header/Header.php'; ?>
+    <?php require '../componentes/Header/Header.php'; ?>
 
     <main>
         <section class="profile-section">
@@ -69,19 +69,19 @@ $page_title = "Detalle del Producto";
 
                 <?php if ($_SESSION['role'] === 'vendedor' && $session_user_id == $profile_user_id): ?>
                     <br>
-                    <a href="pantallas/subir_producto.php" class="btn-upload">Subir Producto</a>
+                    <a href="subir_producto.php" class="btn-upload">Subir Producto</a>
                 <?php endif; ?>
 
                 <?php if ($_SESSION['role'] === 'administrador'): ?>
                     <br>
-                    <a href="pantallas/aprobar_productos.php" class="btn-approve">Aprobar productos</a>
+                    <a href="aprobar_productos.php" class="btn-approve">Aprobar productos</a>
                 <?php endif; ?>
             </div>
 
             <?php if ($session_user_id == $profile_user_id): ?>
                 <div id="edit-form" style="display: none;">
                     <h2>Editar Perfil</h2>
-                    <form method="POST" action="php/perfil/actualizar_perfil.php" enctype="multipart/form-data">
+                    <form method="POST" action="../php/perfil/actualizar_perfil.php" enctype="multipart/form-data">
                         <label for="username">Nombre de Usuario</label>
                         <input type="text" id="username" name="username" value="<?php echo $_SESSION['username']; ?>"
                             data-current-username="<?php echo $_SESSION['username']; ?>" required
@@ -130,7 +130,7 @@ $page_title = "Detalle del Producto";
                     <span class="close" id="close-popup">&times;</span>
                     <div class="create-list-section">
                         <h2>Crear Nueva Lista</h2>
-                        <form method="POST" action="php/listas/procesar_crear_lista.php">
+                        <form method="POST" action="../php/listas/procesar_crear_lista.php">
                             <label for="nombre_lista">Nombre de la Lista:</label>
                             <input type="text" id="nombre_lista" name="nombre_lista" required>
 
@@ -205,7 +205,7 @@ $page_title = "Detalle del Producto";
                     <?php else: ?>
                         <?php
                         $vendedor_id = $profile_user_id;
-                        include __DIR__ . '/php/productos/mostrar_productos_vendedor.php';
+                        include __DIR__ . '/../php/productos/mostrar_productos_vendedor.php';
                         ?>
                     <?php endif; ?>
                 <?php endif; ?>
@@ -224,27 +224,27 @@ $page_title = "Detalle del Producto";
                     <h3>productos Publicados</h3>
                     <?php
                     $vendedor_id = $profile_user_id;
-                    include 'php/mostrar_productos_vendedor.php';
+                    include __DIR__ . '/../php/productos/mostrar_productos_vendedor.php';
                     ?>
                 <?php endif; ?>
 
                 <?php if ($_SESSION['role'] === 'administrador'): ?>
                     <h3>productos Aprobados</h3>
-                    <?php include __DIR__ . '/php/productos/mostrar_productos_aprobados.php'; ?>
+                    <?php include __DIR__ . '/../php/productos/mostrar_productos_aprobados.php'; ?>
                 <?php endif; ?>
             <?php endif; ?>
         </div>
     </main>
     
-    <?php require 'componentes/Footer/Footer.php'; ?>
+    <?php require '../componentes/Footer/Footer.php'; ?>
 
     <script>
         var isOwner = <?php echo ($session_user_id == $profile_user_id) ? 'true' : 'false'; ?>;
     </script>
 
-    <script src="js/sessionCheck.js"></script>
-    <script src="js/listas.js"></script>
-    <script src="js/JEditPerfil.js"></script>
+    <script src="../js/sessionCheck.js"></script>
+    <script src="../js/listas.js"></script>
+    <script src="../js/JEditPerfil.js"></script>
 </body>
 
 </html>
