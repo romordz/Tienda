@@ -7,10 +7,10 @@
         <h1>Bienvenido a Nuestra Tienda</h1>
         <nav>
             <ul>
-                <li><a href="Principal.php">Inicio</a></li>
-                <li><a href="Productos.php">productos</a></li>
-                <li><a href="Categorias.php">Categorías</a></li>
-                <li><a href="carrito.php" onclick="return checkSession('carrito.php');">Carrito</a></li>
+                <li><a href="pantallas/Principal.php">Inicio</a></li>
+                <li><a href="pantallas/Productos.php">productos</a></li>
+                <li><a href="pantallas/Categorias.php">Categorías</a></li>
+                <li><a href="pantallas/carrito.php" onclick="return checkSession('pantallas/carrito.php');">Carrito</a></li>
             </ul>
         </nav>
         <div class="search-container">
@@ -30,11 +30,11 @@
             </div>
             <div id="profile-dropdown" class="profile-dropdown">
                 <?php if (isset($_SESSION['user_id'])): ?>
-                    <a href="Perfil.php" onclick="return checkSession('Perfil.php')">Revisar perfil</a>
-                    <a href="Mensajes.php" onclick="return checkSession('Mensajes.php')">mensajes</a>
+                    <a href="pantallas/Perfil.php" onclick="return checkSession('pantallas/Perfil.php')">Revisar perfil</a>
+                    <a href="pantallas/Mensajes.php" onclick="return checkSession('pantallas/Mensajes.php')">mensajes</a>
                     <a href="php/sesion/cerrar_sesion.php">Cerrar sesión</a>
                 <?php else: ?>
-                    <a href="Login.php">Iniciar Sesión</a>
+                    <a href="pantallas/Login.php">Iniciar Sesión</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -44,10 +44,10 @@
     <h1><?php echo $page_title ?? 'Tienda'; ?></h1>
     <nav>
         <ul>
-            <li><a href="Principal.php">Inicio</a></li>
-            <li><a href="Productos.php">productos</a></li>
-            <li><a href="Categorias.php">Categorías</a></li>
-            <li><a href="carrito.php" onclick="return checkSession('carrito.php');">Carrito</a></li>
+            <li><a href="pantallas/Principal.php">Inicio</a></li>
+            <li><a href="pantallas/Productos.php">productos</a></li>
+            <li><a href="pantallas/Categorias.php">Categorías</a></li>
+            <li><a href="pantallas/carrito.php" onclick="return checkSession('pantallas/carrito.php');">Carrito</a></li>
             <li><a href="php/sesion/cerrar_sesion.php">Cerrar Sesión</a></li>
         </ul>
     </nav>
@@ -63,8 +63,8 @@
             </div>
         </div>
         <div id="profile-dropdown" class="profile-dropdown">
-            <a href="Perfil.php" onclick="return checkSession('Perfil.php')">Revisar perfil</a>
-            <a href="Mensajes.php" onclick="return checkSession('Mensajes.php')">mensajes</a>
+            <a href="pantallas/Perfil.php" onclick="return checkSession('pantallas/Perfil.php')">Revisar perfil</a>
+            <a href="pantallas/Mensajes.php" onclick="return checkSession('pantallas/Mensajes.php')">mensajes</a>
             <a href="php/sesion/cerrar_sesion.php">Cerrar sesión</a>
         </div>
     </div>

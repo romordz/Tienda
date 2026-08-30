@@ -20,7 +20,7 @@ $stmt->bindParam(':privacidad', $privacidad, PDO::PARAM_STR);
 
 try {
     $stmt->execute();
-    header("Location: ../Perfil.php");
+    header("Location: /Perfil.php");
 } catch (PDOException $e) {
     echo "Error al crear la lista: " . $e->getMessage();
 }
