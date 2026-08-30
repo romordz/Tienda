@@ -11,7 +11,7 @@ if (isset($_POST['actualizar_cantidad'])) {
         $_SESSION['carrito'][$producto_id]['cantidad'] = $cantidad;
         $_SESSION['carrito'][$producto_id]['total'] = $_SESSION['carrito'][$producto_id]['precio'] * $cantidad;
     }
-    header('Location: /pantallas/carrito.php?action=updated');
+    header('Location: ../pantallas/carrito.php?action=updated');
     exit();
 }
 

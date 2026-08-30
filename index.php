@@ -1,18 +1,24 @@
 <?php
-// Serve static files directly without PHP processing
-$requested_file = $_SERVER['REQUEST_URI'] ?? '/';
-$requested_file = parse_url($requested_file, PHP_URL_PATH);
+// Get the requested path
+$request_uri = $_SERVER['REQUEST_URI'] ?? '/';
+$request_path = parse_url($request_uri, PHP_URL_PATH);
+
+// Extract file extension
+$file_extension = strtolower(pathinfo($request_path, PATHINFO_EXTENSION));
+
+// List of static file extensions
 $static_extensions = ['js', 'css', 'jpg', 'jpeg', 'png', 'gif', 'svg', 'woff', 'woff2', 'ttf', 'eot', 'ico'];
 
-$file_extension = strtolower(pathinfo($requested_file, PATHINFO_EXTENSION));
-
-if (in_array($file_extension, $static_extensions)) {
-    $file_path = __DIR__ . $requested_file;
-    if (file_exists($file_path) && is_file($file_path)) {
+// If requesting a static file, try to serve it
+if (!empty($file_extension) && in_array($file_extension, $static_extensions)) {
+    $file_path = __DIR__ . $request_path;
+    
+    // Check if file exists
+    if (file_exists($file_path) && is_file($file_path) && is_readable($file_path)) {
         // Set appropriate content type
         $mime_types = [
-            'js' => 'application/javascript',
-            'css' => 'text/css',
+            'js' => 'application/javascript; charset=utf-8',
+            'css' => 'text/css; charset=utf-8',
             'jpg' => 'image/jpeg',
             'jpeg' => 'image/jpeg',
             'png' => 'image/png',
@@ -26,11 +32,13 @@ if (in_array($file_extension, $static_extensions)) {
         ];
         
         header('Content-Type: ' . ($mime_types[$file_extension] ?? 'application/octet-stream'));
+        header('Cache-Control: public, max-age=31536000');
         readfile($file_path);
         exit;
     }
 }
 
+// Otherwise, serve the main application
 require_once __DIR__ . '/php/config.php';
 require __DIR__ . '/pantallas/Principal.php';
 ?>
