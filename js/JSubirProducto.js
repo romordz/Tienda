@@ -25,22 +25,18 @@ function validateImages() {
 
     return true;
 }
-// Función para habilitar/deshabilitar el campo de precio
 function togglePrecio() {
     var cotizacionSelect = document.getElementById('cotizacion');
     var precioInput = document.getElementById('precio');
 
-    // Checa si la opción seleccionada es "Sí" (valor "1")
     if (cotizacionSelect.value === "1") {
-        precioInput.value = ''; // Limpia el campo si se desactiva
-        precioInput.disabled = true; // Desactiva el campo de precio
+        precioInput.value = '';
+        precioInput.disabled = true;
     } else {
-        precioInput.disabled = false; // Activa el campo de precio
+        precioInput.disabled = false;
     }
 }
 
-// Escucha cambios en el select de cotización
 document.getElementById('cotizacion').addEventListener('change', togglePrecio);
 
-// Llama a la función al cargar la página para manejar el estado inicial
 document.addEventListener('DOMContentLoaded', togglePrecio);
