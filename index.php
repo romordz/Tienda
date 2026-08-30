@@ -1,4 +1,4 @@
 <?php
-header("Location: Principal.php");
+header("Location: pantallas/Principal.php");
 exit;
 ?>

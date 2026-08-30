@@ -2,7 +2,7 @@
 require __DIR__ . '/../DB/conexion.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: Login.php");
+    header("Location: ../pantallas/Login.php");
     exit();
 }
 

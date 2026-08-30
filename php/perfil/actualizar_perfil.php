@@ -4,7 +4,7 @@ require __DIR__ . '/../DB/conexion.php';
 require __DIR__ . '/../cloudinary/CloudinaryUploader.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: ../Login.php");
+    header("Location: /Login.php");
     exit();
 }
 
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['avatar'] = $avatar_url;
         }
 
-        header("Location: ../Perfil.php?success=1");
+        header("Location: /Perfil.php?success=1");
     } else {
         echo "Error al actualizar el perfil.";
     }

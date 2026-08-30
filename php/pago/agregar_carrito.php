@@ -20,7 +20,7 @@ if (isset($_POST['add_to_cart'])) {
     $producto = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$producto) {
-        echo "<script>alert('Error: Producto no encontrado.'); window.location.href = '../Productos.php';</script>";
+        echo "<script>alert('Error: Producto no encontrado.'); window.location.href = '/Productos.php';</script>";
         exit();
     }
 
@@ -37,6 +37,6 @@ if (isset($_POST['add_to_cart'])) {
         $mensaje_confirmacion = "¡El producto ha sido añadido al carrito con éxito! 🛒✨";
     }
 
-    echo "<script>window.location.href = '../producto_detalle.php?id=$producto_id';</script>";
+    echo "<script>window.location.href = '/producto_detalle.php?id=$producto_id';</script>";
 }
 ?>

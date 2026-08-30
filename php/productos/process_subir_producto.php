@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         if ($stmt->execute()) {
             echo "Producto subido exitosamente. Redirigiendo...";
-            header("Location: ../Productos.php");
+            header("Location: /Productos.php");
             exit();
         } else {
             echo "Error al subir el producto.";

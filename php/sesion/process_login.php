@@ -37,16 +37,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $redirect_url = filter_var($_GET['redirect'], FILTER_SANITIZE_URL);
                 header("Location: " . $redirect_url);
             } else {
-                header("Location: ../Principal.php");
+                header("Location: /Principal.php");
             }
 
             exit();
         } else {
-            header("Location: ../Login.php?error=wrong_password");
+            header("Location: /Login.php?error=wrong_password");
             exit();
         }
     } else {
-        header("Location: ../Login.php?error=user_not_found");
+        header("Location: /Login.php?error=user_not_found");
         exit();
     }
 }
