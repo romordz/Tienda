@@ -1,3 +1,6 @@
+const PAGE_BASE = window.location.pathname.includes('/pantallas/') ? '' : 'pantallas/';
+const API_BASE = window.location.pathname.includes('/pantallas/') ? '../' : '';
+
 let vendedoresMostrados = false;
 
 function obtenerVendedores() {
@@ -8,7 +11,7 @@ function obtenerVendedores() {
         document.getElementById('mostrar-vendedores-button').textContent = 'Mostrar Vendedores';
         vendedoresMostrados = false;
     } else {
-        fetch('php/vendedores/obtener_vendedores.php')
+        fetch(`${API_BASE}php/vendedores/obtener_vendedores.php`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Error al obtener los vendedores.');
@@ -55,6 +58,6 @@ function mostrarVendedores(vendedores) {
 }
 
 function irAPerfil(vendedorId) {
-    window.location.href = `Perfil.php?id=${vendedorId}`;
+    window.location.href = `${PAGE_BASE}Perfil.php?id=${vendedorId}`;
 }
 

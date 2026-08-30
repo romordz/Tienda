@@ -3,12 +3,14 @@ function toggleFormularioTarjeta() {
     formulario.style.display = (formulario.style.display === 'none' || formulario.style.display === '') ? 'block' : 'none';
 }
 
+const API_BASE = window.location.pathname.includes('/pantallas/') ? '../' : '';
+
 function verificarTarjeta() {
-    fetch('php/pago/verificar_tarjeta.php')
+    fetch(`${API_BASE}php/pago/verificar_tarjeta.php`)
         .then(response => response.json())
         .then(data => {
             if (data.tiene_tarjeta) {
-                location.href = 'php/pago/pagar.php';
+                location.href = `${API_BASE}php/pago/pagar.php`;
             } else {
                 alert('No tienes una tarjeta registrada. Agrega una tarjeta para proceder con el pago.');
                 document.getElementById('btn-add-card').style.display = 'block';
