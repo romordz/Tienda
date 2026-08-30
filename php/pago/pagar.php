@@ -6,14 +6,14 @@ $usuario_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 $rol_usuario = isset($_SESSION['role']) ? $_SESSION['role'] : null;
 
 if (!$usuario_id || $rol_usuario !== 'cliente') {
-    header('Location: ../carrito.php?error=no_cliente');
+    header('Location: ../pantallas/carrito.php?error=no_cliente');
     exit;
 }
 
 $carrito = isset($_SESSION['carrito']) ? $_SESSION['carrito'] : [];
 
 if (empty($carrito)) {
-    header('Location: ../carrito.php');
+    header('Location: ../pantallas/carrito.php');
     exit;
 }
 
@@ -62,7 +62,7 @@ try {
 
     unset($_SESSION['carrito']);
 
-    header('Location: ../confirmacion.php');
+    header('Location: ../pantallas/confirmacion.php');
     exit;
 } catch (Exception $e) {
     $pdo->rollBack();

@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindParam(':comentario_id', $comentario_id, PDO::PARAM_INT);
 
     if ($stmt->execute()) {
-        header("Location: /producto_detalle.php?id=" . $producto['producto_id']);
+        header("Location: /pantallas/producto_detalle.php?id=" . $producto['producto_id']);
         exit();
     } else {
         echo "Error al eliminar el comentario.";

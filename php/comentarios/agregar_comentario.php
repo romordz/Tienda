@@ -15,7 +15,7 @@ if (isset($_POST['comentario']) && isset($_SESSION['user_id'])) {
     $stmt->bindParam(':comentario', $comentario, PDO::PARAM_STR);
 
     if ($stmt->execute()) {
-        header("Location: /producto_detalle.php?id=" . $producto_id);
+        header("Location: /pantallas/producto_detalle.php?id=" . $producto_id);
         exit();
     } else {
         echo "Error: " . $pdo->errorInfo()[2];

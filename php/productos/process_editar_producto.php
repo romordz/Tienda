@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($stmt->execute()) {
         $_SESSION['mensaje'] = 'Producto actualizado correctamente';
-        header('Location: ../editar_producto.php?id=' . $producto_id);
+        header('Location: ../pantallas/editar_producto.php?id=' . $producto_id);
     } else {
         echo "Error al actualizar el producto.";
     }

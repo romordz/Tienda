@@ -6,7 +6,7 @@ $usuario_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 $rol_usuario = isset($_SESSION['role']) ? $_SESSION['role'] : null;
 
 if (!$usuario_id || $rol_usuario !== 'cliente') {
-    header('Location: ../carrito.php?error=no_cliente');
+    header('Location: ../pantallas/carrito.php?error=no_cliente');
     exit;
 }
 
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmtTarjeta->bindParam(':cvv', $cvv);
         $stmtTarjeta->execute();
 
-        header('Location: ../carrito.php?action=tarjeta_agregada');
+        header('Location: ../pantallas/carrito.php?action=tarjeta_agregada');
         exit;
     } catch (Exception $e) {
         die('Error al agregar la tarjeta: ' . $e->getMessage());
