@@ -30,70 +30,72 @@ function validateImage() {
     return true;
 }
 
-const API_BASE = window.location.pathname.includes('/pantallas/') ? '../' : '';
+(function () {
+    const API_BASE = window.location.pathname.includes('/pantallas/') ? '../' : '';
 
-function validateUsername() {
-    var usernameInput = document.getElementById('username');
-    var errorMessage = document.getElementById('username-error');
-    var username = usernameInput.value;
-    var currentUsername = usernameInput.dataset.currentUsername;
+    function validateUsername() {
+        var usernameInput = document.getElementById('username');
+        var errorMessage = document.getElementById('username-error');
+        var username = usernameInput.value;
+        var currentUsername = usernameInput.dataset.currentUsername;
 
-    errorMessage.style.display = 'none';
-    errorMessage.textContent = '';
+        errorMessage.style.display = 'none';
+        errorMessage.textContent = '';
 
-    if (username !== currentUsername) {
-        if (username.length < 3) {
-            errorMessage.style.display = 'block';
-            errorMessage.textContent = 'El nombre de usuario debe tener al menos 3 caracteres.';
-            return false;
+        if (username !== currentUsername) {
+            if (username.length < 3) {
+                errorMessage.style.display = 'block';
+                errorMessage.textContent = 'El nombre de usuario debe tener al menos 3 caracteres.';
+                return false;
+            }
+
+            fetch(`${API_BASE}php/sesion/check_username.php?username=` + encodeURIComponent(username))
+                .then(response => response.text())
+                .then(data => {
+                    if (data !== 'available') {
+                        errorMessage.style.display = 'block';
+                        errorMessage.textContent = data;
+                    }
+                });
         }
 
-        fetch(`${API_BASE}php/sesion/check_username.php?username=` + encodeURIComponent(username))
-            .then(response => response.text())
-            .then(data => {
-                if (data !== 'available') {
-                    errorMessage.style.display = 'block';
-                    errorMessage.textContent = data;
-                }
-            });
+        return true;
     }
 
-    return true;
-}
+    function validateEmail() {
+        var emailInput = document.getElementById('email');
+        var errorMessage = document.getElementById('email-error');
+        var email = emailInput.value;
+        var currentEmail = emailInput.dataset.currentEmail;
 
+        errorMessage.style.display = 'none';
+        errorMessage.textContent = '';
 
+        var emailPattern = /^[^\s@]+@(outlook\.com|hotmail\.com|gmail\.com|yahoo\.com)$/i;
+        
+        if (email !== currentEmail) {
+            if (!emailPattern.test(email)) {
+                errorMessage.style.display = 'block';
+                errorMessage.textContent = 'Por favor, ingresa un correo electrónico de un dominio válido (outlook, hotmail, gmail, yahoo).';
+                return false;
+            }
 
-function validateEmail() {
-    var emailInput = document.getElementById('email');
-    var errorMessage = document.getElementById('email-error');
-    var email = emailInput.value;
-    var currentEmail = emailInput.dataset.currentEmail;
-
-    errorMessage.style.display = 'none';
-    errorMessage.textContent = '';
-
-    var emailPattern = /^[^\s@]+@(outlook\.com|hotmail\.com|gmail\.com|yahoo\.com)$/i;
-    
-    if (email !== currentEmail) {
-        if (!emailPattern.test(email)) {
-            errorMessage.style.display = 'block';
-            errorMessage.textContent = 'Por favor, ingresa un correo electrónico de un dominio válido (outlook, hotmail, gmail, yahoo).';
-            return false;
+            fetch(`${API_BASE}php/sesion/check_email.php?email=` + encodeURIComponent(email))
+                .then(response => response.text())
+                .then(data => {
+                    if (data !== 'available') {
+                        errorMessage.style.display = 'block';
+                        errorMessage.textContent = data;
+                    }
+                });
         }
 
-        fetch(`${API_BASE}php/sesion/check_email.php?email=` + encodeURIComponent(email))
-            .then(response => response.text())
-            .then(data => {
-                if (data !== 'available') {
-                    errorMessage.style.display = 'block';
-                    errorMessage.textContent = data;
-                }
-            });
+        return true;
     }
 
-    return true;
-}
-
+    window.validateUsername = validateUsername;
+    window.validateEmail = validateEmail;
+})();
 
 
 function validateBirthdate() {

@@ -47,7 +47,7 @@ $page_title = "Productos";
                         if (!empty($imagenes) && isset($imagenes[0])): ?>
                              <img src="<?php echo str_starts_with($imagenes[0], 'http') ? htmlspecialchars($imagenes[0]) : 'data:image/jpeg;base64,' . htmlspecialchars($imagenes[0]); ?>" alt="Imagen del Producto">
                         <?php else: ?>
-                            <img src="Recursos/default.jpg" alt="Imagen no disponible">
+                            <img src="/Recursos/default.jpg" alt="Imagen no disponible">
                         <?php endif; ?>
                     </a>
 
@@ -82,7 +82,7 @@ $page_title = "Productos";
             }
         });
     </script>
-    <script src="../js/sessionCheck.js"></script>
+    <script src="/js/sessionCheck.js"></script>
 </body>
 
 </html>
