@@ -1,7 +1,7 @@
 <?php
 session_start();
 include __DIR__ . '/../DB/conexion.php';
-require __DIR__ . '/../php/config.php';
+require __DIR__ . '/../config.php';
 
 if (!isset($_SESSION['user_id'])) {
     die("Usuario no autenticado.");

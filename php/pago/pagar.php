@@ -1,7 +1,7 @@
 <?php
 session_start();
 include __DIR__ . '/../DB/conexion.php';
-require __DIR__ . '/../php/config.php';
+require __DIR__ . '/../config.php';
 
 $usuario_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 $rol_usuario = isset($_SESSION['role']) ? $_SESSION['role'] : null;

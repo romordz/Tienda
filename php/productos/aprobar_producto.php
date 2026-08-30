@@ -1,7 +1,7 @@
 <?php 
 session_start();
 require __DIR__ . '/../DB/conexion.php';
-require __DIR__ . '/../php/config.php';
+require __DIR__ . '/../config.php';
 
 if ($_SESSION['role'] !== 'administrador') {
     echo "Acción no permitida.";

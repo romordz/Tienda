@@ -1,7 +1,7 @@
 <?php 
 session_start();
 include __DIR__ . '/../DB/conexion.php';
-require __DIR__ . '/../php/config.php';
+require __DIR__ . '/../config.php';
 
 if (isset($_POST['comentario']) && isset($_SESSION['user_id'])) {
     $producto_id = $_POST['producto_id'];

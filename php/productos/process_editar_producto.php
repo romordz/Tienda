@@ -2,7 +2,7 @@
 session_start();
 require __DIR__ . '/../DB/conexion.php';
 require __DIR__ . '/../cloudinary/CloudinaryUploader.php';
-require __DIR__ . '/../php/config.php';
+require __DIR__ . '/../config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isset($_POST['nombre'], $_POST['descripcion'], $_POST['categoria_id'], $_POST['precio'], $_POST['cantidad'], $_POST['para_cotizar'], $_POST['video'])) {
