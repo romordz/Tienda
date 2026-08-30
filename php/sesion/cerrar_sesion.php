@@ -2,7 +2,8 @@
 session_start();
 session_unset();
 session_destroy();
+require __DIR__ . '/../php/config.php';
 
-header("Location: /pantallas/Principal.php");
+header("Location: " . urlFor('pantallas/Principal.php'));
 exit();
 ?>

@@ -1,5 +1,10 @@
+<?php
+$basePath = preg_replace('#/(?:pantallas|php)(?:/.*)?$#', '', $_SERVER['PHP_SELF'] ?? '/');
+$basePath = $basePath ?: '';
+?>
+
 <head>
-    <link rel="stylesheet" href="/componentes/Footer/SFooter.css">
+    <link rel="stylesheet" href="<?= $basePath ?>/componentes/Footer/SFooter.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 

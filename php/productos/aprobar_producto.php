@@ -1,6 +1,7 @@
 <?php 
 session_start();
 require __DIR__ . '/../DB/conexion.php';
+require __DIR__ . '/../php/config.php';
 
 if ($_SESSION['role'] !== 'administrador') {
     echo "Acción no permitida.";
@@ -23,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($stmt->execute()) {
         echo "Producto aprobado exitosamente.";
-        header("Location: ../pantallas/aprobar_Productos.php");
+        header("Location: " . urlFor('pantallas/aprobar_Productos.php'));
         exit();
     } else {
         echo "Error al aprobar el producto.";

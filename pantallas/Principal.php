@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once __DIR__ . '/../php/config.php';
 
 $page_title = "Detalle del Producto";
 ?>
@@ -10,12 +11,12 @@ $page_title = "Detalle del Producto";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda en Línea</title>
-    <link rel="stylesheet" href="../css/SPrincipal.css">
+    <link rel="stylesheet" href="<?= urlFor('css/SPrincipal.css') ?>">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <?php require '../componentes/Header/Header.php'; ?>
+    <?php require __DIR__ . '/../componentes/Header/Header.php'; ?>
 
     <main>
         <section class="product-list">
@@ -38,12 +39,12 @@ $page_title = "Detalle del Producto";
 
         </section>
     </main>
-    <?php require '../componentes/Footer/Footer.php'; ?>
+    <?php require __DIR__ . '/../componentes/Footer/Footer.php'; ?>
 
-    <script src="../js/sessionCheck.js"></script>
-    <script src="../js/productosObtener.js"></script>
-    <script src="../js/buscarProducto.js"></script>
-    <script src="../js/obtenerVendedores.js"></script>
+    <script src="<?= urlFor('js/sessionCheck.js') ?>"></script>
+    <script src="<?= urlFor('js/productosObtener.js') ?>"></script>
+    <script src="<?= urlFor('js/buscarProducto.js') ?>"></script>
+    <script src="<?= urlFor('js/obtenerVendedores.js') ?>"></script>
 </body>
 
 </html>

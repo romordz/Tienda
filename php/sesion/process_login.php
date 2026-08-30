@@ -1,6 +1,7 @@
 <?php
 session_start();
 require __DIR__ . '/../DB/conexion.php';
+require __DIR__ . '/../php/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['user'];
@@ -37,16 +38,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $redirect_url = filter_var($_GET['redirect'], FILTER_SANITIZE_URL);
                 header("Location: " . $redirect_url);
             } else {
-                header("Location: /pantallas/Principal.php");
+                header("Location: " . urlFor('pantallas/Principal.php'));
             }
 
             exit();
         } else {
-            header("Location: /Login.php?error=wrong_password");
+            header("Location: " . urlFor('Login.php?error=wrong_password'));
             exit();
         }
     } else {
-        header("Location: /Login.php?error=user_not_found");
+        header("Location: " . urlFor('Login.php?error=user_not_found'));
         exit();
     }
 }
