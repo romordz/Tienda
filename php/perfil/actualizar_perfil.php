@@ -2,9 +2,10 @@
 session_start();
 require __DIR__ . '/../DB/conexion.php';
 require __DIR__ . '/../cloudinary/CloudinaryUploader.php';
+require __DIR__ . '/../php/config.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: /pantallas/Login.php");
+    header("Location: " . urlFor('pantallas/Login.php'));
     exit();
 }
 
@@ -45,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['avatar'] = $avatar_url;
         }
 
-        header("Location: /pantallas/Perfil.php?success=1");
+        header("Location: " . urlFor('pantallas/Perfil.php?success=1'));
     } else {
         echo "Error al actualizar el perfil.";
     }

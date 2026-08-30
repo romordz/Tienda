@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/../php/config.php';
 require __DIR__ . '/../php/DB/conexion.php';
 require __DIR__ . '/../php/pago/actualizar_carrito.php';
 
@@ -23,13 +24,13 @@ $page_title = "Tu carrito";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/SCart.css">
-    <link rel="stylesheet" href="../css/SPrincipal.css">
+    <link rel="stylesheet" href="<?= urlFor('css/SCart.css') ?>">
+    <link rel="stylesheet" href="<?= urlFor('css/SPrincipal.css') ?>">
     <title>Carrito de compras</title>
 </head>
 
 <body>
-    <?php require '../componentes/Header/Header.php'; ?>
+    <?php require __DIR__ . '/../componentes/Header/Header.php'; ?>
 
     <div class="cart-section">
         <?php if (!empty($mensaje))
@@ -52,7 +53,7 @@ $page_title = "Tu carrito";
                             <td><?php echo htmlspecialchars($producto['nombre']); ?></td>
                             <td>$<?php echo number_format($producto['precio'], 2); ?></td>
                             <td>
-                                <form method="post" action="../php/pago/actualizar_carrito.php">
+                                <form method="post" action="<?= urlFor('php/pago/actualizar_carrito.php') ?>">
                                     <input type="hidden" name="producto_id" value="<?php echo $producto_id; ?>">
                                     <input type="number" name="cantidad" value="<?php echo $producto['cantidad']; ?>" min="1"
                                         class="quantity-input">
@@ -61,7 +62,7 @@ $page_title = "Tu carrito";
                             </td>
                             <td>$<?php echo number_format($producto['precio'] * $producto['cantidad'], 2); ?></td>
                             <td>
-                                <form method="post" action="../php/pago/actualizar_carrito.php">
+                                <form method="post" action="<?= urlFor('php/pago/actualizar_carrito.php') ?>">
                                     <input type="hidden" name="producto_id" value="<?php echo $producto_id; ?>">
                                     <button type="submit" name="eliminar_producto" class="btn-remove">Eliminar</button>
                                 </form>
@@ -96,7 +97,7 @@ $page_title = "Tu carrito";
 
         <div id="formulario-tarjeta" style="display: none;">
             <h3>Agregar Tarjeta de Crédito</h3>
-            <form method="post" action="../php/pago/agregar_tarjeta.php"
+            <form method="post" action="<?= urlFor('php/pago/agregar_tarjeta.php') ?>"
                 onsubmit="return validateExpirationDate() && validateCVV()">
                 <div>
                     <label for="numero_tarjeta">Número de tarjeta:</label>
@@ -125,10 +126,10 @@ $page_title = "Tu carrito";
 
     </div>
 
-    <?php require '../componentes/Footer/Footer.php'; ?>
-    
-    <script src="../js/sessionCheck.js"></script>
-    <script src="../js/tarjeta.js"></script>
+    <?php require __DIR__ . '/../componentes/Footer/Footer.php'; ?>
+
+    <script src="<?= urlFor('js/sessionCheck.js') ?>"></script>
+    <script src="<?= urlFor('js/tarjeta.js') ?>"></script>
 </body>
 
 </html>

@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . '/../DB/conexion.php';
+require __DIR__ . '/../php/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $comentario_id = $_POST['comentario_id'];
@@ -21,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindParam(':comentario_id', $comentario_id, PDO::PARAM_INT);
 
     if ($stmt->execute()) {
-        header("Location: /pantallas/producto_detalle.php?id=" . $producto['producto_id']);
+        header("Location: " . urlFor('pantallas/producto_detalle.php?id=' . $producto['producto_id']));
         exit();
     } else {
         echo "Error al eliminar el comentario.";

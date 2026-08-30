@@ -1,8 +1,9 @@
 <?php
 session_start();
+require __DIR__ . '/../php/config.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: Login.php?redirect=" . urlencode($_SERVER['REQUEST_URI']));
+    header("Location: " . urlFor('pantallas/Login.php?redirect=' . urlencode($_SERVER['REQUEST_URI'])));
     exit();
 }
 
@@ -30,18 +31,18 @@ $page_title = "Detalle del Producto";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Usuario</title>
-    <link rel="stylesheet" href="../css/SPrincipal.css">
-    <link rel="stylesheet" href="../css/SPerfil.css">
+    <link rel="stylesheet" href="<?= urlFor('css/SPrincipal.css') ?>">
+    <link rel="stylesheet" href="<?= urlFor('css/SPerfil.css') ?>">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <?php require '../componentes/Header/Header.php'; ?>
+    <?php require __DIR__ . '/../componentes/Header/Header.php'; ?>
 
     <main>
         <section class="profile-section">
             <div class="profile-card">
-                <img src="<?php echo isset($_SESSION['avatar']) && !empty($_SESSION['avatar']) ? $_SESSION['avatar'] : '/Recursos/default.jpg'; ?>"
+                <img src="<?php echo isset($_SESSION['avatar']) && !empty($_SESSION['avatar']) ? $_SESSION['avatar'] : $basePath . '/Recursos/default.jpg'; ?>"
                     alt="Avatar de Usuario" class="profile-avatar">
                 <h2><?php echo isset($profile_username) ? $profile_username : 'Nombre del Usuario'; ?></h2>
 
@@ -81,7 +82,7 @@ $page_title = "Detalle del Producto";
             <?php if ($session_user_id == $profile_user_id): ?>
                 <div id="edit-form" style="display: none;">
                     <h2>Editar Perfil</h2>
-                    <form method="POST" action="../php/perfil/actualizar_perfil.php" enctype="multipart/form-data">
+                    <form method="POST" action="<?= urlFor('php/perfil/actualizar_perfil.php') ?>" enctype="multipart/form-data">
                         <label for="username">Nombre de Usuario</label>
                         <input type="text" id="username" name="username" value="<?php echo $_SESSION['username']; ?>"
                             data-current-username="<?php echo $_SESSION['username']; ?>" required
@@ -130,7 +131,7 @@ $page_title = "Detalle del Producto";
                     <span class="close" id="close-popup">&times;</span>
                     <div class="create-list-section">
                         <h2>Crear Nueva Lista</h2>
-                        <form method="POST" action="../php/listas/procesar_crear_lista.php">
+                        <form method="POST" action="<?= urlFor('php/listas/procesar_crear_lista.php') ?>">
                             <label for="nombre_lista">Nombre de la Lista:</label>
                             <input type="text" id="nombre_lista" name="nombre_lista" required>
 
@@ -236,15 +237,15 @@ $page_title = "Detalle del Producto";
         </div>
     </main>
     
-    <?php require '../componentes/Footer/Footer.php'; ?>
+    <?php require __DIR__ . '/../componentes/Footer/Footer.php'; ?>
 
     <script>
         var isOwner = <?php echo ($session_user_id == $profile_user_id) ? 'true' : 'false'; ?>;
     </script>
 
-    <script src="../js/sessionCheck.js"></script>
-    <script src="../js/listas.js"></script>
-    <script src="../js/JEditPerfil.js"></script>
+    <script src="<?= urlFor('js/sessionCheck.js') ?>"></script>
+    <script src="<?= urlFor('js/listas.js') ?>"></script>
+    <script src="<?= urlFor('js/JEditPerfil.js') ?>"></script>
 </body>
 
 </html>

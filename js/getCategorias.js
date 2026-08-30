@@ -1,6 +1,13 @@
 (function () {
-    const API_BASE = window.location.pathname.includes('/pantallas/') ? '../' : '';
-    const PAGE_BASE = window.location.pathname.includes('/pantallas/') ? '' : 'pantallas/';
+    const APP_PATHS = (() => {
+        const inScreens = window.location.pathname.includes('/pantallas/');
+        return {
+            PAGE_BASE: inScreens ? '' : 'pantallas/',
+            API_BASE: inScreens ? '../' : ''
+        };
+    })();
+
+    const { PAGE_BASE, API_BASE } = APP_PATHS;
 
     document.addEventListener("DOMContentLoaded", function() {
         fetch(`${API_BASE}php/categorias/get_categorias.php`)

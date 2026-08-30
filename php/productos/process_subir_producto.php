@@ -2,6 +2,7 @@
 session_start();
 require __DIR__ . '/../DB/conexion.php';
 require __DIR__ . '/../cloudinary/CloudinaryUploader.php';
+require __DIR__ . '/../php/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = $_POST['nombre'];
@@ -56,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         if ($stmt->execute()) {
             echo "Producto subido exitosamente. Redirigiendo...";
-            header("Location: /Productos.php");
+            header("Location: " . urlFor('pantallas/Productos.php'));
             exit();
         } else {
             echo "Error al subir el producto.";

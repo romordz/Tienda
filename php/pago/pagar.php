@@ -1,19 +1,20 @@
 <?php
 session_start();
 include __DIR__ . '/../DB/conexion.php';
+require __DIR__ . '/../php/config.php';
 
 $usuario_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 $rol_usuario = isset($_SESSION['role']) ? $_SESSION['role'] : null;
 
 if (!$usuario_id || $rol_usuario !== 'cliente') {
-    header('Location: ../pantallas/carrito.php?error=no_cliente');
+    header('Location: ' . urlFor('pantallas/carrito.php?error=no_cliente'));
     exit;
 }
 
 $carrito = isset($_SESSION['carrito']) ? $_SESSION['carrito'] : [];
 
 if (empty($carrito)) {
-    header('Location: ../pantallas/carrito.php');
+    header('Location: ' . urlFor('pantallas/carrito.php'));
     exit;
 }
 
@@ -62,7 +63,7 @@ try {
 
     unset($_SESSION['carrito']);
 
-    header('Location: ../pantallas/confirmacion.php');
+    header('Location: ' . urlFor('pantallas/confirmacion.php'));
     exit;
 } catch (Exception $e) {
     $pdo->rollBack();

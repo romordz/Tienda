@@ -2,6 +2,7 @@
 session_start();
 require __DIR__ . '/../DB/conexion.php';
 require __DIR__ . '/../cloudinary/CloudinaryUploader.php';
+require __DIR__ . '/../php/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isset($_POST['nombre'], $_POST['descripcion'], $_POST['categoria_id'], $_POST['precio'], $_POST['cantidad'], $_POST['para_cotizar'], $_POST['video'])) {
@@ -62,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($stmt->execute()) {
         $_SESSION['mensaje'] = 'Producto actualizado correctamente';
-        header('Location: ../pantallas/editar_producto.php?id=' . $producto_id);
+        header('Location: ' . urlFor('pantallas/editar_producto.php?id=' . $producto_id));
     } else {
         echo "Error al actualizar el producto.";
     }
