@@ -1,3 +1,5 @@
+const API_BASE = window.location.pathname.includes('/pantallas/') ? '../' : '';
+
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('btn-agregar-categoria').addEventListener('click', function() {
         document.getElementById('popup-agregar-categoria').style.display = 'flex';
@@ -12,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const descripcion = document.getElementById('descripcion_categoria').value;
 
         try {
-            const response = await fetch('php/categorias/process_agregar_categoria.php', {
+            const response = await fetch(`${API_BASE}php/categorias/process_agregar_categoria.php`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

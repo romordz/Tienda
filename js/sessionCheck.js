@@ -1,12 +1,15 @@
+const PAGE_BASE = window.location.pathname.includes('/pantallas/') ? '' : 'pantallas/';
+const API_BASE = window.location.pathname.includes('/pantallas/') ? '../' : '';
+
 function checkSession(redirectPage) {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'php/sesion/sessionCheck.php', true);
+    xhr.open('GET', `${API_BASE}php/sesion/sessionCheck.php`, true);
     xhr.onload = function() {
         if (xhr.status === 200) {
             var isLoggedIn = xhr.responseText === 'true';
             
             if (!isLoggedIn) {
-                window.location.href = "pantallas/Login.php?redirect=" + encodeURIComponent(redirectPage);
+                window.location.href = `${PAGE_BASE}Login.php?redirect=` + encodeURIComponent(redirectPage);
             } else {
                 window.location.href = redirectPage;
             }

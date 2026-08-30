@@ -30,6 +30,8 @@ function validateImage() {
     return true;
 }
 
+const API_BASE = window.location.pathname.includes('/pantallas/') ? '../' : '';
+
 function validateUsername() {
     var usernameInput = document.getElementById('username');
     var errorMessage = document.getElementById('username-error');
@@ -46,7 +48,7 @@ function validateUsername() {
             return false;
         }
 
-        fetch('php/sesion/check_username.php?username=' + encodeURIComponent(username))
+        fetch(`${API_BASE}php/sesion/check_username.php?username=` + encodeURIComponent(username))
             .then(response => response.text())
             .then(data => {
                 if (data !== 'available') {
@@ -79,7 +81,7 @@ function validateEmail() {
             return false;
         }
 
-        fetch('php/sesion/check_email.php?email=' + encodeURIComponent(email))
+        fetch(`${API_BASE}php/sesion/check_email.php?email=` + encodeURIComponent(email))
             .then(response => response.text())
             .then(data => {
                 if (data !== 'available') {

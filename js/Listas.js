@@ -1,3 +1,5 @@
+const API_BASE = window.location.pathname.includes('/pantallas/') ? '../' : '';
+
 document.getElementById('btn-edit').addEventListener('click', function () {
     var editForm = document.getElementById('edit-form');
     if (editForm.style.display === 'none') {
@@ -32,7 +34,7 @@ function mostrarDetallesLista(listaId) {
     detalleLista.innerHTML = "Cargando detalles...";
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'php/listas/obtener_detalles_lista.php', true);
+    xhr.open('POST', `${API_BASE}php/listas/obtener_detalles_lista.php`, true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xhr.onreadystatechange = function() {
@@ -129,7 +131,7 @@ window.onclick = function(event) {
 
 function eliminarProducto(productoId, listaId) {
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'php/listas/eliminar_producto_lista.php', true);
+    xhr.open('POST', `${API_BASE}php/listas/eliminar_producto_lista.php`, true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xhr.onreadystatechange = function() {

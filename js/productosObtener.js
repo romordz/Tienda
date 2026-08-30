@@ -1,5 +1,7 @@
+const API_BASE = window.location.pathname.includes('/pantallas/') ? '../' : '';
+
 function obtenerproductosDestacados() {
-  fetch("php/productos/get_productos_destacados.php")
+  fetch(`${API_BASE}php/productos/get_productos_destacados.php`)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -55,7 +57,7 @@ function obtenerproductosDestacados() {
 }
 
 function obtenerproductosRecientes() {
-  fetch("php/productos/get_productos_recientes.php")
+  fetch(`${API_BASE}php/productos/get_productos_recientes.php`)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");

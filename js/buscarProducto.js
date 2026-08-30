@@ -1,9 +1,11 @@
+const API_BASE = window.location.pathname.includes('/pantallas/') ? '../' : '';
+
 document.getElementById('search-button').addEventListener('click', function () {
     var query = document.getElementById('search-input').value.trim();
 
     if (query !== "") {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'php/productos/buscar_producto.php?q=' + encodeURIComponent(query), true);
+        xhr.open('GET', `${API_BASE}php/productos/buscar_producto.php?q=` + encodeURIComponent(query), true);
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 console.log("Respuesta de la búsqueda: ", xhr.responseText);
@@ -32,7 +34,7 @@ function realizarBusqueda() {
         return;
     }
 
-    fetch(`php/productos/buscar_producto.php?q=${encodeURIComponent(searchInput)}`)
+    fetch(`${API_BASE}php/productos/buscar_producto.php?q=${encodeURIComponent(searchInput)}`)
         .then(response => response.text())
         .then(data => {
             searchResults.innerHTML = data;

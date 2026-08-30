@@ -1,5 +1,8 @@
+const API_BASE = window.location.pathname.includes('/pantallas/') ? '../' : '';
+const PAGE_BASE = window.location.pathname.includes('/pantallas/') ? '' : 'pantallas/';
+
 document.addEventListener("DOMContentLoaded", function() {
-    fetch('php/categorias/get_categorias.php')
+    fetch(`${API_BASE}php/categorias/get_categorias.php`)
         .then(response => response.json())
         .then(categorias => {
             const container = document.getElementById('categories-container');
@@ -10,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 categoryItem.innerHTML = `
                     <h3>${categoria.nombre}</h3>
                     <p>${categoria.descripcion}</p>
-                    <a href="Productos.php?categoria_id=${categoria.id}" class="btn-category">Ver productos</a>
+                    <a href="${PAGE_BASE}Productos.php?categoria_id=${categoria.id}" class="btn-category">Ver productos</a>
                 `;
                 container.appendChild(categoryItem);
             });
@@ -20,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 async function cargarcategorias() {
     try {
-        const response = await fetch('php/categorias/get_categorias.php');
+        const response = await fetch(`${API_BASE}php/categorias/get_categorias.php`);
         const categorias = await response.json();
         
         const categoriaselect = document.getElementById('categoria');
