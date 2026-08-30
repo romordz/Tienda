@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/../php/config.php';
 require __DIR__ . '/../php/mensajes/obtener_mensajes_usuario.php';
 $mensajes = include __DIR__ . '/../php/mensajes/obtener_mensajes_usuario.php';
 
@@ -10,11 +11,11 @@ $page_title = "Detalle del Producto";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mensajes</title>
-    <link rel="stylesheet" href="../css/SPrincipal.css">
+    <link rel="stylesheet" href="<?= urlFor('css/SPrincipal.css') ?>">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <?php require '../componentes/Header/Header.php'; ?>
+    <?php require __DIR__ . '/../componentes/Header/Header.php'; ?>
     <main>
         <section class="message-list">
             <h2>mensajes Recibidos</h2>
@@ -36,7 +37,7 @@ $page_title = "Detalle del Producto";
                                 </div>
                             <?php endforeach; ?>
                         </div>
-                        <form action="mensaje_vendedor.php" method="POST">
+                        <form action="<?= urlFor('pantallas/mensaje_vendedor.php') ?>" method="POST">
                             <input type="hidden" name="producto_id" value="<?php echo $mensaje['producto_id']; ?>">
                             <button type="submit" class="Message-Ver">Ver Conversación</button>
                         </form>
@@ -45,7 +46,7 @@ $page_title = "Detalle del Producto";
             <?php endif; ?>
         </section>
     </main>
-    <?php require '../componentes/Footer/Footer.php'; ?>
-    <script src="../js/sessionCheck.js"></script>
+    <?php require __DIR__ . '/../componentes/Footer/Footer.php'; ?>
+    <script src="<?= urlFor('js/sessionCheck.js') ?>"></script>
 </body>
 </html>

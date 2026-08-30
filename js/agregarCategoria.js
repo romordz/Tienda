@@ -1,5 +1,12 @@
 (function () {
-    const API_BASE = window.location.pathname.includes('/pantallas/') ? '../' : '';
+    const APP_PATHS = (() => {
+        const inScreens = window.location.pathname.includes('/pantallas/');
+        return {
+            API_BASE: inScreens ? '../' : ''
+        };
+    })();
+
+    const { API_BASE } = APP_PATHS;
 
     document.addEventListener("DOMContentLoaded", function() {
         document.getElementById('btn-agregar-categoria').addEventListener('click', function() {

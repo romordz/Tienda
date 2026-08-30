@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/../php/config.php';
 require __DIR__ . '/../php/productos/aprobar_producto.php';
 
 if ($_SESSION['role'] !== 'administrador') {
@@ -16,12 +17,12 @@ $page_title = "Estado de productos";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aprobar productos</title>
-    <link rel="stylesheet" href="../css/Sprincipal.css">
-    <link rel="stylesheet" href="../css/SAprobar.css">
+    <link rel="stylesheet" href="<?= urlFor('css/Sprincipal.css') ?>">
+    <link rel="stylesheet" href="<?= urlFor('css/SAprobar.css') ?>">
 </head>
 
 <body>
-     <?php require '../componentes/Header/Header.php'; ?>
+     <?php require __DIR__ . '/../componentes/Header/Header.php'; ?>
     <h1>productos Pendientes</h1>
     <table>
     <tr>
@@ -59,7 +60,7 @@ $page_title = "Estado de productos";
                 <?php endif; ?>
             </td>
             <td>
-                <form method="post" action="../php/productos/aprobar_producto.php">
+                <form method="post" action="<?= urlFor('php/productos/aprobar_producto.php') ?>">
                     <input type="hidden" name="producto_id" value="<?php echo $producto['id']; ?>">
                     <button type="submit" class="btn-approve">Aprobar</button>
                 </form>
@@ -68,7 +69,7 @@ $page_title = "Estado de productos";
     <?php endforeach; ?>
 </table>
 
-    <script src="../js/sessionCheck.js"></script>
+    <script src="<?= urlFor('js/sessionCheck.js') ?>"></script>
 </body>
 
 </html>

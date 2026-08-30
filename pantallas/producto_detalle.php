@@ -1,5 +1,6 @@
 <?php
 session_start();
+require __DIR__ . '/../php/config.php';
 include __DIR__ . '/../php/productos/get_producto_detalle.php';
 
 $producto_id = $_GET['id'] ?? null;
@@ -29,13 +30,13 @@ $page_title = "Detalle del Producto";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/SPrincipal.css">
-    <link rel="stylesheet" href="../css/SProductoDetalle.css">
+    <link rel="stylesheet" href="<?= urlFor('css/SPrincipal.css') ?>">
+    <link rel="stylesheet" href="<?= urlFor('css/SProductoDetalle.css') ?>">
     <title>Detalle del Producto</title>
 </head>
 
 <body>
-    <?php require '../componentes/Header/Header.php'; ?>
+    <?php require __DIR__ . '/../componentes/Header/Header.php'; ?>
 
     <section class="product-detail">
         <div class="seller-info">
@@ -46,7 +47,7 @@ $page_title = "Detalle del Producto";
                     <img src="<?php echo htmlspecialchars($producto['vendedor_avatar']); ?>"
                         alt="Avatar del Vendedor" class="seller-avatar">
                 <?php else: ?>
-                    <img src="/Recursos/default.jpg" alt="Avatar por Defecto" class="seller-avatar">
+                    <img src="<?php echo $basePath; ?>/Recursos/default.jpg" alt="Avatar por Defecto" class="seller-avatar">
                 <?php endif; ?>
                 <p><?php echo htmlspecialchars($producto['vendedor_nombre']); ?></p>
             </div>
@@ -79,7 +80,7 @@ $page_title = "Detalle del Producto";
             <?php if (isset($producto['para_cotizar']) && $producto['para_cotizar'] == 1): ?>
                 <p class="price">Este producto está disponible solo para cotización.</p>
                 <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'cliente'): ?>
-                    <form method="post" action="mensaje_vendedor.php">
+                    <form method="post" action="<?= urlFor('pantallas/mensaje_vendedor.php') ?>">
                         <input type="hidden" name="producto_id" value="<?php echo $producto['id']; ?>">
                         <button type="submit" class="btn-message">Solicitar Cotización</button>
                     </form>
@@ -90,7 +91,7 @@ $page_title = "Detalle del Producto";
                 <p class="quantity-available">Cantidad disponible: <?php echo $producto['cantidad_disponible'] ?? 'N/A'; ?>
                 </p>
                 <p class="price">$<?php echo number_format($producto['precio'], 2); ?></p>
-                <form method="post" action="../php/pago/agregar_carrito.php">
+                <form method="post" action="<?= urlFor('php/pago/agregar_carrito.php') ?>">
                     <input type="hidden" name="producto_id" value="<?php echo $producto['id']; ?>">
                     <button type="submit" name="add_to_cart" class="btn-add">Añadir al Carrito</button>
                 </form>
@@ -149,7 +150,7 @@ $page_title = "Detalle del Producto";
     <section class="product-comments">
         <h3>comentarios</h3>
         <?php if (isset($_SESSION['user_id'])): ?>
-            <form method="post" action="../php/comentarios/agregar_comentario.php">
+            <form method="post" action="<?= urlFor('php/comentarios/agregar_comentario.php') ?>">
                 <textarea name="comentario" rows="4" cols="50" placeholder="Escribe tu comentario aquí..."
                     required></textarea>
                 <input type="hidden" name="producto_id" value="<?php echo $producto['id']; ?>">
@@ -169,12 +170,12 @@ $page_title = "Detalle del Producto";
                     if (!empty($comentario['avatar'])) {
                         echo "<img src='" . htmlspecialchars($comentario['avatar']) . "' alt='Avatar del Usuario' class='comment-avatar' onclick='irAPerfil(" . $comentario['usuario_id'] . ")' style='cursor: pointer;'>";
                     } else {
-                        echo "<img src='/Recursos/default.jpg' alt='Avatar por Defecto' class='comment-avatar' onclick='irAPerfil(" . $comentario['usuario_id'] . ")' style='cursor: pointer;'>";
+                        echo "<img src='" . $basePath . "/Recursos/default.jpg' alt='Avatar por Defecto' class='comment-avatar' onclick='irAPerfil(" . $comentario['usuario_id'] . ")' style='cursor: pointer;'>";
                     }
                     echo "<strong>" . htmlspecialchars($comentario['nombre_usuario']) . "</strong> <p> <br>" . htmlspecialchars($comentario['comentario']) . "</p>";
                     echo "<p class='comment-date'>" . $comentario['fecha'] . "</p>";
                     if ($_SESSION['role'] == 'administrador') {
-                        echo "<form method='post' action='../php/comentarios/eliminar_comentario.php'>";
+                        echo "<form method='post' action='" . urlFor('php/comentarios/eliminar_comentario.php') . "'>";
                         echo "<input type='hidden' name='comentario_id' value='" . $comentario['id'] . "'>";
                         echo "<button type='submit' class='btn-delete'>Eliminar</button>";
                         echo "</form>";
@@ -260,11 +261,11 @@ $page_title = "Detalle del Producto";
         </div>
     </section>
 
-    <?php require '../componentes/Footer/Footer.php'; ?>
+    <?php require __DIR__ . '/../componentes/Footer/Footer.php'; ?>
     
-    <script src="../js/producto_detalle.js"></script>
-    <script src="../js/obtenerVendedores.js"></script>
-    <script src="../js/sessionCheck.js"></script>
+    <script src="<?= urlFor('js/producto_detalle.js') ?>"></script>
+    <script src="<?= urlFor('js/obtenerVendedores.js') ?>"></script>
+    <script src="<?= urlFor('js/sessionCheck.js') ?>"></script>
 </body>
 
 </html>

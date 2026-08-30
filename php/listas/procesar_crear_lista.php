@@ -1,6 +1,7 @@
 <?php
 session_start();
 include __DIR__ . '/../DB/conexion.php';
+require __DIR__ . '/../php/config.php';
 
 if (!isset($_SESSION['user_id'])) {
     die("Usuario no autenticado.");
@@ -20,7 +21,7 @@ $stmt->bindParam(':privacidad', $privacidad, PDO::PARAM_STR);
 
 try {
     $stmt->execute();
-    header("Location: /pantallas/Perfil.php");
+    header("Location: " . urlFor('pantallas/Perfil.php'));
 } catch (PDOException $e) {
     echo "Error al crear la lista: " . $e->getMessage();
 }

@@ -1,5 +1,6 @@
 <?php
 session_start();
+require __DIR__ . '/../php/config.php';
 require __DIR__ . '/../php/DB/conexion.php';
 
 if (!isset($_SESSION['user_id'])) {
@@ -11,7 +12,7 @@ $usuario_id = $_SESSION['user_id'];
 $producto_id = $_POST['producto_id'] ?? null;
 
 if (!$producto_id) {
-    header("Location: Principal.php");
+    header("Location: " . urlFor('pantallas/Principal.php'));
     exit();
 }
 
@@ -30,8 +31,8 @@ if (!$producto || empty($producto['producto']['nombre'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/SPrincipal.css">
-    <link rel="stylesheet" href="../css/SChat.css">
+    <link rel="stylesheet" href="<?= urlFor('css/SPrincipal.css') ?>">
+    <link rel="stylesheet" href="<?= urlFor('css/SChat.css') ?>">
     <title>Chat con el Vendedor</title>
 </head>
 
@@ -52,9 +53,9 @@ if (!$producto || empty($producto['producto']['nombre'])) {
         </form>
     </section>
 
-    <?php require '../componentes/Footer/Footer.php'; ?>
+    <?php require __DIR__ . '/../componentes/Footer/Footer.php'; ?>
 
-    <script src="../js/cargarMensajes.js"></script>
+    <script src="<?= urlFor('js/cargarMensajes.js') ?>"></script>
     <!-- <script>
         function cargarmensajes() {
             var productoId = document.getElementById('producto_id').value;

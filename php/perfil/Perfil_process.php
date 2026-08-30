@@ -1,8 +1,9 @@
 <?php
 require __DIR__ . '/../DB/conexion.php';
+require __DIR__ . '/../php/config.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: ../pantallas/Login.php");
+    header("Location: " . urlFor('pantallas/Login.php'));
     exit();
 }
 

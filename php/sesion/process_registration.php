@@ -1,6 +1,7 @@
 <?php
 require __DIR__ . '/../DB/conexion.php';
 require __DIR__ . '/../cloudinary/CloudinaryUploader.php';
+require __DIR__ . '/../php/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
@@ -46,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindParam(':role', $role);
 
     if ($stmt->execute()) {
-        header("Location: /pantallas/Login.php");
+        header("Location: " . urlFor('pantallas/Login.php'));
         exit();
     } else {
         echo "Error al registrar el usuario.";

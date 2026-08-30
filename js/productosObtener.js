@@ -1,5 +1,13 @@
 (function () {
-  const API_BASE = window.location.pathname.includes('/pantallas/') ? '../' : '';
+  const APP_PATHS = (() => {
+    const inScreens = window.location.pathname.includes('/pantallas/');
+    return {
+      PAGE_BASE: inScreens ? '' : 'pantallas/',
+      API_BASE: inScreens ? '../' : ''
+    };
+  })();
+
+  const { PAGE_BASE, API_BASE } = APP_PATHS;
 
   function obtenerproductosDestacados() {
     fetch(`${API_BASE}php/productos/get_productos_destacados.php`)
@@ -39,7 +47,7 @@
                 : `<span class="price">$${parseFloat(producto.precio).toFixed(2)}</span>`;
 
             const productItem = `
-      <div class="product-item" onclick="checkSession('/pantallas/producto_detalle.php?id=${producto.id}');">
+      <div class="product-item" onclick="checkSession('${PAGE_BASE}producto_detalle.php?id=${producto.id}');">
           <a href="javascript:void(0);">
               <img src="${imagenPrincipal}" alt="${producto.nombre}">
           <h3>${producto.nombre}</h3>
@@ -95,7 +103,7 @@
                 : `<span class="price">$${parseFloat(producto.precio).toFixed(2)}</span>`;
 
             const productItem = `
-      <div class="product-item" onclick="checkSession('/pantallas/producto_detalle.php?id=${producto.id}');">
+      <div class="product-item" onclick="checkSession('${PAGE_BASE}producto_detalle.php?id=${producto.id}');">
           <a href="javascript:void(0);">
               <img src="${imagenPrincipal}" alt="${producto.nombre}">
           <h3>${producto.nombre}</h3>
