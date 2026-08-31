@@ -2,7 +2,7 @@
   const APP_PATHS = (() => {
     const inScreens = window.location.pathname.includes('/pantallas/');
     return {
-      PAGE_BASE: inScreens ? '' : 'pantallas/',
+      PAGE_BASE: inScreens ? 'pantallas/' : '',
       API_BASE: inScreens ? '../' : ''
     };
   })();
