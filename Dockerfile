@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y unzip curl \
 
 WORKDIR /var/www/html
 COPY . /var/www/html/
+RUN pwd && ls -la /var/www/html
 
 RUN if [ -f composer.json ]; then composer install --no-dev; fi
 
