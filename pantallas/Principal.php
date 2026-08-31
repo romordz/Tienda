@@ -2,7 +2,7 @@
 session_start();
 require_once __DIR__ . '/../php/config.php';
 
-$page_title = "Detalle del Producto";
+$page_title = "Bienvenido a nuestra tienda";
 ?>
 <!DOCTYPE html>
 <html lang="en">

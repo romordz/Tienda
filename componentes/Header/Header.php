@@ -22,7 +22,7 @@ if (!function_exists('urlFor')) {
     </nav>
     <div class="profile-container">
         <div class="user-profile" onclick="toggleDropdown(event)">
-            <img src="<?php echo isset($_SESSION['avatar']) && !empty($_SESSION['avatar']) ? $_SESSION['avatar'] : $basePath . '/Recursos/default.jpg'; ?>"
+            <img src="<?php echo isset($_SESSION['avatar']) && !empty($_SESSION['avatar']) ? $_SESSION['avatar'] :  urlFor('/Recursos/default.jpg'); ?>"
                 alt="Avatar" class="profile-avatar">
             <div class="profile-info">
                 <p class="profile-name">
