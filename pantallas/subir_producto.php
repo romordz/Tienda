@@ -14,35 +14,7 @@ require __DIR__ . '/../php/config.php';
 </head>
 
 <body>
-    <header>
-        <h1>Subir Producto</h1>
-        <nav>
-            <ul>
-                <li><a href="<?= urlFor('pantallas/Principal.php') ?>">Inicio</a></li>
-                <li><a href="<?= urlFor('pantallas/Productos.php') ?>">productos</a></li>
-                <li><a href="<?= urlFor('pantallas/Categorias.php') ?>">Categorías</a></li>
-                <li><a href="<?= urlFor('pantallas/carrito.php') ?>" onclick="return checkSession('<?= urlFor('pantallas/carrito.php') ?>');">Carrito</a></li>
-                <li><a href="<?= urlFor('php/sesion/cerrar_sesion.php') ?>">Cerrar Sesión</a></li>
-            </ul>
-        </nav>
-        <div class="profile-container">
-            <div class="user-profile" onclick="toggleDropdown(event)">
-                <img src="<?php echo isset($_SESSION['avatar']) && !empty($_SESSION['avatar']) ? 'data:image/jpeg;base64,' . $_SESSION['avatar'] : '/Recursos/default.jpg'; ?>"
-                    alt="Avatar" class="profile-avatar">
-                <div class="profile-info">
-                    <p class="profile-name">
-                        <?php echo isset($_SESSION['username']) ? $_SESSION['username'] : 'Nombre'; ?>
-                    </p>
-                    <p class="profile-role"><?php echo isset($_SESSION['role']) ? $_SESSION['role'] : 'Rol'; ?></p>
-                </div>
-            </div>
-            <div id="profile-dropdown" class="profile-dropdown">
-                <a href="<?= urlFor('pantallas/Perfil.php') ?>" onclick="return checkSession('<?= urlFor('pantallas/Perfil.php') ?>')">Revisar perfil</a>
-                <a href="<?= urlFor('pantallas/Mensajes.php') ?>" onclick="return checkSession('<?= urlFor('pantallas/Mensajes.php') ?>')">mensajes</a>
-                <a href="<?= urlFor('php/sesion/cerrar_sesion.php') ?>">Cerrar sesión</a>
-            </div>
-        </div>
-    </header>
+    <?php require __DIR__ . '/../componentes/Header/Header.php'; ?>
 
     <main>
         <section class="upload-section">
@@ -100,13 +72,10 @@ require __DIR__ . '/../php/config.php';
         </div>
     </main>
 
-    <footer>
-        <p>&copy; 2024 Tienda en Línea. Todos los derechos reservados.</p>
-    </footer>
+    <?php require __DIR__ . '/../componentes/Footer/Footer.php'; ?>
     <script src="<?= urlFor('js/getCategorias.js') ?>"></script>
     <script src="<?= urlFor('js/agregarCategoria.js') ?>"></script>
     <script src="<?= urlFor('js/sessionCheck.js') ?>"></script>
     <script src="<?= urlFor('js/JSubirProducto.js') ?>"></script>
 </body>
-
 </html>
