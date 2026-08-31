@@ -34,7 +34,7 @@ if (!function_exists('urlFor')) {
         <div id="profile-dropdown" class="profile-dropdown">
             <a href="<?= urlFor('pantallas/Perfil.php') ?>" onclick="return checkSession('<?= urlFor('pantallas/Perfil.php') ?>');">Mi perfil</a>
             <a href="<?= urlFor('pantallas/mensajes.php') ?>" onclick="return checkSession('<?= urlFor('pantallas/mensajes.php') ?>');">Mensajes</a>
-            <a href="<?= urlFor('php/sesion/cerrar_sesion.php') ?>">Mensajes</a>
+            <a href="<?= urlFor('php/sesion/cerrar_sesion.php') ?>">Cerrar sesion</a>
         </div>
     </div>
 </header>
