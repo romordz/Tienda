@@ -23,7 +23,12 @@ if (isset($_SESSION['user_id'])) {
 $imagenesArray = !empty($producto['imagenes_json']) ? json_decode($producto['imagenes_json'], true) : [];
 
 $page_title = "Detalle del Producto";
+
+if (!function_exists('urlFor')) {
+    require_once __DIR__ . '/../../php/config.php';
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -170,7 +175,7 @@ $page_title = "Detalle del Producto";
                     if (!empty($comentario['avatar'])) {
                         echo "<img src='" . htmlspecialchars($comentario['avatar']) . "' alt='Avatar del Usuario' class='comment-avatar' onclick='irAPerfil(" . $comentario['usuario_id'] . ")' style='cursor: pointer;'>";
                     } else {
-                        echo "<img src='" . $basePath . "/Recursos/default.jpg' alt='Avatar por Defecto' class='comment-avatar' onclick='irAPerfil(" . $comentario['usuario_id'] . ")' style='cursor: pointer;'>";
+                         echo "<img src='" . urlFor('/Recursos/default.jpg') . "alt='Avatar por Defecto' class='comment-avatar' onclick='irAPerfil(" . $comentario['usuario_id'] . ")' style='cursor: pointer;'>";
                     }
                     echo "<strong>" . htmlspecialchars($comentario['nombre_usuario']) . "</strong> <p> <br>" . htmlspecialchars($comentario['comentario']) . "</p>";
                     echo "<p class='comment-date'>" . $comentario['fecha'] . "</p>";
