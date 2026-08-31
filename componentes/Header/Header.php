@@ -32,11 +32,11 @@ if (!function_exists('urlFor')) {
             </div>
         </div>
         <div id="profile-dropdown" class="profile-dropdown">
-            <a href="<?= $basePath ?>/pantallas/Perfil.php" onclick="return checkSession('<?= $basePath ?>/pantallas/Perfil.php')">Revisar perfil</a>
-            <a href="<?= $basePath ?>/pantallas/Mensajes.php" onclick="return checkSession('<?= $basePath ?>/pantallas/Mensajes.php')">mensajes</a>
-            <a href="<?= $basePath ?>/php/sesion/cerrar_sesion.php">Cerrar sesión</a>
+            <a href="<?= urlFor('pantallas/Perfil.php') ?>" onclick="return checkSession('<?= urlFor('pantallas/Perfil.php') ?>');">Mi perfil</a>
+            <a href="<?= urlFor('pantallas/mensajes.php') ?>" onclick="return checkSession('<?= urlFor('pantallas/mensajes.php') ?>');">Mensajes</a>
+            <a href="<?= urlFor('php/sesion/cerrar_sesion.php') ?>">Mensajes</a>
         </div>
     </div>
 </header>
 
-<script src="<?= $basePath ?>/js/sessionCheck.js"></script>
+<script src="<?= urlFor('js/sessionCheck.js') ?>"></script>
