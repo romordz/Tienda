@@ -1,3 +1,4 @@
+<?php require __DIR__ . '/../php/config.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,5 +81,4 @@
 
   <script src="<?= urlFor('js/JRegistro.js') ?>"></script>
 </body>
-
 </html>
