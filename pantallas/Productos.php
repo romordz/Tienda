@@ -43,7 +43,7 @@ $page_title = "Productos";
                     <?php $categoriaActual = $producto['categoria_nombre']; ?>
                 <?php endif; ?>
 
-                <?php renderProductoCard($producto, 'grid'); ?>
+                <?php renderProductoCard($producto, 'thumb'); ?>
 
             <?php endforeach; ?>
         </div>
