@@ -39,7 +39,7 @@
             <button type="submit" class="btn-register">Iniciar Sesión</button>
 
             <div class="login-link">
-                <p>¿No tienes cuenta? <a href="<?= urlFor('Registro.html') ?>">Regístrate aquí</a></p>
+                <p>¿No tienes cuenta? <a href="<?= urlFor('pantallas/Registro.html') ?>">Regístrate aquí</a></p>
             </div>
         </form>
     </div>
