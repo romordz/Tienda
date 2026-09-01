@@ -56,7 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         if ($stmt->execute()) {
-            echo "Producto subido exitosamente. Redirigiendo...";
             header("Location: " . urlFor('pantallas/Productos.php'));
             exit();
         } else {
