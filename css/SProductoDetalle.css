@@ -385,7 +385,7 @@ select#lista:focus {
     gap: 30px;
 }
 
-.related-product-item {
+/* .related-product-item {
     background-color: #444;
     margin: 30px auto;
     border-radius: 8px;
@@ -423,7 +423,7 @@ select#lista:focus {
     color: #00bcd4;
     font-size: 1.4rem;
     margin-bottom: 15px;
-}
+} */
 
 .product-image-gallery {
     display: flex;
