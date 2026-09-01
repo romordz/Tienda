@@ -115,7 +115,7 @@ $page_title = "Detalle del Producto";
 
                         <label for="privacy">Privacidad</label>
                         <select id="privacy" name="privacy">
-                            <option value="público" <?php echo ($_SESSION['privacy'] == 'público') ? 'selected' : ''; ?>>
+                            <option value="público" <?php echo ($_SESSION['privacy'] == 'publico') ? 'selected' : ''; ?>>
                                 Público</option>
                             <option value="privado" <?php echo ($_SESSION['privacy'] == 'privado') ? 'selected' : ''; ?>>
                                 Privado</option>
