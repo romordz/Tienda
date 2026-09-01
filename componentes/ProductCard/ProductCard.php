@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../../php/config.php';
 function renderProductoCard(array $producto, string $modo = 'thumb', bool $usarOnclick = true): void
 {
     $imagenes = !empty($producto['imagenes_json'])
@@ -14,7 +15,7 @@ function renderProductoCard(array $producto, string $modo = 'thumb', bool $usarO
         : urlFor('/Recursos/default.jpg');
 
     $nombre = htmlspecialchars($producto['nombre'] ?? '');
-    $destino = 'pantallas/producto_detalle.php?id=' . urlencode($producto['id']);
+    $destino = urlFor('pantallas/producto_detalle.php?id=' . urlencode($producto['id']));
     $claseModo = $modo === 'grid' ? 'producto-card--grid' : 'producto-card--thumb';
 
     $accionClick = $usarOnclick
