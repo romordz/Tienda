@@ -2,6 +2,7 @@
 session_start();
 require __DIR__ . '/../php/config.php';
 include __DIR__ . '/../php/productos/get_productos.php';
+require_once __DIR__ . '/../componentes/ProductCard.php';
 
 $page_title = "Productos";
 ?>
@@ -13,6 +14,7 @@ $page_title = "Productos";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= urlFor('css/SPrincipal.css') ?>">
     <link rel="stylesheet" href="<?= urlFor('css/SProductos.css') ?>">
+    <link rel="stylesheet" href="<?= urlFor('componentes/ProductCard/ProductCard.css') ?>">
     <title>productos</title>
 </head>
 
@@ -41,26 +43,7 @@ $page_title = "Productos";
                     <?php $categoriaActual = $producto['categoria_nombre']; ?>
                 <?php endif; ?>
 
-                <div class="product-item" onclick="checkSession('producto_detalle.php?id=<?php echo $producto['id']; ?>');">
-                    <a href="javascript:void(0);">
-                        <?php
-                        $imagenes = json_decode($producto['imagenes_json'], true);
-                        if (!empty($imagenes) && isset($imagenes[0])): ?>
-                             <img src="<?php echo str_starts_with($imagenes[0], 'http') ? htmlspecialchars($imagenes[0]) : 'data:image/jpeg;base64,' . htmlspecialchars($imagenes[0]); ?>" alt="Imagen del Producto">
-                        <?php else: ?>
-                            <img src="/Recursos/default.jpg" alt="Imagen no disponible">
-                        <?php endif; ?>
-                    </a>
-
-                    <h3><?php echo htmlspecialchars($producto['nombre']); ?></h3>
-                    <p class="description"><?php echo htmlspecialchars($producto['descripcion']); ?></p>
-
-                    <?php if ($producto['para_cotizar'] == 1): ?>
-                        <p class="price">Cotización disponible</p>
-                    <?php else: ?>
-                        <p class="price">$<?php echo number_format($producto['precio'], 2); ?></p>
-                    <?php endif; ?>
-                </div>
+                <?php renderProductoCard($producto, 'grid'); ?>
 
             <?php endforeach; ?>
         </div>

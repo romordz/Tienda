@@ -14,7 +14,7 @@ html {
     gap: 20px;
 }
 
-.product-item {
+/* .product-item {
     background-color: #1e272e;
     border-radius: 10px;
     padding: 15px;
@@ -59,7 +59,7 @@ html {
     font-size: 1.2rem;
     color: #27ae60;
     margin: 10px 0;
-}
+} */
 
 .btn-add {
     background-color: #f39c12;

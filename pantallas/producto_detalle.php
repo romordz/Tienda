@@ -2,6 +2,7 @@
 session_start();
 require __DIR__ . '/../php/config.php';
 include __DIR__ . '/../php/productos/get_producto_detalle.php';
+require_once __DIR__ . '/../componentes/ProductCard.php';
 
 $producto_id = $_GET['id'] ?? null;
 $detalles_producto = obtener_producto_detalle($producto_id);
@@ -37,6 +38,7 @@ if (!function_exists('urlFor')) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= urlFor('css/SPrincipal.css') ?>">
     <link rel="stylesheet" href="<?= urlFor('css/SProductoDetalle.css') ?>">
+    <link rel="stylesheet" href="<?= urlFor('componentes/ProductCard/ProductCard.css') ?>">
     <title>Detalle del Producto</title>
 </head>
 
@@ -200,18 +202,7 @@ if (!function_exists('urlFor')) {
         <div class="related-products-container">
             <?php if (!empty($productos_vendedor)): ?>
                 <?php foreach ($productos_vendedor as $producto): ?>
-                    <a href="javascript:void(0);"
-                        onclick="checkSession('producto_detalle.php?id=<?php echo $producto['id']; ?>');">
-                        <?php
-                        $imagenes = json_decode($producto['imagenes_json'], true);
-                        $imagenPrincipal = $imagenes[0] ?? '/Recursos/default.jpg';
-                        ?>
-                        <div class="related-product-item">
-                            <img src="<?php echo htmlspecialchars($imagenPrincipal); ?>"
-                                alt="Imagen de <?php echo htmlspecialchars($producto['nombre']); ?>">
-                    </a>
-                    <p><?php echo htmlspecialchars($producto['nombre']); ?></p>
-                    <p>$<?php echo number_format($producto['precio'], 2); ?></p>
+                    <?php renderProductoCard($producto, 'grid'); ?>
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
@@ -223,18 +214,7 @@ if (!function_exists('urlFor')) {
         <div class="related-products-container">
             <?php if (!empty($productos_categoria)): ?>
                 <?php foreach ($productos_categoria as $producto): ?>
-                    <a href="javascript:void(0);"
-                        onclick="checkSession('producto_detalle.php?id=<?php echo $producto['id']; ?>');">
-                        <?php
-                        $imagenes = json_decode($producto['imagenes_json'], true);
-                        $imagenPrincipal = $imagenes[0] ?? '/Recursos/default.jpg';
-                        ?>
-                        <div class="related-product-item">
-                            <img src="<?php echo htmlspecialchars($imagenPrincipal); ?>"
-                                alt="Imagen de <?php echo htmlspecialchars($producto['nombre']); ?>">
-                    </a>
-                    <p><?php echo htmlspecialchars($producto['nombre']); ?></p>
-                    <p>$<?php echo number_format($producto['precio'], 2); ?></p>
+                    <?php renderProductoCard($producto, 'grid'); ?>
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
@@ -246,18 +226,7 @@ if (!function_exists('urlFor')) {
         <div class="related-products-container">
             <?php if (!empty($productos_likes)): ?>
                 <?php foreach ($productos_likes as $producto): ?>
-                    <a href="javascript:void(0);"
-                        onclick="checkSession('producto_detalle.php?id=<?php echo $producto['id']; ?>');">
-                        <?php
-                        $imagenes = json_decode($producto['imagenes_json'], true);
-                        $imagenPrincipal = $imagenes[0] ?? '/Recursos/default.jpg';
-                        ?>
-                        <div class="related-product-item">
-                            <img src="<?php echo htmlspecialchars($imagenPrincipal); ?>"
-                                alt="Imagen de <?php echo htmlspecialchars($producto['nombre']); ?>">
-                    </a>
-                    <p><?php echo htmlspecialchars($producto['nombre']); ?></p>
-                    <p>$<?php echo number_format($producto['precio'], 2); ?></p>
+                    <?php renderProductoCard($producto, 'grid'); ?>
                 </div>
             <?php endforeach; ?>
         <?php else: ?>

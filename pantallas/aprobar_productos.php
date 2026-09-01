@@ -1,6 +1,7 @@
 <?php
 require __DIR__ . '/../php/config.php';
 require __DIR__ . '/../php/productos/aprobar_producto.php';
+require_once __DIR__ . '/../componentes/ProductCard.php';
 
 if ($_SESSION['role'] !== 'administrador') {
     echo "Acceso denegado.";
@@ -19,55 +20,44 @@ $page_title = "Estado de productos";
     <title>Aprobar productos</title>
     <link rel="stylesheet" href="<?= urlFor('css/Sprincipal.css') ?>">
     <link rel="stylesheet" href="<?= urlFor('css/SAprobar.css') ?>">
+    <link rel="stylesheet" href="<?= urlFor('componentes/ProductCard/ProductCard.css') ?>">
 </head>
 
 <body>
-     <?php require __DIR__ . '/../componentes/Header/Header.php'; ?>
+    <?php require __DIR__ . '/../componentes/Header/Header.php'; ?>
     <h1>productos Pendientes</h1>
     <table>
-    <tr>
-        <th>Nombre</th>
-        <th>Descripción</th>
-        <th>Precio</th>
-        <th>Imagen</th>
-        <th>Acciones</th>
-    </tr>
-
-    <?php foreach ($productos as $producto): ?>
         <tr>
-            <td><?php echo htmlspecialchars($producto['nombre']); ?></td>
-            <td><?php echo htmlspecialchars($producto['descripcion']); ?></td>
-
-            <td>
-                <?php if (isset($producto['para_cotizar']) && $producto['para_cotizar'] == 1): ?>
-                    <span>Cotizacion</span>
-                <?php else: ?>
-                    $<?php echo number_format($producto['precio'], 2); ?>
-                <?php endif; ?>
-            </td>
-
-            <td>
-                <?php if (!empty($producto['imagenes_json'])): ?>
-                    <?php
-                    $imagenesArray = json_decode($producto['imagenes_json'], true);
-                    foreach ($imagenesArray as $imagen): ?>
-                        <img src="data:image/jpeg;base64,<?php echo $imagen; ?>"
-                             alt="<?php echo htmlspecialchars($producto['nombre']); ?>"
-                             style="width: 100px; height: auto; margin-right: 5px;">
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <p>No disponible</p>
-                <?php endif; ?>
-            </td>
-            <td>
-                <form method="post" action="<?= urlFor('php/productos/aprobar_producto.php') ?>">
-                    <input type="hidden" name="producto_id" value="<?php echo $producto['id']; ?>">
-                    <button type="submit" class="btn-approve">Aprobar</button>
-                </form>
-            </td>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Imagen</th>
+            <th>Acciones</th>
         </tr>
-    <?php endforeach; ?>
-</table>
+
+        <?php foreach ($productos as $producto): ?>
+            <tr>
+                <td><?php echo htmlspecialchars($producto['nombre']); ?></td>
+                <td><?php echo htmlspecialchars($producto['descripcion']); ?></td>
+
+                <td>
+                    <?php if (isset($producto['para_cotizar']) && $producto['para_cotizar'] == 1): ?>
+                        <span>Cotizacion</span>
+                    <?php else: ?>
+                        $<?php echo number_format($producto['precio'], 2); ?>
+                    <?php endif; ?>
+                </td>
+
+                <td><?php renderTodasImagenes($producto); ?></td>
+                <td>
+                    <form method="post" action="<?= urlFor('php/productos/aprobar_producto.php') ?>">
+                        <input type="hidden" name="producto_id" value="<?php echo $producto['id']; ?>">
+                        <button type="submit" class="btn-approve">Aprobar</button>
+                    </form>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
 
     <script src="<?= urlFor('js/sessionCheck.js') ?>"></script>
 </body>

@@ -364,7 +364,7 @@ select#lista:focus {
 }
 
 /* productos relacionados */
-.related-products {
+/* .related-products {
     max-width: 900px;
     margin: 30px auto;
     padding: 20px;
@@ -417,7 +417,7 @@ select#lista:focus {
     color: #f0f0f0;
     font-size: 1rem;
     margin-bottom: 10px;
-}
+} */
 
 .related-product-item .price {
     color: #00bcd4;
