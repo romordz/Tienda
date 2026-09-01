@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindParam(':usuario_id', $usuario_id, PDO::PARAM_INT);
 
     if ($stmt->execute()) {
-        header("Location: " . urlFor('pantallas/aprobar_Productos.php'));
+        header("Location: " . urlFor('pantallas/aprobar_productos.php'));
         exit();
     } else {
         echo "Error al aprobar el producto.";

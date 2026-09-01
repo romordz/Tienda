@@ -247,5 +247,4 @@ $page_title = "Detalle del Producto";
     <script src="<?= urlFor('js/listas.js') ?>"></script>
     <script src="<?= urlFor('js/JEditPerfil.js') ?>"></script>
 </body>
-
 </html>

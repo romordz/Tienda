@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . '/../DB/conexion.php';
+require_once __DIR__ . '/../../componentes/ProductCard/ProductCard.php';
 
 $sql = "SELECT id, nombre, descripcion, precio, cantidad_disponible, likes, dislikes, imagenes_json, video, para_cotizar
 FROM productos 
@@ -42,14 +43,7 @@ if ($productos) {
         echo "<td>" . htmlspecialchars($producto['dislikes']) . "</td>";
 
         echo "<td>";
-        if (!empty($producto['imagenes_json'])) {
-            $imagenesArray = json_decode($producto['imagenes_json'], true);
-            foreach ($imagenesArray as $imagen) {
-                echo "<img src='data:image/jpeg;base64,{$imagen}' alt='" . htmlspecialchars($producto['nombre']) . "' class='producto-imagen' style='max-width: 100px; max-height: 100px; margin-right: 5px;'/>";
-            }
-        } else {
-            echo "No hay imágenes disponibles.";
-        }
+        renderTodasImagenes($producto, 100);
         echo "</td>";
 
         echo "<td>";
@@ -79,7 +73,6 @@ if ($productos) {
             echo "No hay video disponible.";
         }
         echo "</td>";
-
 
         echo "</tr>";
     }

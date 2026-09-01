@@ -46,7 +46,7 @@ function renderTodasImagenes(array $producto, int $anchoPx = 100): void
         : [];
 
     if (empty($imagenes)) {
-        echo '<p>No disponible</p>';
+        echo '<p>No hay imagen disponible</p>';
         return;
     }
 
