@@ -16,17 +16,15 @@ function renderProductoCard(array $producto, string $modo = 'thumb', bool $usarO
     $nombre = htmlspecialchars($producto['nombre'] ?? '');
     $destino = 'producto_detalle.php?id=' . urlencode($producto['id']);
     $claseModo = $modo === 'grid' ? 'producto-card--grid' : 'producto-card--thumb';
+
+    $accionClick = $usarOnclick
+        ? "checkSession('{$destino}')"
+        : "window.location.href='" . htmlspecialchars($destino) . "'";
     ?>
-    <div class="producto-card <?= $claseModo ?>">
-        <?php if ($usarOnclick): ?>
-            <a href="javascript:void(0);" onclick="checkSession('<?= $destino ?>');">
-        <?php else: ?>
-            <a href="<?= htmlspecialchars($destino) ?>">
-        <?php endif; ?>
-            <div class="producto-card-img-wrap">
-                <img src="<?= $src ?>" alt="Imagen de <?= $nombre ?>">
-            </div>
-        </a>
+    <div class="producto-card <?= $claseModo ?>" onclick="<?= $accionClick ?>" style="cursor: pointer;">
+        <div class="producto-card-img-wrap">
+            <img src="<?= $src ?>" alt="Imagen de <?= $nombre ?>">
+        </div>
 
         <?php if ($modo === 'grid'): ?>
             <h3><?= $nombre ?></h3>
