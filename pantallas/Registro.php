@@ -26,7 +26,6 @@
         <select id="role" name="role" required>
           <option value="vendedor">Vendedor</option>
           <option value="cliente">Cliente</option>
-          <option value="administrador">Administrador</option>
         </select>
       </div>
 

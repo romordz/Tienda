@@ -13,6 +13,7 @@ $page_title = "Bienvenido a nuestra tienda";
     <title>Tienda en Línea</title>
     <link rel="stylesheet" href="<?= urlFor('css/SPrincipal.css') ?>">
     <link rel="stylesheet" href="<?= urlFor('componentes/ProductCard/ProductCard.css') ?>">
+    <link rel="stylesheet" href="<?= urlFor('componentes/Footer/SFooter.css') ?>">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 

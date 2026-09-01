@@ -1,5 +1,4 @@
 <?php
-// Ensure config is loaded
 if (!function_exists('urlFor')) {
     require_once __DIR__ . '/../../php/config.php';
 }
