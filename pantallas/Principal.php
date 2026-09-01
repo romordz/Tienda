@@ -46,5 +46,4 @@ $page_title = "Bienvenido a nuestra tienda";
     <script src="<?= urlFor('js/buscarProducto.js') ?>"></script>
     <script src="<?= urlFor('js/obtenerVendedores.js') ?>"></script>
 </body>
-
 </html>

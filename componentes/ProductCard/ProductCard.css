@@ -1,11 +1,16 @@
 /* ===== Base compartida ===== */
 .producto-card {
-    border-radius: 10px;
     padding: 15px;
     margin: 10px;
     text-align: center;
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
+    background-color: #1e272e;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
 }
 
 .producto-card:hover {
@@ -98,4 +103,12 @@
 
 .related-products-container .producto-card .price {
     font-size: 1rem;
+}
+
+.related-products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
 }
