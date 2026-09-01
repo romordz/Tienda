@@ -2,7 +2,7 @@
 session_start();
 require __DIR__ . '/../DB/conexion.php';
 require __DIR__ . '/../config.php';
-require __DIR__ . '/../../componentes/ProductoCard/ProductoCard.php';
+require __DIR__ . '/../../componentes/ProductCard/ProductCard.php';
 
 $query = "SELECT id, nombre, descripcion, imagenes_json, precio, para_cotizar, likes 
           FROM productos 
