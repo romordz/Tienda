@@ -50,12 +50,16 @@ if (!function_exists('urlFor')) {
             <h3>Vendedor</h3>
             <div class="seller-profile" onclick="irAPerfil(<?php echo $producto['vendedor_id']; ?>)"
                 style="cursor: pointer;">
-               <?php if (!empty($producto['vendedor_avatar'])): ?>
-                    <img src="<?php echo htmlspecialchars($producto['vendedor_avatar']); ?>"
-                        alt="Avatar del Vendedor" class="seller-avatar">
-                <?php else: ?>
-                    <img src="<?php echo $basePath; ?>/Recursos/default.jpg" alt="Avatar por Defecto" class="seller-avatar">
-                <?php endif; ?>
+                <?php
+                $avatarVendedor = $producto['vendedor_avatar'] ?? '';
+                $avatarSrc = !empty($avatarVendedor)
+                    ? (str_starts_with($avatarVendedor, 'http')
+                        ? htmlspecialchars($avatarVendedor)
+                        : 'data:image/jpeg;base64,' . htmlspecialchars($avatarVendedor))
+                    : urlFor('/Recursos/default.jpg');
+                ?>
+                <img src="<?= $avatarSrc ?>" alt="<?= htmlspecialchars($producto['vendedor_nombre']) ?>"
+                    class="seller-avatar">
                 <p><?php echo htmlspecialchars($producto['vendedor_nombre']); ?></p>
             </div>
         </div>
@@ -66,7 +70,8 @@ if (!function_exists('urlFor')) {
                     <div class="carousel-inner">
                         <?php foreach ($imagenesArray as $index => $imagenBase64): ?>
                             <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
-                                <img src="<?php echo str_starts_with($imagenBase64, 'http') ? htmlspecialchars($imagenBase64) : 'data:image/jpeg;base64,' . htmlspecialchars($imagenBase64); ?>" alt="Imagen del Producto">
+                                <img src="<?php echo str_starts_with($imagenBase64, 'http') ? htmlspecialchars($imagenBase64) : 'data:image/jpeg;base64,' . htmlspecialchars($imagenBase64); ?>"
+                                    alt="Imagen del Producto">
                             </div>
                         <?php endforeach; ?>
                     </div>
@@ -174,13 +179,20 @@ if (!function_exists('urlFor')) {
             if (!empty($comentarios)) {
                 foreach ($comentarios as $comentario) {
                     echo "<div class='comment'>";
-                    if (!empty($comentario['avatar'])) {
-                        echo "<img src='" . htmlspecialchars($comentario['avatar']) . "' alt='Avatar del Usuario' class='comment-avatar' onclick='irAPerfil(" . $comentario['usuario_id'] . ")' style='cursor: pointer;'>";
-                    } else {
-                         echo "<img src='" . urlFor('/Recursos/default.jpg') . "alt='Avatar por Defecto' class='comment-avatar' onclick='irAPerfil(" . $comentario['usuario_id'] . ")' style='cursor: pointer;'>";
-                    }
-                    echo "<strong>" . htmlspecialchars($comentario['nombre_usuario']) . "</strong> <p> <br>" . htmlspecialchars($comentario['comentario']) . "</p>";
+
+                    $avatarComentario = $comentario['avatar'] ?? '';
+                    $avatarSrc = !empty($avatarComentario)
+                        ? (str_starts_with($avatarComentario, 'http')
+                            ? htmlspecialchars($avatarComentario)
+                            : 'data:image/jpeg;base64,' . htmlspecialchars($avatarComentario))
+                        : urlFor('/Recursos/default.jpg');
+
+                    $nombreUsuario = htmlspecialchars($comentario['nombre_usuario']);
+
+                    echo "<img src='" . $avatarSrc . "' alt='" . $nombreUsuario . "' class='comment-avatar' onclick='irAPerfil(" . $comentario['usuario_id'] . ")' style='cursor: pointer;'>";
+                    echo "<strong>" . $nombreUsuario . "</strong> <p> <br>" . htmlspecialchars($comentario['comentario']) . "</p>";
                     echo "<p class='comment-date'>" . $comentario['fecha'] . "</p>";
+
                     if ($_SESSION['role'] == 'administrador') {
                         echo "<form method='post' action='" . urlFor('php/comentarios/eliminar_comentario.php') . "'>";
                         echo "<input type='hidden' name='comentario_id' value='" . $comentario['id'] . "'>";
@@ -203,11 +215,10 @@ if (!function_exists('urlFor')) {
             <?php if (!empty($productos_vendedor)): ?>
                 <?php foreach ($productos_vendedor as $producto): ?>
                     <?php renderProductoCard($producto, 'grid'); ?>
-                </div>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <p>No hay productos relacionados del mismo vendedor.</p>
-        <?php endif; ?>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>No hay productos relacionados del mismo vendedor.</p>
+            <?php endif; ?>
         </div>
 
         <h3>productos de la misma categoría</h3>
@@ -215,11 +226,10 @@ if (!function_exists('urlFor')) {
             <?php if (!empty($productos_categoria)): ?>
                 <?php foreach ($productos_categoria as $producto): ?>
                     <?php renderProductoCard($producto, 'grid'); ?>
-                </div>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <p>No hay productos relacionados en esta categoría.</p>
-        <?php endif; ?>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>No hay productos relacionados en esta categoría.</p>
+            <?php endif; ?>
         </div>
 
         <h3>productos con más likes</h3>
@@ -227,16 +237,15 @@ if (!function_exists('urlFor')) {
             <?php if (!empty($productos_likes)): ?>
                 <?php foreach ($productos_likes as $producto): ?>
                     <?php renderProductoCard($producto, 'grid'); ?>
-                </div>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <p>No hay productos con muchos likes disponibles.</p>
-        <?php endif; ?>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>No hay productos con muchos likes disponibles.</p>
+            <?php endif; ?>
         </div>
     </section>
 
     <?php require __DIR__ . '/../componentes/Footer/Footer.php'; ?>
-    
+
     <script src="<?= urlFor('js/producto_detalle.js') ?>"></script>
     <script src="<?= urlFor('js/obtenerVendedores.js') ?>"></script>
     <script src="<?= urlFor('js/sessionCheck.js') ?>"></script>

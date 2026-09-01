@@ -23,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindParam(':usuario_id', $usuario_id, PDO::PARAM_INT);
 
     if ($stmt->execute()) {
-        echo "Producto aprobado exitosamente.";
         header("Location: " . urlFor('pantallas/aprobar_Productos.php'));
         exit();
     } else {
