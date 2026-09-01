@@ -2,7 +2,7 @@
 session_start();
 require __DIR__ . '/../php/config.php';
 include __DIR__ . '/../php/productos/get_producto_detalle.php';
-require_once __DIR__ . '/../componentes/ProductCard.php';
+require_once __DIR__ . '/../componentes/ProductCard/ProductCard.php';
 
 $producto_id = $_GET['id'] ?? null;
 $detalles_producto = obtener_producto_detalle($producto_id);

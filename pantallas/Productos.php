@@ -2,7 +2,7 @@
 session_start();
 require __DIR__ . '/../php/config.php';
 include __DIR__ . '/../php/productos/get_productos.php';
-require_once __DIR__ . '/../componentes/ProductCard.php';
+require_once __DIR__ . '/../componentes/ProductCard/ProductCard.php';
 
 $page_title = "Productos";
 ?>

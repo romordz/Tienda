@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/../php/config.php';
 require __DIR__ . '/../php/productos/aprobar_producto.php';
-require_once __DIR__ . '/../componentes/ProductCard.php';
+require_once __DIR__ . '/../componentes/ProductCard/ProductCard.php';
 
 if ($_SESSION['role'] !== 'administrador') {
     echo "Acceso denegado.";
