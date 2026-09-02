@@ -82,7 +82,8 @@ $page_title = "Detalle del Producto";
             <?php if ($session_user_id == $profile_user_id): ?>
                 <div id="edit-form" style="display: none;">
                     <h2>Editar Perfil</h2>
-                    <form method="POST" action="<?= urlFor('php/perfil/actualizar_perfil.php') ?>" enctype="multipart/form-data">
+                    <form method="POST" action="<?= urlFor('php/perfil/actualizar_perfil.php') ?>"
+                        enctype="multipart/form-data">
                         <label for="username">Nombre de Usuario</label>
                         <input type="text" id="username" name="username" value="<?php echo $_SESSION['username']; ?>"
                             data-current-username="<?php echo $_SESSION['username']; ?>" required
@@ -236,7 +237,7 @@ $page_title = "Detalle del Producto";
             <?php endif; ?>
         </div>
     </main>
-    
+
     <?php require __DIR__ . '/../componentes/Footer/Footer.php'; ?>
 
     <script>
@@ -244,7 +245,8 @@ $page_title = "Detalle del Producto";
     </script>
 
     <script src="<?= urlFor('js/sessionCheck.js') ?>"></script>
-    <script src="<?= urlFor('js/Listas.js') ?>"></script>
     <script src="<?= urlFor('js/JEditPerfil.js') ?>"></script>
+    <script src="<?= urlFor('js/Listas.js') ?>"></script>
 </body>
+
 </html>

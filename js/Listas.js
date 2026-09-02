@@ -8,14 +8,6 @@
 
     const { API_BASE } = APP_PATHS;
 
-    const btnEdit = document.getElementById('btn-edit');
-    if (btnEdit) {
-        btnEdit.addEventListener('click', function () {
-            var editForm = document.getElementById('edit-form');
-            editForm.style.display = (editForm.style.display === 'none') ? 'block' : 'none';
-        });
-    }
-
     const btnCrearLista = document.getElementById('btn-crear-lista');
     if (btnCrearLista) {
         btnCrearLista.addEventListener('click', function () {
