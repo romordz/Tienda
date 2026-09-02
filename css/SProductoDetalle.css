@@ -7,11 +7,11 @@ body {
 }
 
 
-.product-detail {
+.product-detail-info {
     display: grid;
     grid-template-columns: minmax(300px, 450px) minmax(300px, 1fr);
     gap: 30px;
-    align-items: center;
+    align-items: start;
     justify-items: center;
     max-width: 1000px;
     margin: 30px auto;
@@ -51,7 +51,7 @@ body {
     border-radius: 8px;
 }
 
-.product-info h2 {
+.product-detail-info h2 {
     color: #ff9800;
     font-size: 2rem;
     margin-bottom: 15px;
@@ -457,7 +457,7 @@ select#lista:focus {
 }
 
 @media (max-width: 768px) {
-    .product-detail {
+    .product-detail-info {
         grid-template-columns: 1fr;
     }
 

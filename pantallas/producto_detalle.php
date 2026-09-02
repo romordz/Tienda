@@ -36,8 +36,8 @@ if (!function_exists('urlFor')) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?= urlFor('css/SProductoDetalle.css') ?>">
     <link rel="stylesheet" href="<?= urlFor('css/SPrincipal.css') ?>">
+    <link rel="stylesheet" href="<?= urlFor('css/SProductoDetalle.css') ?>">
     <link rel="stylesheet" href="<?= urlFor('componentes/ProductCard/ProductCard.css') ?>">
     <title>Detalle del Producto</title>
 </head>
@@ -45,7 +45,7 @@ if (!function_exists('urlFor')) {
 <body>
     <?php require __DIR__ . '/../componentes/Header/Header.php'; ?>
 
-    <section class="product-detail">
+    <section class="product-detail-info">
         <div class="product-left">
             <div class="seller-info">
                 <h3>Vendedor</h3>
