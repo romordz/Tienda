@@ -160,4 +160,6 @@
 
         xhr.send('producto_id=' + encodeURIComponent(productoId) + '&lista_id=' + encodeURIComponent(listaId));
     }
+
+    window.mostrarDetallesLista = mostrarDetallesLista;
 })();
