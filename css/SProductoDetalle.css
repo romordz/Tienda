@@ -8,16 +8,15 @@ body {
 
 
 .product-detail {
-    width: 100%;
     display: grid;
-    grid-template-columns: minmax(300px, 450px) minmax(300px, 1fr);
+    grid-template-columns: minmax(350px, 550px) minmax(350px, 1fr);
     gap: 30px;
     align-items: start;
     justify-items: center;
-    max-width: 1000px;
+    max-width: 1300px;
     margin: 30px auto;
     padding: 20px;
-    background-color: #c00909;
+    background-color: #333;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
