@@ -65,24 +65,28 @@ function toggleFormularioTarjeta() {
     }
 
     async function convertirACurrency(totalMXN, currency) {
-        const apiKey = 'c21cbe079e98f4b8a1e96c84';
-        const endpoint = `https://v6.exchangerate-api.com/v6/${apiKey}/pair/MXN/${currency}`;
+    const endpoint = '../php/pago/convertir_moneda.php';
 
-        try {
-            const response = await fetch(endpoint);
-            const data = await response.json();
+    try {
+        const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ totalMXN: totalMXN, currency: currency })
+        });
+        const data = await response.json();
 
-            if (data.conversion_rate) {
-                const totalUSD = (totalMXN * data.conversion_rate).toFixed(2);
-                document.getElementById('resultado-conversion').innerText = `Total en ${currency}: $${totalUSD} ${currency}`;
-            } else {
-                document.getElementById('resultado-conversion').innerText = "Error en la conversión. Inténtalo más tarde.";
-            }
-        } catch (error) {
-            document.getElementById('resultado-conversion').innerText = "Error de conexión. Verifica tu internet.";
-            console.error("Error en la API:", error);
+        if (data.success) {
+            document.getElementById('resultado-conversion').innerText = `Total en ${currency}: $${data.total} ${currency}`;
+        } else {
+            document.getElementById('resultado-conversion').innerText = "Error en la conversión. Inténtalo más tarde.";
         }
+    } catch (error) {
+        document.getElementById('resultado-conversion').innerText = "Error de conexión. Verifica tu internet.";
+        console.error("Error en la API:", error);
     }
+}
 
     window.verificarTarjeta = verificarTarjeta;
     window.validateExpirationDate = validateExpirationDate;

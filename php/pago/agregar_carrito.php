@@ -26,7 +26,7 @@ if (isset($_POST['add_to_cart'])) {
 
     if (isset($_SESSION['carrito'][$producto_id])) {
         $_SESSION['carrito'][$producto_id]['cantidad'] += $cantidad;
-        $mensaje_confirmacion = "¡La cantidad del producto se ha actualizado en el carrito! 🎉";
+        $mensaje_confirmacion = "¡La cantidad del producto se ha actualizado en el carrito!";
     } else {
         $_SESSION['carrito'][$producto_id] = [
             'nombre' => $producto['nombre'],
@@ -34,7 +34,7 @@ if (isset($_POST['add_to_cart'])) {
             'cantidad' => $cantidad,
             'imagenes' => $producto['imagenes']
         ];
-        $mensaje_confirmacion = "¡El producto ha sido añadido al carrito con éxito! 🛒✨";
+        $mensaje_confirmacion = "¡El producto ha sido añadido al carrito con éxito!";
     }
 
     echo "<script>window.location.href = '/pantallas/producto_detalle.php?id=$producto_id';</script>";
