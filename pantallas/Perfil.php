@@ -180,7 +180,7 @@ $page_title = "Detalle del Producto";
             <?php endif; ?>
 
             <div id="popup-detalle-lista" class="popup" style="display: none;">
-                <div class="popup-content">
+                <div class="popup-content popup-content--wide">
                     <span class="close" id="close-popup-detalle">&times;</span>
                     <div class="detalle-lista-section">
                         <h2>Detalles de la Lista</h2>

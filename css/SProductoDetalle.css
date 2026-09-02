@@ -391,12 +391,11 @@ select#lista:focus {
 .carousel-container {
     position: relative;
     max-width: 500px;
-    margin: 0 auto; 
+    margin: 0 auto;
     overflow: hidden;
     background-color: #3d3c3c;
     border-radius: 10px;
     padding: 20px;
-    
 }
 
 .carousel-inner {
@@ -406,18 +405,23 @@ select#lista:focus {
 
 .carousel-item {
     min-width: 100%;
-    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.carousel-item-img-wrap {
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 8px;
+}
 
-.carousel-item img {
+.carousel-item-img-wrap img {
     width: 100%;
-    max-width: 400px;
-    height: auto;
+    height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 .carousel-btn {
