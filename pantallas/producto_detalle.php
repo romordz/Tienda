@@ -148,6 +148,8 @@ if (!function_exists('urlFor')) {
                             allowfullscreen></iframe>
                     </div>
                 </div>
+            <?php else: ?>
+                 <p class="product-video">No hay video disponible.</p>
             <?php endif; ?>
             <div class="likes-dislikes">
                 <p>👍 Likes: <?php echo isset($producto['likes']) ? $producto['likes'] : 0; ?></p>
