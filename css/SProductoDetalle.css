@@ -8,6 +8,7 @@ body {
 
 
 .product-detail {
+    width: 100%;
     display: grid;
     grid-template-columns: minmax(300px, 450px) minmax(300px, 1fr);
     gap: 30px;
