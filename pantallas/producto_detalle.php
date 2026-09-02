@@ -71,8 +71,10 @@ if (!function_exists('urlFor')) {
                         <div class="carousel-inner">
                             <?php foreach ($imagenesArray as $index => $imagenBase64): ?>
                                 <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
-                                    <img src="<?php echo str_starts_with($imagenBase64, 'http') ? htmlspecialchars($imagenBase64) : 'data:image/jpeg;base64,' . htmlspecialchars($imagenBase64); ?>"
-                                        alt="Imagen del Producto">
+                                    <div class="carousel-item-img-wrap">
+                                        <img src="<?php echo str_starts_with($imagenBase64, 'http') ? htmlspecialchars($imagenBase64) : 'data:image/jpeg;base64,' . htmlspecialchars($imagenBase64); ?>"
+                                            alt="Imagen del Producto">
+                                    </div>
                                 </div>
                             <?php endforeach; ?>
                         </div>
