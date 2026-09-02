@@ -46,41 +46,43 @@ if (!function_exists('urlFor')) {
     <?php require __DIR__ . '/../componentes/Header/Header.php'; ?>
 
     <section class="product-detail">
-        <div class="seller-info">
-            <h3>Vendedor</h3>
-            <div class="seller-profile" onclick="irAPerfil(<?php echo $producto['vendedor_id']; ?>)"
-                style="cursor: pointer;">
-                <?php
-                $avatarVendedor = $producto['vendedor_avatar'] ?? '';
-                $avatarSrc = !empty($avatarVendedor)
-                    ? (str_starts_with($avatarVendedor, 'http')
-                        ? htmlspecialchars($avatarVendedor)
-                        : 'data:image/jpeg;base64,' . htmlspecialchars($avatarVendedor))
-                    : urlFor('/Recursos/default.jpg');
-                ?>
-                <img src="<?= $avatarSrc ?>" alt="<?= htmlspecialchars($producto['vendedor_nombre']) ?>"
-                    class="seller-avatar">
-                <p><?php echo htmlspecialchars($producto['vendedor_nombre']); ?></p>
-            </div>
-        </div>
-
-        <div class="product-image-gallery">
-            <?php if (!empty($imagenesArray)): ?>
-                <div class="carousel-container">
-                    <div class="carousel-inner">
-                        <?php foreach ($imagenesArray as $index => $imagenBase64): ?>
-                            <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
-                                <img src="<?php echo str_starts_with($imagenBase64, 'http') ? htmlspecialchars($imagenBase64) : 'data:image/jpeg;base64,' . htmlspecialchars($imagenBase64); ?>"
-                                    alt="Imagen del Producto">
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                    <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
-                    <button class="carousel-btn next" onclick="moveCarousel(1)">&#10095;</button>
+        <div class="product-left">
+            <div class="seller-info">
+                <h3>Vendedor</h3>
+                <div class="seller-profile" onclick="irAPerfil(<?php echo $producto['vendedor_id']; ?>)"
+                    style="cursor: pointer;">
+                    <?php
+                    $avatarVendedor = $producto['vendedor_avatar'] ?? '';
+                    $avatarSrc = !empty($avatarVendedor)
+                        ? (str_starts_with($avatarVendedor, 'http')
+                            ? htmlspecialchars($avatarVendedor)
+                            : 'data:image/jpeg;base64,' . htmlspecialchars($avatarVendedor))
+                        : urlFor('/Recursos/default.jpg');
+                    ?>
+                    <img src="<?= $avatarSrc ?>" alt="<?= htmlspecialchars($producto['vendedor_nombre']) ?>"
+                        class="seller-avatar">
+                    <p><?php echo htmlspecialchars($producto['vendedor_nombre']); ?></p>
                 </div>
-            <?php else: ?>
-                <p>No hay imágenes disponibles para este producto.</p>
-            <?php endif; ?>
+            </div>
+
+            <div class="product-image-gallery">
+                <?php if (!empty($imagenesArray)): ?>
+                    <div class="carousel-container">
+                        <div class="carousel-inner">
+                            <?php foreach ($imagenesArray as $index => $imagenBase64): ?>
+                                <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
+                                    <img src="<?php echo str_starts_with($imagenBase64, 'http') ? htmlspecialchars($imagenBase64) : 'data:image/jpeg;base64,' . htmlspecialchars($imagenBase64); ?>"
+                                        alt="Imagen del Producto">
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
+                        <button class="carousel-btn next" onclick="moveCarousel(1)">&#10095;</button>
+                    </div>
+                <?php else: ?>
+                    <p>No hay imágenes disponibles para este producto.</p>
+                <?php endif; ?>
+            </div>
         </div>
         <div class="product-info">
             <h2><?php echo isset($producto['nombre']) ? htmlspecialchars($producto['nombre']) : 'Producto no encontrado'; ?>
