@@ -194,20 +194,17 @@
   window.validateFullName = validateFullName;
   window.validatePassword = validatePassword;
 
-  document.addEventListener("DOMContentLoaded", function () {
-    var btnEdit = document.getElementById("btn-edit");
-    var editForm = document.getElementById("edit-form");
+  var btnEdit = document.getElementById("btn-edit");
+  var editForm = document.getElementById("edit-form");
 
-    if (btnEdit && editForm) {
-      btnEdit.addEventListener("click", function () {
-        var visible = editForm.style.display === "block";
-        editForm.style.display = visible ? "none" : "block";
-        btnEdit.textContent = visible ? "Editar Perfil" : "Cancelar Edición";
-      });
-    }
-  });
+  if (btnEdit && editForm) {
+    btnEdit.addEventListener("click", function () {
+      var visible = editForm.style.display === "block";
+      editForm.style.display = visible ? "none" : "block";
+      btnEdit.textContent = visible ? "Editar Perfil" : "Cancelar Edición";
+    });
+  }
 
-  document.addEventListener("DOMContentLoaded", function () {
   var form = document.querySelector("#edit-form form");
   if (form) {
     form.addEventListener("submit", function (e) {
@@ -216,5 +213,4 @@
       }
     });
   }
-});
 })();
