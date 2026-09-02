@@ -45,7 +45,7 @@ if (!function_exists('urlFor')) {
 <body>
     <?php require __DIR__ . '/../componentes/Header/Header.php'; ?>
 
-    <section class="product-detail-info">
+    <section class="product-detail">
         <div class="product-left">
             <div class="seller-info">
                 <h3>Vendedor</h3>
@@ -86,7 +86,7 @@ if (!function_exists('urlFor')) {
                 <?php endif; ?>
             </div>
         </div>
-        <div class="product-info">
+        <div class="product-detail-panel">
             <h2><?php echo isset($producto['nombre']) ? htmlspecialchars($producto['nombre']) : 'Producto no encontrado'; ?>
             </h2>
             <p class="description">
@@ -139,14 +139,14 @@ if (!function_exists('urlFor')) {
             <?php if (!empty($producto['video'])): ?>
                 <?php
                 $videoURL = json_decode($producto['video'], true);
-
                 preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $videoURL, $matches);
                 $videoID = $matches[1];
                 ?>
                 <div class="product-video">
-                    <iframe width="560" height="315"
-                        src="https://www.youtube.com/embed/<?php echo htmlspecialchars($videoID); ?>" frameborder="0"
-                        allowfullscreen></iframe>
+                    <div class="product-video-wrap">
+                        <iframe src="https://www.youtube.com/embed/<?php echo htmlspecialchars($videoID); ?>"
+                            allowfullscreen></iframe>
+                    </div>
                 </div>
             <?php endif; ?>
             <div class="likes-dislikes">
