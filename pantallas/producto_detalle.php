@@ -149,7 +149,7 @@ if (!function_exists('urlFor')) {
                     </div>
                 </div>
             <?php else: ?>
-                 <p class="product-video">No hay video disponible.</p>
+                 <p class="product-video-wrap product-video-wrap--empty">No hay video disponible.</p>
             <?php endif; ?>
             <div class="likes-dislikes">
                 <p>👍 Likes: <?php echo isset($producto['likes']) ? $producto['likes'] : 0; ?></p>
