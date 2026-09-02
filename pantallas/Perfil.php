@@ -244,7 +244,7 @@ $page_title = "Detalle del Producto";
     </script>
 
     <script src="<?= urlFor('js/sessionCheck.js') ?>"></script>
-    <script src="<?= urlFor('js/listas.js') ?>"></script>
+    <script src="<?= urlFor('js/Listas.js') ?>"></script>
     <script src="<?= urlFor('js/JEditPerfil.js') ?>"></script>
 </body>
 </html>
