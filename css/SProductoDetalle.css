@@ -38,6 +38,7 @@ body {
   justify-content: center;
   text-align: center;
   min-height: 550px;
+  min-width: 550px;
   padding: 15px;
   background-color: #444;
   border-radius: 8px;
@@ -220,12 +221,11 @@ body {
 }
 
 .product-video-wrap--empty {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #2a2a2a;
-  color: #aaa;
-  border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2a2a2a;
+    color: #aaa;
 }
 
 .product-video-wrap--empty p {
