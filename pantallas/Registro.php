@@ -17,7 +17,7 @@
     <form action="<?= urlFor('php/sesion/process_registration.php') ?>" method="POST" enctype="multipart/form-data">
       <div class="form-group">
         <label for="photo">Cargar foto:</label>
-        <input type="file" id="photo" name="photo" accept="image/jpeg, image/png, image/webp" required onblur="validateImage()" />
+        <input type="file" id="image" name="photo" accept="image/jpeg, image/png, image/webp" required onblur="validateImage()" />
         <span id="photo-error" class="error-message"></span>
       </div>
 
@@ -78,6 +78,6 @@
     </form>
   </div>
 
-  <script src="<?= urlFor('js/JRegistro.js') ?>"></script>
+  <script src="<?= urlFor('js/JValidaciones.js') ?>"></script>
 </body>
 </html>

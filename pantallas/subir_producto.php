@@ -35,7 +35,7 @@ require __DIR__ . '/../php/config.php';
                     <button id="btn-agregar-categoria" class="btn-agregar-categoria">Agregar Categoría</button>
 
                     <label for="imagenes">Imágenes (mínimo 3):</label>
-                    <input type="file" id="imagenes" name="imagenes[]" accept="image/jpeg, image/png, image/webp" multiple required onblur="validateImages()">
+                    <input type="file" id="image" name="imagenes[]" accept="image/jpeg, image/png, image/webp" multiple required onblur="validateImage()">
                     <span id="photo-error" class="error-message"></span>
 
                     <label for="video">Video (JSON):</label>
@@ -77,5 +77,6 @@ require __DIR__ . '/../php/config.php';
     <script src="<?= urlFor('js/agregarCategoria.js') ?>"></script>
     <script src="<?= urlFor('js/sessionCheck.js') ?>"></script>
     <script src="<?= urlFor('js/JSubirProducto.js') ?>"></script>
+    <script src="<?= urlFor('js/JValidaciones.js') ?>"></script>
 </body>
 </html>
