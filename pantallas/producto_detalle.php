@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../php/sesion/init.php'; 
+require __DIR__ . '/../php/sesion/init.php';
 require __DIR__ . '/../php/config.php';
 include __DIR__ . '/../php/productos/get_producto_detalle.php';
 require_once __DIR__ . '/../componentes/ProductCard/ProductCard.php';
@@ -136,20 +136,29 @@ if (!function_exists('urlFor')) {
             </div>
 
             <!--VIDEO -->
+            <!--VIDEO -->
             <?php if (!empty($producto['video'])): ?>
                 <?php
                 $videoURL = json_decode($producto['video'], true);
-                preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $videoURL, $matches);
-                $videoID = $matches[1];
+                $videoID = null;
+                
+                if (is_string($videoURL) && preg_match('/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/', $videoURL, $matches)) {
+                    $videoID = $matches[1] ?? null;
+                }
                 ?>
-                <div class="product-video">
-                    <div class="product-video-wrap">
-                        <iframe src="https://www.youtube.com/embed/<?php echo htmlspecialchars($videoID); ?>"
-                            allowfullscreen></iframe>
+
+                <?php if ($videoID): ?>
+                    <div class="product-video">
+                        <div class="product-video-wrap">
+                            <iframe src="https://www.youtube.com/embed/<?php echo htmlspecialchars($videoID); ?>"
+                                allowfullscreen></iframe>
+                        </div>
                     </div>
-                </div>
+                <?php else: ?>
+                    <p class="product-video-wrap product-video-wrap--empty">No hay video disponible.</p>
+                <?php endif; ?>
             <?php else: ?>
-                 <p class="product-video-wrap product-video-wrap--empty">No hay video disponible.</p>
+                <p class="product-video-wrap product-video-wrap--empty">No hay video disponible.</p>
             <?php endif; ?>
             <div class="likes-dislikes">
                 <p>👍 Likes: <?php echo isset($producto['likes']) ? $producto['likes'] : 0; ?></p>
