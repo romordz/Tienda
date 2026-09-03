@@ -1,5 +1,4 @@
 <?php
-require __DIR__ . '/../sesion/init.php'; 
 require __DIR__ . '/../DB/conexion.php';
 require __DIR__ . '/../config.php';
 require __DIR__ . '/../../componentes/ProductCard/ProductCard.php';

@@ -7,7 +7,6 @@ if ($_SESSION['role'] !== 'administrador') {
     echo "Acción no permitida.";
     exit();
 }
-//iba el asterisco
 $sql = "SELECT id, nombre, estado, descripcion, precio, imagenes_json, para_cotizar FROM productos WHERE estado = 'pendiente'";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();

@@ -3,7 +3,6 @@ require __DIR__ . '/../DB/conexion.php';
 
 if (isset($_GET['q'])) {
     $query = $_GET['q'];
-//iba el asterisco
     $sql = "SELECT id, nombre, descripcion, precio, imagenes_json FROM productos WHERE nombre LIKE :query OR descripcion LIKE :query";
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(':query', '%' . $query . '%', PDO::PARAM_STR);
