@@ -1,5 +1,5 @@
 <?php
-session_start();
+require __DIR__ . '/../php/sesion/init.php'; 
 require_once __DIR__ . '/../php/config.php';
 
 $page_title = "Bienvenido a nuestra tienda";

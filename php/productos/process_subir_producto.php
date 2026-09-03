@@ -1,8 +1,13 @@
 <?php
-session_start();
+require __DIR__ . '/../sesion/init.php'; 
 require __DIR__ . '/../DB/conexion.php';
 require __DIR__ . '/../cloudinary/CloudinaryUploader.php';
 require __DIR__ . '/../config.php';
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: " . urlFor('pantallas/Login.php'));
+    exit();
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = $_POST['nombre'];
@@ -25,14 +30,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $imagenesJSON = json_encode($imagenesArray);
     } else {
-        echo "Error: Debes subir al menos 3 imágenes.";
+        $error_msg = "Error: Debes subir al menos 3 imágenes.";
+        header("Location: " . urlFor('pantallas/Productos.php') . "?error=" . urlencode($error_msg));
         exit();
     }
 
     $usuario_creador = $_SESSION['user_id'];
 
     if (empty($nombre) || empty($descripcion) || empty($categoria_id) || empty($cantidad_disponible)) {
-        echo "Por favor completa todos los campos requeridos.";
+        $error_msg = "Por favor completa todos los campos requeridos.";
+        header("Location: " . urlFor('pantallas/Productos.php') . "?error=" . urlencode($error_msg));
         exit();
     }
 
@@ -59,9 +66,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: " . urlFor('pantallas/Productos.php'));
             exit();
         } else {
-            echo "Error al subir el producto.";
+             header("Location: " . urlFor('pantallas/Productos.php') . "?error=Error_al_subir");
+            exit();
         }
     } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
+        error_log("Error en BD: " . $e->getMessage());
+        header("Location: " . urlFor('pantallas/Productos.php') . "?error=Error_de_base_de_datos");
+        exit();
     }
 }
+?>

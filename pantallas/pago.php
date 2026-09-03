@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/../php/config.php';
 require __DIR__ . '/../php/DB/conexion.php';
-session_start();
+require __DIR__ . '/../php/sesion/init.php'; 
 
 if (empty($_SESSION['carrito'])) {
     header('Location: ' . urlFor('pantallas/carrito.php'));

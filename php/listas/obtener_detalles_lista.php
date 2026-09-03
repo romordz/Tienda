@@ -1,5 +1,5 @@
 <?php
-session_start();
+require __DIR__ . '/../sesion/init.php'; 
 include __DIR__ . '/../DB/conexion.php';
 
 if (!isset($_POST['lista_id'])) {
@@ -12,7 +12,6 @@ $usuario_id = $_SESSION['user_id'];
 
 try {
     error_log("Buscando lista con ID: $lista_id");
-    // iba el asterisco
     $stmt = $pdo->prepare("SELECT id, usuario_id, nombre_lista, descripcion, imagenes, privacidad FROM listas WHERE id = :lista_id");
     $stmt->execute(['lista_id' => $lista_id]);
     $lista = $stmt->fetch(PDO::FETCH_ASSOC);

@@ -1,5 +1,5 @@
 <?php
-session_start();
+require __DIR__ . '/../php/sesion/init.php'; 
 require __DIR__ . '/../php/config.php';
 
 if (!isset($_SESSION['user_id'])) {

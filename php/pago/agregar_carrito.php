@@ -1,6 +1,5 @@
 <?php
-session_start();
-
+require __DIR__ . '/../sesion/init.php'; 
 require __DIR__ . '/../DB/conexion.php';
 require __DIR__ . '/../productos/get_productos.php';
 

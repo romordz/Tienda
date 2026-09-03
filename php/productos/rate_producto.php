@@ -1,8 +1,9 @@
 <?php
+require __DIR__ . '/../sesion/init.php'; 
 require __DIR__ . '/../DB/conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    session_start();
+    //session_start();
 
     $usuarioId = $_SESSION['user_id'];
     $productoId = $_POST['id'];

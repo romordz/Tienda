@@ -1,5 +1,5 @@
 <?php
-session_start();
+require __DIR__ . '/../sesion/init.php'; 
 include __DIR__ . '/../DB/conexion.php';
 require __DIR__ . '/../config.php';
 
