@@ -120,7 +120,7 @@ if (isset($_SESSION['mensaje'])) {
 </div>
 
     <label for="imagenes">Agregar Imágenes:</label>
-<input type="file" id="imagenes" name="imagenes[]" accept="image/jpeg" multiple>
+<input type="file" id="imagenes" name="imagenes[]" accept="image/jpeg, image/png, image/webp" multiple>
 
     <button type="submit" class="btn-submit">Editar Producto</button>
 </form>

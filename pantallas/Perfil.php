@@ -111,7 +111,7 @@ $page_title = "Detalle del Producto";
                         </select>
 
                         <label for="avatar">Cambiar Avatar</label>
-                        <input type="file" id="avatar" name="avatar" accept="image/jpeg" onblur="validateImage()">
+                        <input type="file" id="avatar" name="avatar" accept="image/jpeg, image/png, image/webp" onblur="validateImage()">
                         <span id="photo-error" class="error-message"></span>
 
                         <label for="privacy">Privacidad</label>
