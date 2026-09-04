@@ -364,7 +364,32 @@ h2 {
 }
 
 .lista-preview h3 {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     margin: 0 0 10px;
+}
+
+.lista-privacidad {
+    font-size: 0.85em;
+    color: #aaa;
+    margin-top: -5px;
+    margin-bottom: 10px;
+    text-align: left;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.lista-privacidad svg {
+    color: #aaa;
+    transition: color 0.3s;
+}
+
+.lista-privacidad:hover,
+.lista-privacidad:hover svg {
+    color: #ff9800;
 }
 
 .lista-imagenes {
