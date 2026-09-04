@@ -220,4 +220,7 @@
   }
 
   window.mostrarDetallesLista = mostrarDetallesLista;
+  window.editarLista = editarLista;
+  window.borrarLista = borrarLista;
+  window.guardarEdicionLista = guardarEdicionLista;
 })();

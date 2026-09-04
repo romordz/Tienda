@@ -194,7 +194,7 @@ $page_title = "Detalle del Producto";
                                                 <button class="btn-icon btn-edit-list"
                                                     onclick="editarLista(<?php echo $lista['id']; ?>, '<?php echo htmlspecialchars($lista['nombre_lista'], ENT_QUOTES); ?>', '<?php echo htmlspecialchars($lista['descripcion'], ENT_QUOTES); ?>', '<?php echo $lista['privacidad']; ?>')"
                                                     title="Editar">
-                                                    <!-- Icono SVG de Lápiz -->
+                                                    <!-- Icono de Lápiz -->
                                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                         <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
@@ -203,7 +203,7 @@ $page_title = "Detalle del Producto";
 
                                                 <button class="btn-icon btn-delete-list" onclick="borrarLista(<?php echo $lista['id']; ?>)"
                                                     title="Borrar">
-                                                    <!-- Icono SVG de Papelera -->
+                                                    <!-- Icono de Papelera -->
                                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                         <polyline points="3 6 5 6 21 6"></polyline>
@@ -294,11 +294,9 @@ $page_title = "Detalle del Producto";
     </main>
 
     <?php require __DIR__ . '/../componentes/Footer/Footer.php'; ?>
-
     <script src="<?= urlFor('js/sessionCheck.js') ?>"></script>
     <script src="<?= urlFor('js/JEditPerfil.js') ?>"></script>
     <script src="<?= urlFor('js/JValidaciones.js') ?>"></script>
     <script src="<?= urlFor('js/Listas.js') ?>"></script>
 </body>
-
 </html>
