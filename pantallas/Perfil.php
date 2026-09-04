@@ -187,75 +187,82 @@ $page_title = "Detalle del Producto";
                         <?php else: ?>
                             <?php foreach ($listas as $lista): ?>
                                 <div class="lista-preview" onclick="mostrarDetallesLista(<?php echo $lista['id']; ?>)" data-is-owner="<?php echo ($session_user_id == $profile_user_id) ? 'true' : 'false'; ?>">
-                                    <div class="lista-header">
-                                        <h3><?php echo htmlspecialchars($lista['nombre_lista']); ?></h3>
+                                    <h3><?php echo htmlspecialchars($lista['nombre_lista']); ?></h3>
 
-                                        <?php if ($session_user_id == $profile_user_id): ?>
-                                            <div class="lista-actions" onclick="event.stopPropagation();">
-                                                <button class="btn-icon btn-edit-list"
-                                                    onclick="editarLista(<?php echo $lista['id']; ?>, '<?php echo htmlspecialchars($lista['nombre_lista'], ENT_QUOTES); ?>', '<?php echo htmlspecialchars($lista['descripcion'], ENT_QUOTES); ?>', '<?php echo $lista['privacidad']; ?>')"
-                                                    title="Editar">
-                                                    <!-- Icono de Lápiz -->
-                                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                        <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
-                                                    </svg>
-                                                </button>
+                                    <?php if ($session_user_id == $profile_user_id): ?>
+                                        <div class="lista-actions" onclick="event.stopPropagation();">
+                                            <button class="btn-icon btn-edit-list"
+                                                onclick="editarLista(<?php echo $lista['id']; ?>, '<?php echo htmlspecialchars($lista['nombre_lista'], ENT_QUOTES); ?>', '<?php echo htmlspecialchars($lista['descripcion'], ENT_QUOTES); ?>', '<?php echo $lista['privacidad']; ?>')"
+                                                title="Editar">
+                                                <!-- Icono de Lápiz -->
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                                                </svg>
+                                            </button>
 
-                                                <button class="btn-icon btn-delete-list" onclick="borrarLista(<?php echo $lista['id']; ?>)"
-                                                    title="Borrar">
-                                                    <!-- Icono de Papelera -->
-                                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                        <polyline points="3 6 5 6 21 6"></polyline>
-                                                        <path
-                                                            d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                                                        </path>
-                                                        <line x1="10" y1="11" x2="10" y2="17"></line>
-                                                        <line x1="14" y1="11" x2="14" y2="17"></line>
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        <?php endif; ?>
-                                    </div>
-
-                                    <p class="lista-privacidad">
-                                        <?php if ($lista['privacidad'] === 'privada'): ?>
-                                            <!-- Icono SVG de Candado -->
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                            </svg>
-                                            Privada
-                                        <?php else: ?>
-                                            <!-- Icono SVG de Globo (Pública) -->
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <circle cx="12" cy="12" r="10"></circle>
-                                                <line x1="2" y1="12" x2="22" y2="12"></line>
-                                                <path
-                                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-                                                </path>
-                                            </svg>
-                                            Pública
-                                        <?php endif; ?>
-                                    </p>
-
-                                    <p><?php echo htmlspecialchars($lista['descripcion']); ?></p>
-                                    <div class="lista-imagenes">
-                                        <?php foreach ($imagenes as $imagen): ?>
-                                            <?php
-                                            $src = (str_starts_with($imagen, 'http')) ? $imagen : 'data:image/jpeg;base64,' . $imagen;
-                                            ?>
-                                            <img src="<?php echo htmlspecialchars($src); ?>"
-                                                alt="<?php echo htmlspecialchars($lista['nombre_lista']); ?>">
-                                        <?php endforeach; ?>
-                                    </div>
+                                            <button class="btn-icon btn-delete-list" onclick="borrarLista(<?php echo $lista['id']; ?>)"
+                                                title="Borrar">
+                                                <!-- Icono de Papelera -->
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <polyline points="3 6 5 6 21 6"></polyline>
+                                                    <path
+                                                        d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                    </path>
+                                                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
+
+                                <p class="lista-privacidad">
+                                    <?php if ($lista['privacidad'] === 'privada'): ?>
+                                        <!-- Icono SVG de Candado -->
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                        </svg>
+                                        Privada
+                                    <?php else: ?>
+                                        <!-- Icono SVG de Globo (Pública) -->
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                                            <path
+                                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                            </path>
+                                        </svg>
+                                        Pública
+                                    <?php endif; ?>
+                                </p>
+
+                                <p><?php echo htmlspecialchars($lista['descripcion']); ?></p>
+                                <div class="lista-imagenes">
+                                    <?php
+                                    $imagenes = isset($lista['imagen_preview']) ? json_decode($lista['imagen_preview'], true) : [];
+
+                                    if (empty($imagenes)) {
+                                        $imagenes = ['/Recursos/default.jpg'];
+                                    }
+                                    ?>
+
+                                    <?php foreach ($imagenes as $imagen): ?>
+                                        <?php
+                                        $src = (str_starts_with($imagen, 'http')) ? $imagen : 'data:image/jpeg;base64,' . $imagen;
+                                        ?>
+                                        <img src="<?php echo htmlspecialchars($src); ?>"
+                                            alt="<?php echo htmlspecialchars($lista['nombre_lista']); ?>">
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
                     <?php endif; ?>
+                <?php endif; ?>
                 </div>
             <?php endif; ?>
 
