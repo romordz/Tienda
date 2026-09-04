@@ -2,7 +2,7 @@
 session_start();
 require_once __DIR__ . '/../php/config.php';
 
-$page_title = "Detalle del Producto";
+$page_title = "Bienvenido a nuestra tienda";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +12,8 @@ $page_title = "Detalle del Producto";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda en Línea</title>
     <link rel="stylesheet" href="<?= urlFor('css/SPrincipal.css') ?>">
+    <link rel="stylesheet" href="<?= urlFor('componentes/ProductCard/ProductCard.css') ?>">
+    <link rel="stylesheet" href="<?= urlFor('componentes/Footer/SFooter.css') ?>">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 
@@ -28,11 +30,11 @@ $page_title = "Detalle del Producto";
             <div id="search-results" class="search-results">
                 <!-- Los resultados de búsqueda se cargarán aquí -->
             </div>
-            <h2>productos Destacados</h2>
+            <h2>Productos Destacados</h2>
             <div class="products_destacados">
                 <!-- Los productos destacados se cargarán aquí -->
             </div>
-            <h2>productos Recientes</h2>
+            <h2>Productos Recientes</h2>
             <div class="products_recientes">
                 <!-- Los productos recientes se cargarán aquí -->
             </div>
@@ -46,5 +48,4 @@ $page_title = "Detalle del Producto";
     <script src="<?= urlFor('js/buscarProducto.js') ?>"></script>
     <script src="<?= urlFor('js/obtenerVendedores.js') ?>"></script>
 </body>
-
 </html>

@@ -271,28 +271,30 @@ h2 {
     cursor: pointer;
 }
 
-.create-list-section h2 {
-    margin-bottom: 15px;
-}
-
-.create-list-section label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    display: block;
-    color: #ff9800;
-    font-size: 1.1em;
-}
-
-.create-list-section input, .create-list-section textarea, .create-list-section select {
-    width: 40%;
+/*-------------------------POPUP CREAR Y EDITAR LISTA-------------------- */
+.create-list-section input, 
+.create-list-section textarea, 
+.create-list-section select,
+#popup-editar-lista input, 
+#popup-editar-lista textarea, 
+#popup-editar-lista select {
+    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-bottom: 15px;
     font-size: 1em;
+    background-color: #424242;
+    color: #f0f0f0;
 }
 
-.create-list-section button {
+.create-list-section input::placeholder,
+#popup-editar-lista input::placeholder {
+    color: #888;
+}
+
+.create-list-section button,
+#popup-editar-lista button {
     background-color: #28a745;
     color: white;
     padding: 10px 15px;
@@ -301,10 +303,38 @@ h2 {
     cursor: pointer;
     font-size: 1em;
     transition: background-color 0.3s;
+    width: 100%;
 }
 
-.create-list-section button:hover {
+.create-list-section button:hover,
+#popup-editar-lista button:hover {
     background-color: #218838;
+}
+
+.create-list-section label,
+#popup-editar-lista label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #ff9800;
+    font-size: 1.1em;
+}
+
+.popup-content {
+    background-color: #333;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 100%;
+    max-width: 580px;
+    max-height: 80%;
+    overflow-y: auto;
+    border-radius: 8px;
+}
+
+.create-list-section h2,
+#popup-editar-lista h2 {
+    margin-bottom: 15px;
 }
 
 #listas-container {
@@ -327,14 +357,45 @@ h2 {
     margin-left: 15px;
     transition: transform 0.2s;
     cursor: pointer;
+    text-align: center;
 }
+
 
 .lista-preview:hover {
     transform: scale(1.02);
 }
 
 .lista-preview h3 {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     margin: 0 0 10px;
+}
+
+.lista-preview p {
+    text-align: center;
+}
+
+.lista-privacidad {
+    font-size: 0.85em;
+    color: #aaa;
+    margin: 5px 0 10px 0;
+    text-align: center;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+.lista-privacidad svg {
+    color: #aaa;
+    transition: color 0.3s;
+}
+
+.lista-privacidad:hover,
+.lista-privacidad:hover svg {
+    color: #ff9800;
 }
 
 .lista-imagenes {
@@ -352,13 +413,6 @@ h2 {
     max-width: 150px;
     height: auto;
 }
-
-/* .lista-imagenes img {
-    width: 70px;
-    height: 70px;
-    border-radius: 4px;
-    object-fit: cover;
-} */
 
 .productos-table {
     width: 100%;
@@ -391,12 +445,27 @@ h2 {
     height: auto;
 }
 
-/* .producto-imagen {
-    width: 100px;
-   height: 100px;
-   object-fit: cover;
-   margin: 5px;
-} */
+.producto-imagen-stack {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+}
+
+.producto-imagen-stack img {
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 2px solid #1e272e;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s;
+}
+
+.producto-imagen-stack:hover img {
+    transform: translate(4px, -4px);
+}
 
 .error-message {
     color: rgb(255, 64, 64);
@@ -476,4 +545,78 @@ input:focus:valid {
 .productos-table .btn-eliminar {
     margin: 0 auto;
     display: block;
+}
+
+.popup-content--wide {
+    max-width: 900px;
+}
+
+.popup-content {
+    scrollbar-width: none;       /* Firefox */
+    -ms-overflow-style: none;    /* IE/Edge viejo */
+}
+
+.popup-content::-webkit-scrollbar {
+    display: none;               /* Chrome, Safari, Edge nuevo */
+}
+
+.producto-row {
+    cursor: pointer;
+}
+
+.producto-row:hover {
+    background-color: #333
+}
+
+.lista-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+.lista-header h3 {
+    margin: 0 0 5px 0;
+    text-align: center;
+}
+
+.lista-actions {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 10px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.lista-preview:hover .lista-actions {
+    opacity: 1;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    color: #888;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-edit-list:hover {
+    background-color: rgba(76, 175, 80, 0.2);
+    color: #4CAF50;
+    transform: scale(1.1);
+}
+
+.btn-delete-list:hover {
+    background-color: rgba(244, 67, 54, 0.2);
+    color: #f44336;
+    transform: scale(1.1);
 }

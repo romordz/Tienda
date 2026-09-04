@@ -1,5 +1,5 @@
 <?php
-session_start();
+require __DIR__ . '/../php/sesion/init.php'; 
 require __DIR__ . '/../php/config.php';
 require __DIR__ . '/../php/DB/conexion.php';
 
@@ -37,13 +37,11 @@ if (!$producto || empty($producto['producto']['nombre'])) {
 </head>
 
 <body>
-    <header>
-        <h1>Chat sobre <?php echo $producto_nombre; ?></h1>
-    </header>
+    <<?php require __DIR__ . '/../componentes/Header/Header.php'; ?>
 
     <section class="chat-section">
         <div class="chat-box" id="chat-box">
-            <!-- Aquí cargaremos los mensajes con AJAX -->
+
         </div>
 
         <form id="chat-form">
@@ -56,38 +54,5 @@ if (!$producto || empty($producto['producto']['nombre'])) {
     <?php require __DIR__ . '/../componentes/Footer/Footer.php'; ?>
 
     <script src="<?= urlFor('js/cargarMensajes.js') ?>"></script>
-    <!-- <script>
-        function cargarmensajes() {
-            var productoId = document.getElementById('producto_id').value;
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "php/mensajes/obtener_mensajes.php?producto_id=" + productoId, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    document.getElementById('chat-box').innerHTML = xhr.responseText;
-                    document.getElementById('chat-box').scrollTop = document.getElementById('chat-box').scrollHeight;
-                }
-            };
-            xhr.send();
-        }
-
-        document.getElementById('chat-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-            var mensaje = document.getElementById('mensaje').value;
-            var productoId = document.getElementById('producto_id').value;
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "php/mensajes/enviar_mensaje_chat.php", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    document.getElementById('mensaje').value = '';
-                    cargarmensajes();
-                }
-            };
-            xhr.send("producto_id=" + productoId + "&mensaje=" + mensaje);
-        });
-
-        setInterval(cargarmensajes, 3000);
-        cargarmensajes();
-    </script> -->
 </body>
 </html>

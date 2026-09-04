@@ -18,7 +18,7 @@ $page_title = "Detalle del Producto";
     <?php require __DIR__ . '/../componentes/Header/Header.php'; ?>
     <main>
         <section class="message-list">
-            <h2>mensajes Recibidos</h2>
+            <h2>Mensajes Recibidos</h2>
             <?php if (empty($mensajes)): ?>
                 <p>No tienes mensajes nuevos.</p>
             <?php else: ?>
@@ -31,7 +31,7 @@ $page_title = "Detalle del Producto";
                             <?php foreach ($conversacion['conversacion'] as $mensaje): ?>
                                 <div
                                     class="chat-bubble <?php echo ($mensaje['usuario_id'] === $user_id) ? 'sent' : 'received'; ?>">
-                                    <p><strong>De:</strong> <?php echo htmlspecialchars($mensaje['remitente_nombre']); ?></p>
+                                    <p> <?php echo htmlspecialchars($mensaje['remitente_nombre']); ?></p>
                                     <p><?php echo htmlspecialchars($mensaje['mensaje']); ?></p>
                                     <em><?php echo $mensaje['fecha']; ?></em>
                                 </div>

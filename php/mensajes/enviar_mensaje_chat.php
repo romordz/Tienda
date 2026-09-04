@@ -1,5 +1,5 @@
 <?php
-session_start();
+require __DIR__ . '/../sesion/init.php'; 
 require __DIR__ . '/../DB/conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

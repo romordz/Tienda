@@ -1,5 +1,5 @@
 <?php
-session_start();
+require __DIR__ . '/../sesion/init.php'; 
 include __DIR__ . '/../DB/conexion.php';
 
 if (!empty($_SESSION['carrito']) && isset($_SESSION['id'])) {

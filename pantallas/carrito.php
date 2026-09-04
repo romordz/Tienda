@@ -2,6 +2,7 @@
 require __DIR__ . '/../php/config.php';
 require __DIR__ . '/../php/DB/conexion.php';
 require __DIR__ . '/../php/pago/actualizar_carrito.php';
+require_once __DIR__ . '/../componentes/ProductCard/ProductCard.php';
 
 $carrito = isset($_SESSION['carrito']) ? $_SESSION['carrito'] : [];
 
@@ -40,6 +41,7 @@ $page_title = "Tu carrito";
             <thead>
                 <tr>
                     <th>Producto</th>
+                    <th>Imagenes</th>
                     <th>Precio</th>
                     <th>Cantidad</th>
                     <th>Total</th>
@@ -51,6 +53,7 @@ $page_title = "Tu carrito";
                     <?php foreach ($carrito as $producto_id => $producto): ?>
                         <tr>
                             <td><?php echo htmlspecialchars($producto['nombre']); ?></td>
+                            <td><?php renderTodasImagenes($producto, 100); ?></td>
                             <td>$<?php echo number_format($producto['precio'], 2); ?></td>
                             <td>
                                 <form method="post" action="<?= urlFor('php/pago/actualizar_carrito.php') ?>">
@@ -84,7 +87,8 @@ $page_title = "Tu carrito";
             }
             ?>
             <h3>Total: $<?php echo number_format($total, 2); ?></h3>
-            <button id="convertir-usd" class="btn-convert" onclick="convertirACurrency('<?php echo $total; ?>', 'USD')">Convertir a USD 💵</button>
+            <button id="convertir-usd" class="btn-convert"
+                onclick="convertirACurrency('<?php echo $total; ?>', 'USD')">Convertir a USD 💵</button>
             <p id="resultado-conversion" style="margin-top: 10px;"></p>
 
             <?php if ($rol_usuario === 'cliente'): ?>

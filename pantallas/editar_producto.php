@@ -1,5 +1,5 @@
 <?php
-session_start();
+require __DIR__ . '/../php/sesion/init.php'; 
 require __DIR__ . '/../php/config.php';
 require __DIR__ . '/../php/DB/conexion.php';
 
@@ -120,7 +120,7 @@ if (isset($_SESSION['mensaje'])) {
 </div>
 
     <label for="imagenes">Agregar Imágenes:</label>
-<input type="file" id="imagenes" name="imagenes[]" accept="image/jpeg" multiple>
+<input type="file" id="imagenes" name="imagenes[]" accept="image/jpeg, image/png, image/webp" multiple>
 
     <button type="submit" class="btn-submit">Editar Producto</button>
 </form>

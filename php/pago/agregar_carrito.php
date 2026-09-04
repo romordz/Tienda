@@ -1,6 +1,5 @@
 <?php
-session_start();
-
+require __DIR__ . '/../sesion/init.php'; 
 require __DIR__ . '/../DB/conexion.php';
 require __DIR__ . '/../productos/get_productos.php';
 
@@ -26,15 +25,15 @@ if (isset($_POST['add_to_cart'])) {
 
     if (isset($_SESSION['carrito'][$producto_id])) {
         $_SESSION['carrito'][$producto_id]['cantidad'] += $cantidad;
-        $mensaje_confirmacion = "¡La cantidad del producto se ha actualizado en el carrito! 🎉";
+        $mensaje_confirmacion = "¡La cantidad del producto se ha actualizado en el carrito!";
     } else {
         $_SESSION['carrito'][$producto_id] = [
             'nombre' => $producto['nombre'],
             'precio' => $producto['precio'],
             'cantidad' => $cantidad,
-            'imagenes' => $producto['imagenes']
+            'imagenes' => $producto['imagenes_json']
         ];
-        $mensaje_confirmacion = "¡El producto ha sido añadido al carrito con éxito! 🛒✨";
+        $mensaje_confirmacion = "¡El producto ha sido añadido al carrito con éxito!";
     }
 
     echo "<script>window.location.href = '/pantallas/producto_detalle.php?id=$producto_id';</script>";

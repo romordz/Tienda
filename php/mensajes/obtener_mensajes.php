@@ -1,5 +1,5 @@
 <?php
-session_start();
+require __DIR__ . '/../sesion/init.php'; 
 require __DIR__ . '/../DB/conexion.php';
 
 $producto_id = $_GET['producto_id'] ?? null;

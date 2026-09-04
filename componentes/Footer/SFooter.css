@@ -1,10 +1,19 @@
-/*-------------------------FOOTER-------------------- */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 footer {
+    margin-top: auto;
     text-align: center;
     padding: 20px;
     background-color: #009688;
     color: white;
-    position: relative;
-    bottom: 0;
     width: 100%;
 }

@@ -1,13 +1,12 @@
 <?php 
-session_start();
+require __DIR__ . '/../sesion/init.php'; 
 require __DIR__ . '/../DB/conexion.php';
-require __DIR__ . '/../php/config.php';
+require __DIR__ . '/../config.php';
 
 if ($_SESSION['role'] !== 'administrador') {
     echo "Acción no permitida.";
     exit();
 }
-//iba el asterisco
 $sql = "SELECT id, nombre, estado, descripcion, precio, imagenes_json, para_cotizar FROM productos WHERE estado = 'pendiente'";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
@@ -23,8 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindParam(':usuario_id', $usuario_id, PDO::PARAM_INT);
 
     if ($stmt->execute()) {
-        echo "Producto aprobado exitosamente.";
-        header("Location: " . urlFor('pantallas/aprobar_Productos.php'));
+        header("Location: " . urlFor('pantallas/aprobar_productos.php'));
         exit();
     } else {
         echo "Error al aprobar el producto.";

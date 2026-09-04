@@ -1,7 +1,8 @@
 <?php
-session_start();
+session_start(); 
+
 require __DIR__ . '/../DB/conexion.php';
-require __DIR__ . '/../php/config.php';
+require __DIR__ . '/../config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['user'];
@@ -36,18 +37,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if (isset($_GET['redirect'])) {
                 $redirect_url = filter_var($_GET['redirect'], FILTER_SANITIZE_URL);
-                header("Location: " . $redirect_url);
+                header("Location: " . (function_exists('urlFor') ? urlFor($redirect_url) : $redirect_url));
             } else {
-                header("Location: " . urlFor('pantallas/Principal.php'));
+                header("Location: " . (function_exists('urlFor') ? urlFor('pantallas/Principal.php') : 'pantallas/Principal.php'));
             }
 
             exit();
         } else {
-            header("Location: " . urlFor('Login.php?error=wrong_password'));
+            header("Location: " . (function_exists('urlFor') ? urlFor('Login.php?error=wrong_password') : 'Login.php?error=wrong_password'));
             exit();
         }
     } else {
-        header("Location: " . urlFor('Login.php?error=user_not_found'));
+        header("Location: " . (function_exists('urlFor') ? urlFor('Login.php?error=user_not_found') : 'Login.php?error=user_not_found'));
         exit();
     }
 }

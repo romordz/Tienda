@@ -1,7 +1,8 @@
 <?php
-session_start();
+require __DIR__ . '/../php/sesion/init.php';
 require __DIR__ . '/../php/config.php';
 include __DIR__ . '/../php/productos/get_producto_detalle.php';
+require_once __DIR__ . '/../componentes/ProductCard/ProductCard.php';
 
 $producto_id = $_GET['id'] ?? null;
 $detalles_producto = obtener_producto_detalle($producto_id);
@@ -23,7 +24,12 @@ if (isset($_SESSION['user_id'])) {
 $imagenesArray = !empty($producto['imagenes_json']) ? json_decode($producto['imagenes_json'], true) : [];
 
 $page_title = "Detalle del Producto";
+
+if (!function_exists('urlFor')) {
+    require_once __DIR__ . '/../../php/config.php';
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -32,6 +38,7 @@ $page_title = "Detalle del Producto";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= urlFor('css/SPrincipal.css') ?>">
     <link rel="stylesheet" href="<?= urlFor('css/SProductoDetalle.css') ?>">
+    <link rel="stylesheet" href="<?= urlFor('componentes/ProductCard/ProductCard.css') ?>">
     <title>Detalle del Producto</title>
 </head>
 
@@ -39,38 +46,47 @@ $page_title = "Detalle del Producto";
     <?php require __DIR__ . '/../componentes/Header/Header.php'; ?>
 
     <section class="product-detail">
-        <div class="seller-info">
-            <h3>Vendedor</h3>
-            <div class="seller-profile" onclick="irAPerfil(<?php echo $producto['vendedor_id']; ?>)"
-                style="cursor: pointer;">
-               <?php if (!empty($producto['vendedor_avatar'])): ?>
-                    <img src="<?php echo htmlspecialchars($producto['vendedor_avatar']); ?>"
-                        alt="Avatar del Vendedor" class="seller-avatar">
+        <div class="product-left">
+            <div class="seller-info">
+                <h3>Vendedor</h3>
+                <div class="seller-profile" onclick="irAPerfil(<?php echo $producto['vendedor_id']; ?>)"
+                    style="cursor: pointer;">
+                    <?php
+                    $avatarVendedor = $producto['vendedor_avatar'] ?? '';
+                    $avatarSrc = !empty($avatarVendedor)
+                        ? (str_starts_with($avatarVendedor, 'http')
+                            ? htmlspecialchars($avatarVendedor)
+                            : 'data:image/jpeg;base64,' . htmlspecialchars($avatarVendedor))
+                        : urlFor('/Recursos/default.jpg');
+                    ?>
+                    <img src="<?= $avatarSrc ?>" alt="<?= htmlspecialchars($producto['vendedor_nombre']) ?>"
+                        class="seller-avatar">
+                    <p><?php echo htmlspecialchars($producto['vendedor_nombre']); ?></p>
+                </div>
+            </div>
+
+            <div class="product-image-gallery">
+                <?php if (!empty($imagenesArray)): ?>
+                    <div class="carousel-container">
+                        <div class="carousel-inner">
+                            <?php foreach ($imagenesArray as $index => $imagenBase64): ?>
+                                <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
+                                    <div class="carousel-item-img-wrap">
+                                        <img src="<?php echo str_starts_with($imagenBase64, 'http') ? htmlspecialchars($imagenBase64) : 'data:image/jpeg;base64,' . htmlspecialchars($imagenBase64); ?>"
+                                            alt="Imagen del Producto">
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
+                        <button class="carousel-btn next" onclick="moveCarousel(1)">&#10095;</button>
+                    </div>
                 <?php else: ?>
-                    <img src="<?php echo $basePath; ?>/Recursos/default.jpg" alt="Avatar por Defecto" class="seller-avatar">
+                    <p>No hay imágenes disponibles para este producto.</p>
                 <?php endif; ?>
-                <p><?php echo htmlspecialchars($producto['vendedor_nombre']); ?></p>
             </div>
         </div>
-
-        <div class="product-image-gallery">
-            <?php if (!empty($imagenesArray)): ?>
-                <div class="carousel-container">
-                    <div class="carousel-inner">
-                        <?php foreach ($imagenesArray as $index => $imagenBase64): ?>
-                            <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
-                                <img src="<?php echo str_starts_with($imagenBase64, 'http') ? htmlspecialchars($imagenBase64) : 'data:image/jpeg;base64,' . htmlspecialchars($imagenBase64); ?>" alt="Imagen del Producto">
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                    <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
-                    <button class="carousel-btn next" onclick="moveCarousel(1)">&#10095;</button>
-                </div>
-            <?php else: ?>
-                <p>No hay imágenes disponibles para este producto.</p>
-            <?php endif; ?>
-        </div>
-        <div class="product-info">
+        <div class="product-detail-panel">
             <h2><?php echo isset($producto['nombre']) ? htmlspecialchars($producto['nombre']) : 'Producto no encontrado'; ?>
             </h2>
             <p class="description">
@@ -120,18 +136,29 @@ $page_title = "Detalle del Producto";
             </div>
 
             <!--VIDEO -->
+            <!--VIDEO -->
             <?php if (!empty($producto['video'])): ?>
                 <?php
                 $videoURL = json_decode($producto['video'], true);
-
-                preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $videoURL, $matches);
-                $videoID = $matches[1];
+                $videoID = null;
+                
+                if (is_string($videoURL) && preg_match('/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/', $videoURL, $matches)) {
+                    $videoID = $matches[1] ?? null;
+                }
                 ?>
-                <div class="product-video">
-                    <iframe width="560" height="315"
-                        src="https://www.youtube.com/embed/<?php echo htmlspecialchars($videoID); ?>" frameborder="0"
-                        allowfullscreen></iframe>
-                </div>
+
+                <?php if ($videoID): ?>
+                    <div class="product-video">
+                        <div class="product-video-wrap">
+                            <iframe src="https://www.youtube.com/embed/<?php echo htmlspecialchars($videoID); ?>"
+                                allowfullscreen></iframe>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <p class="product-video-wrap product-video-wrap--empty">No hay video disponible.</p>
+                <?php endif; ?>
+            <?php else: ?>
+                <p class="product-video-wrap product-video-wrap--empty">No hay video disponible.</p>
             <?php endif; ?>
             <div class="likes-dislikes">
                 <p>👍 Likes: <?php echo isset($producto['likes']) ? $producto['likes'] : 0; ?></p>
@@ -167,13 +194,20 @@ $page_title = "Detalle del Producto";
             if (!empty($comentarios)) {
                 foreach ($comentarios as $comentario) {
                     echo "<div class='comment'>";
-                    if (!empty($comentario['avatar'])) {
-                        echo "<img src='" . htmlspecialchars($comentario['avatar']) . "' alt='Avatar del Usuario' class='comment-avatar' onclick='irAPerfil(" . $comentario['usuario_id'] . ")' style='cursor: pointer;'>";
-                    } else {
-                        echo "<img src='" . $basePath . "/Recursos/default.jpg' alt='Avatar por Defecto' class='comment-avatar' onclick='irAPerfil(" . $comentario['usuario_id'] . ")' style='cursor: pointer;'>";
-                    }
-                    echo "<strong>" . htmlspecialchars($comentario['nombre_usuario']) . "</strong> <p> <br>" . htmlspecialchars($comentario['comentario']) . "</p>";
+
+                    $avatarComentario = $comentario['avatar'] ?? '';
+                    $avatarSrc = !empty($avatarComentario)
+                        ? (str_starts_with($avatarComentario, 'http')
+                            ? htmlspecialchars($avatarComentario)
+                            : 'data:image/jpeg;base64,' . htmlspecialchars($avatarComentario))
+                        : urlFor('/Recursos/default.jpg');
+
+                    $nombreUsuario = htmlspecialchars($comentario['nombre_usuario']);
+
+                    echo "<img src='" . $avatarSrc . "' alt='" . $nombreUsuario . "' class='comment-avatar' onclick='irAPerfil(" . $comentario['usuario_id'] . ")' style='cursor: pointer;'>";
+                    echo "<strong>" . $nombreUsuario . "</strong> <p> <br>" . htmlspecialchars($comentario['comentario']) . "</p>";
                     echo "<p class='comment-date'>" . $comentario['fecha'] . "</p>";
+
                     if ($_SESSION['role'] == 'administrador') {
                         echo "<form method='post' action='" . urlFor('php/comentarios/eliminar_comentario.php') . "'>";
                         echo "<input type='hidden' name='comentario_id' value='" . $comentario['id'] . "'>";
@@ -195,74 +229,38 @@ $page_title = "Detalle del Producto";
         <div class="related-products-container">
             <?php if (!empty($productos_vendedor)): ?>
                 <?php foreach ($productos_vendedor as $producto): ?>
-                    <a href="javascript:void(0);"
-                        onclick="checkSession('producto_detalle.php?id=<?php echo $producto['id']; ?>');">
-                        <?php
-                        $imagenes = json_decode($producto['imagenes_json'], true);
-                        $imagenPrincipal = $imagenes[0] ?? '/Recursos/default.jpg';
-                        ?>
-                        <div class="related-product-item">
-                            <img src="<?php echo htmlspecialchars($imagenPrincipal); ?>"
-                                alt="Imagen de <?php echo htmlspecialchars($producto['nombre']); ?>">
-                    </a>
-                    <p><?php echo htmlspecialchars($producto['nombre']); ?></p>
-                    <p>$<?php echo number_format($producto['precio'], 2); ?></p>
-                </div>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <p>No hay productos relacionados del mismo vendedor.</p>
-        <?php endif; ?>
+                    <?php renderProductoCard($producto, 'grid'); ?>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>No hay productos relacionados del mismo vendedor.</p>
+            <?php endif; ?>
         </div>
 
         <h3>productos de la misma categoría</h3>
         <div class="related-products-container">
             <?php if (!empty($productos_categoria)): ?>
                 <?php foreach ($productos_categoria as $producto): ?>
-                    <a href="javascript:void(0);"
-                        onclick="checkSession('producto_detalle.php?id=<?php echo $producto['id']; ?>');">
-                        <?php
-                        $imagenes = json_decode($producto['imagenes_json'], true);
-                        $imagenPrincipal = $imagenes[0] ?? '/Recursos/default.jpg';
-                        ?>
-                        <div class="related-product-item">
-                            <img src="<?php echo htmlspecialchars($imagenPrincipal); ?>"
-                                alt="Imagen de <?php echo htmlspecialchars($producto['nombre']); ?>">
-                    </a>
-                    <p><?php echo htmlspecialchars($producto['nombre']); ?></p>
-                    <p>$<?php echo number_format($producto['precio'], 2); ?></p>
-                </div>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <p>No hay productos relacionados en esta categoría.</p>
-        <?php endif; ?>
+                    <?php renderProductoCard($producto, 'grid'); ?>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>No hay productos relacionados en esta categoría.</p>
+            <?php endif; ?>
         </div>
 
         <h3>productos con más likes</h3>
         <div class="related-products-container">
             <?php if (!empty($productos_likes)): ?>
                 <?php foreach ($productos_likes as $producto): ?>
-                    <a href="javascript:void(0);"
-                        onclick="checkSession('producto_detalle.php?id=<?php echo $producto['id']; ?>');">
-                        <?php
-                        $imagenes = json_decode($producto['imagenes_json'], true);
-                        $imagenPrincipal = $imagenes[0] ?? '/Recursos/default.jpg';
-                        ?>
-                        <div class="related-product-item">
-                            <img src="<?php echo htmlspecialchars($imagenPrincipal); ?>"
-                                alt="Imagen de <?php echo htmlspecialchars($producto['nombre']); ?>">
-                    </a>
-                    <p><?php echo htmlspecialchars($producto['nombre']); ?></p>
-                    <p>$<?php echo number_format($producto['precio'], 2); ?></p>
-                </div>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <p>No hay productos con muchos likes disponibles.</p>
-        <?php endif; ?>
+                    <?php renderProductoCard($producto, 'grid'); ?>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>No hay productos con muchos likes disponibles.</p>
+            <?php endif; ?>
         </div>
     </section>
 
     <?php require __DIR__ . '/../componentes/Footer/Footer.php'; ?>
-    
+
     <script src="<?= urlFor('js/producto_detalle.js') ?>"></script>
     <script src="<?= urlFor('js/obtenerVendedores.js') ?>"></script>
     <script src="<?= urlFor('js/sessionCheck.js') ?>"></script>

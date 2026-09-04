@@ -1,0 +1,83 @@
+<?php require __DIR__ . '/../php/config.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro de Usuario</title>
+  <link rel="stylesheet" href="<?= urlFor('css/SLoRe.css') ?>">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="register-container">
+    <h2>Registro</h2>
+    <form action="<?= urlFor('php/sesion/process_registration.php') ?>" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="photo">Cargar foto:</label>
+        <input type="file" id="image" name="photo" accept="image/jpeg, image/png, image/webp" required onblur="validateImage()" />
+        <span id="photo-error" class="error-message"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="role">Rol:</label>
+        <select id="role" name="role" required>
+          <option value="vendedor">Vendedor</option>
+          <option value="cliente">Cliente</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="username">Usuario:</label>
+        <input type="text" id="username" name="username" minlength="3" required onblur="validateUsername()" />
+        <span id="username-error" class="error-message"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="full-name">Nombre Completo:</label>
+        <input type="text" id="full-name" name="full_name" required onblur="validateFullName()" />
+        <span id="full-name-error" class="error-message"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Género:</label>
+        <select id="gender" name="gender" required>
+          <option value="masculino">Masculino</option>
+          <option value="femenino">Femenino</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="birthdate">Fecha de Nacimiento:</label>
+        <input type="date" id="birthdate" name="birthdate" required onblur="validateBirthdate()" />
+        <span id="birthdate-error" class="error-message"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required onblur="validateEmail()" />
+        <span id="email-error" class="error-message"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required
+          pattern="(?=.*[a-zñÑ])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-zñÑ\d!@#$%^&*()_+]{8,}"
+          onblur="validatePassword()" />
+        <span id="password-error" class="error-message"></span>
+      </div>
+
+
+      <button type="submit" class="btn-register">Registrar</button>
+      <div class="login-link">
+        <p>¿Ya tienes cuenta? <a href="Login.php">Iniciar sesión</a></p>
+      </div>
+    </form>
+  </div>
+
+  <script src="<?= urlFor('js/JValidaciones.js') ?>"></script>
+</body>
+</html>
