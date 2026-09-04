@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../php/sesion/init.php'; 
+require __DIR__ . '/../php/sesion/init.php';
 require __DIR__ . '/../php/config.php';
 
 if (!isset($_SESSION['user_id'])) {
@@ -111,7 +111,8 @@ $page_title = "Detalle del Producto";
                         </select>
 
                         <label for="avatar">Cambiar Avatar</label>
-                        <input type="file" id="image" name="avatar" accept="image/jpeg, image/png, image/webp" onblur="validateImage()">
+                        <input type="file" id="image" name="avatar" accept="image/jpeg, image/png, image/webp"
+                            onblur="validateImage()">
                         <span id="photo-error" class="error-message"></span>
 
                         <label for="privacy">Privacidad</label>
@@ -126,7 +127,7 @@ $page_title = "Detalle del Producto";
                     </form>
                 </div>
             <?php endif; ?>
-
+            <!-- Popup para Crear Lista -->
             <div id="popup-crear-lista" class="popup" style="display: none;">
                 <div class="popup-content">
                     <span class="close" id="close-popup">&times;</span>
@@ -151,6 +152,28 @@ $page_title = "Detalle del Producto";
                     </div>
                 </div>
             </div>
+            <!-- Popup para Editar Lista -->
+            <div id="popup-editar-lista" class="popup" style="display: none;">
+                <div class="popup-content">
+                    <span class="close"
+                        onclick="document.getElementById('popup-editar-lista').style.display='none'">&times;</span>
+                    <h2>Editar Lista</h2>
+                    <form id="form-editar-lista" onsubmit="event.preventDefault(); guardarEdicionLista();">
+                        <input type="hidden" id="edit-lista-id" name="lista_id">
+                        <label>Nombre:</label>
+                        <input type="text" id="edit-nombre" name="nombre_lista" required>
+                        <label>Descripción:</label>
+                        <textarea id="edit-descripcion" name="descripcion" required></textarea>
+                        <label>Privacidad:</label>
+                        <select id="edit-privacidad" name="privacidad">
+                            <option value="pública">Pública</option>
+                            <option value="privada">Privada</option>
+                        </select>
+                        <br><br>
+                        <button type="submit" class="btn-save">Guardar Cambios</button>
+                    </form>
+                </div>
+            </div>
             <?php if ($_SESSION['role'] === 'cliente'): ?>
                 <h2>listas Creadas</h2>
                 <div id="listas-container">
@@ -162,7 +185,39 @@ $page_title = "Detalle del Producto";
                         <?php else: ?>
                             <?php foreach ($listas as $lista): ?>
                                 <div class="lista-preview" onclick="mostrarDetallesLista(<?php echo $lista['id']; ?>)">
-                                    <h3><?php echo htmlspecialchars($lista['nombre_lista']); ?></h3>
+                                    <div class="lista-header">
+                                        <h3><?php echo htmlspecialchars($lista['nombre_lista']); ?></h3>
+
+                                        <!-- Botones de acción (solo visibles para el dueño de la lista) -->
+                                        <?php if ($session_user_id == $profile_user_id): ?>
+                                            <div class="lista-actions" onclick="event.stopPropagation();">
+                                                <button class="btn-icon btn-edit-list"
+                                                    onclick="editarLista(<?php echo $lista['id']; ?>, '<?php echo htmlspecialchars($lista['nombre_lista'], ENT_QUOTES); ?>', '<?php echo htmlspecialchars($lista['descripcion'], ENT_QUOTES); ?>', '<?php echo $lista['privacidad']; ?>')"
+                                                    title="Editar">
+                                                    <!-- Icono SVG de Lápiz -->
+                                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                                                    </svg>
+                                                </button>
+
+                                                <button class="btn-icon btn-delete-list" onclick="borrarLista(<?php echo $lista['id']; ?>)"
+                                                    title="Borrar">
+                                                    <!-- Icono SVG de Papelera -->
+                                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <polyline points="3 6 5 6 21 6"></polyline>
+                                                        <path
+                                                            d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                        </path>
+                                                        <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                        <line x1="14" y1="11" x2="14" y2="17"></line>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+
                                     <p><?php echo htmlspecialchars($lista['descripcion']); ?></p>
                                     <div class="lista-imagenes">
                                         <?php
@@ -239,10 +294,6 @@ $page_title = "Detalle del Producto";
     </main>
 
     <?php require __DIR__ . '/../componentes/Footer/Footer.php'; ?>
-
-    <script>
-        var isOwner = <?php echo ($session_user_id == $profile_user_id) ? 'true' : 'false'; ?>;
-    </script>
 
     <script src="<?= urlFor('js/sessionCheck.js') ?>"></script>
     <script src="<?= urlFor('js/JEditPerfil.js') ?>"></script>

@@ -30,11 +30,11 @@ $page_title = "Bienvenido a nuestra tienda";
             <div id="search-results" class="search-results">
                 <!-- Los resultados de búsqueda se cargarán aquí -->
             </div>
-            <h2>productos Destacados</h2>
+            <h2>Productos Destacados</h2>
             <div class="products_destacados">
                 <!-- Los productos destacados se cargarán aquí -->
             </div>
-            <h2>productos Recientes</h2>
+            <h2>Productos Recientes</h2>
             <div class="products_recientes">
                 <!-- Los productos recientes se cargarán aquí -->
             </div>

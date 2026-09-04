@@ -1,6 +1,12 @@
 <?php
+require __DIR__ . '/../sesion/init.php'; 
 require __DIR__ . '/../DB/conexion.php';
 require_once __DIR__ . '/../../componentes/ProductCard/ProductCard.php';
+
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'administrador') {
+    echo "No tienes permisos para ver esta información.";
+    exit();
+}
 
 $sql = "SELECT id, nombre, descripcion, precio, cantidad_disponible, likes, dislikes, imagenes_json, video, para_cotizar
 FROM productos 
@@ -52,22 +58,21 @@ if ($productos) {
 
             if (is_string($video_data)) {
                 $videoURL = $video_data;
-            } elseif (isset($video_data['url'])) {
+            } elseif (is_array($video_data) && isset($video_data['url'])) {
                 $videoURL = $video_data['url'];
             } else {
                 $videoURL = null;
             }
 
-            if ($videoURL) {
-                preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $videoURL, $matches);
-                if (isset($matches[1])) {
-                    $videoID = $matches[1];
-                    echo "<iframe width='200' height='150' src='https://www.youtube.com/embed/" . htmlspecialchars($videoID) . "' frameborder='1' allowfullscreen></iframe>";
-                } else {
-                    echo "No se pudo mostrar el video.";
-                }
+            $videoID = null;
+            if ($videoURL && preg_match('/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/', $videoURL, $matches)) {
+                $videoID = $matches[1] ?? null;
+            }
+
+            if ($videoID) {
+                echo "<iframe width='200' height='150' src='https://www.youtube.com/embed/" . htmlspecialchars($videoID) . "' frameborder='1' allowfullscreen></iframe>";
             } else {
-                echo "No hay video disponible";
+                echo "No se pudo mostrar el video.";
             }
         } else {
             echo "No hay video disponible.";

@@ -31,7 +31,7 @@ if (isset($_POST['add_to_cart'])) {
             'nombre' => $producto['nombre'],
             'precio' => $producto['precio'],
             'cantidad' => $cantidad,
-            'imagenes' => $producto['imagenes']
+            'imagenes' => $producto['imagenes_json']
         ];
         $mensaje_confirmacion = "¡El producto ha sido añadido al carrito con éxito!";
     }
