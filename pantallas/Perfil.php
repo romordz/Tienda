@@ -186,7 +186,7 @@ $page_title = "Detalle del Producto";
                             <p>No hay listas aún.</p>
                         <?php else: ?>
                             <?php foreach ($listas as $lista): ?>
-                                <div class="lista-preview" onclick="mostrarDetallesLista(<?php echo $lista['id']; ?>)">
+                                <div class="lista-preview" onclick="mostrarDetallesLista(<?php echo $lista['id']; ?>)" data-is-owner="<?php echo ($session_user_id == $profile_user_id) ? 'true' : 'false'; ?>">
                                     <div class="lista-header">
                                         <h3><?php echo htmlspecialchars($lista['nombre_lista']); ?></h3>
 
@@ -244,13 +244,13 @@ $page_title = "Detalle del Producto";
 
                                     <p><?php echo htmlspecialchars($lista['descripcion']); ?></p>
                                     <div class="lista-imagenes">
-                                        <?php
-                                        $imagenes = isset($lista['imagen_preview']) ? json_decode($lista['imagen_preview'], true) : ['/Recursos/default.jpg'];
-
-                                        foreach ($imagenes as $imagen) {
-                                            echo "<img src= $imagen, alt= $lista[nombre_lista] >";
-                                        }
-                                        ?>
+                                        <?php foreach ($imagenes as $imagen): ?>
+                                            <?php
+                                            $src = (str_starts_with($imagen, 'http')) ? $imagen : 'data:image/jpeg;base64,' . $imagen;
+                                            ?>
+                                            <img src="<?php echo htmlspecialchars($src); ?>"
+                                                alt="<?php echo htmlspecialchars($lista['nombre_lista']); ?>">
+                                        <?php endforeach; ?>
                                     </div>
                                 </div>
                             <?php endforeach; ?>

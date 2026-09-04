@@ -46,6 +46,13 @@
     detalleLista.setAttribute("data-lista-id", listaId);
     detalleLista.innerHTML = "Cargando detalles...";
 
+    var previewElement = document.querySelector(
+      `.lista-preview[onclick*="${listaId}"]`,
+    );
+    var isOwner = previewElement
+      ? previewElement.getAttribute("data-is-owner") === "true"
+      : false;
+
     var xhr = new XMLHttpRequest();
     xhr.open("POST", `${API_BASE}php/listas/obtener_detalles_lista.php`, true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -78,7 +85,9 @@
                   '<div class="producto-imagen-stack">' +
                   imagenesJson
                     .map(function (imagen, i) {
-                      var src = imagen;
+                      var src = imagen.startsWith("http")
+                        ? imagen
+                        : "data:image/jpeg;base64," + imagen;
                       var offset = i * 8;
                       var zIndex = imagenesJson.length - i;
                       return `<img src="${src}" alt="Imagen de ${producto.nombre}" style="top:${offset}px; left:${offset}px; z-index:${zIndex};">`;
@@ -90,7 +99,6 @@
               var precioHtml = producto.precio
                 ? `$${parseFloat(producto.precio).toFixed(2)}`
                 : "Para cotizar";
-
               productosHtml += `<tr class="producto-row" data-id="${producto.id}">
                                     <td>${imagenesHtml}</td>
                                     <td>${producto.nombre}</td>
