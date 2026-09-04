@@ -34,9 +34,21 @@ try {
                             AND lp.estado = 'activo'");
     $stmt->execute(['lista_id' => $lista_id]);
     $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
     foreach ($productos as &$producto) {
-        $producto['imagenes_json'] = json_decode($producto['imagenes_json'], true);
+        $imagenes = json_decode($producto['imagenes_json'], true);
+
+        $imagenesProcesadas = [];
+        if (is_array($imagenes)) {
+            foreach ($imagenes as $imagen) {
+                if (strpos($imagen, 'http') === 0) {
+                    $imagenesProcesadas[] = $imagen;
+                } else {
+                    $imagenesProcesadas[] = 'data:image/jpeg;base64,' . $imagen;
+                }
+            }
+        }
+
+        $producto['imagenes_json'] = $imagenesProcesadas;
     }
 
     echo json_encode([

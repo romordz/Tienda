@@ -78,9 +78,7 @@
                   '<div class="producto-imagen-stack">' +
                   imagenesJson
                     .map(function (imagen, i) {
-                      var src = imagen.startsWith("http")
-                        ? imagen
-                        : "data:image/jpeg;base64," + imagen;
+                      var src = imagen;
                       var offset = i * 8;
                       var zIndex = imagenesJson.length - i;
                       return `<img src="${src}" alt="Imagen de ${producto.nombre}" style="top:${offset}px; left:${offset}px; z-index:${zIndex};">`;
