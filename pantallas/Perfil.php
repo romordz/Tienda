@@ -248,7 +248,7 @@ $page_title = "Detalle del Producto";
                                         $imagenes = isset($lista['imagen_preview']) ? json_decode($lista['imagen_preview'], true) : ['/Recursos/default.jpg'];
 
                                         foreach ($imagenes as $imagen) {
-                                            echo "<img src='data:image/jpeg;base64," . $imagen . "' alt=''>";
+                                            echo "<img src= $imagen, alt= $lista[nombre_lista] >";
                                         }
                                         ?>
                                     </div>
