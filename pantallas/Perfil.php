@@ -1,6 +1,7 @@
 <?php
 require __DIR__ . '/../php/sesion/init.php';
 require __DIR__ . '/../php/config.php';
+require __DIR__ . '/../php/listas/obtener_listas.php';
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: " . urlFor('pantallas/Login.php?redirect=' . urlencode($_SERVER['REQUEST_URI'])));
@@ -20,7 +21,6 @@ $profile_privacy = $stmt->fetchColumn();
 $is_private = $profile_privacy === 'privado' && $session_user_id != $profile_user_id;
 
 $listas = [];
-include __DIR__ . '/../php/listas/obtener_listas.php';
 
 $page_title = "Detalle del Producto";
 ?>
@@ -152,7 +152,6 @@ $page_title = "Detalle del Producto";
                     </div>
                 </div>
             </div>
-            <!-- Popup para Editar Lista -->
             <!-- Popup para Editar Lista -->
             <div id="popup-editar-lista" class="popup" style="display: none;">
                 <div class="popup-content">
