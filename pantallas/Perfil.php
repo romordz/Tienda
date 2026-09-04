@@ -1,7 +1,6 @@
 <?php
 require __DIR__ . '/../php/sesion/init.php';
 require __DIR__ . '/../php/config.php';
-require __DIR__ . '/../php/listas/obtener_listas.php';
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: " . urlFor('pantallas/Login.php?redirect=' . urlencode($_SERVER['REQUEST_URI'])));
@@ -13,13 +12,14 @@ include __DIR__ . '/../php/perfil/Perfil_process.php';
 $session_user_id = $_SESSION['user_id'];
 $profile_user_id = $_GET['id'] ?? $session_user_id;
 
+
 $sql = "SELECT privacidad FROM usuarios WHERE id = ?";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$profile_user_id]);
 $profile_privacy = $stmt->fetchColumn();
-
 $is_private = $profile_privacy === 'privado' && $session_user_id != $profile_user_id;
 
+require __DIR__ . '/../php/listas/obtener_listas.php';
 $listas = [];
 
 $page_title = "Detalle del Producto";
