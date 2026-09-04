@@ -4,10 +4,9 @@ Marketplace en línea con roles de usuario (administrador, vendedor, cliente).
 Publicación de productos con múltiples imágenes, cotizaciones, carrito de compras,
 mensajería entre comprador y vendedor, y sistema de comentarios y valoraciones.
 
-🔗 **[Ver demo en vivo] (https://tienda-qdmk.onrender.com)**
+🔗 **[Ver demo en vivo](https://tienda-qdmk.onrender.com)**
 
-## Demo de la aplicación
-[Ver demo en vivo](docs/demo.gif)
+![Demo de la aplicación](./docs/demo.gif)
 
 ---
 
@@ -31,7 +30,7 @@ mensajería entre comprador y vendedor, y sistema de comentarios y valoraciones.
 ## Notas técnicas
 - Las imágenes (productos y avatares) se almacenan como URLs de Cloudinary en vez de binarios en la base de datos, permitiendo múltiples fotos por producto sin inflar la base de datos.
 - Despliegue en Docker en Render.
-- Base de datos con conexión SSL (usando `mysqli` o `pdo` con certificado SSL).
+- Base de datos con conexión SSL (PDO con certificado CA).
 - Rutas resueltas dinámicamente según el subdirectorio del deploy (`config.php`), evitando URLs rotas al redirigir tras el login.
 
 ---
