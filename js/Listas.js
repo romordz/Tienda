@@ -187,36 +187,44 @@
 
   function borrarLista(id) {
     if (confirm("¿Estás seguro de que quieres borrar esta lista?")) {
-        fetch(`../php/listas/eliminar_lista.php?id=${id}`, {
-            method: 'GET'
+      fetch(`../php/listas/eliminar_lista.php?id=${id}`, {
+        method: "GET",
+        headers: {
+          "X-Requested-With": "XMLHttpRequest",
+        },
+      })
+        .then((response) => response.text())
+        .then((data) => {
+          if (data.trim() === "success") {
+            location.reload();
+          } else {
+            alert("Error al borrar la lista: " + data);
+          }
         })
-        .then(response => response.text())
-        .then(data => {
-            if (data === 'success') {
-                location.reload();
-            } else {
-                alert('Error al borrar la lista');
-            }
-        })
-        .catch(error => console.error('Error:', error));
+        .catch((error) => console.error("Error:", error));
     }
-}
+  }
 
   function guardarEdicionLista() {
     var formData = new FormData(document.getElementById("form-editar-lista"));
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "../php/listas/actualizar_lista.php", true);
 
-    fetch("../php/listas/actualizar_lista.php", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.text())
-      .then((data) => {
+    xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        var data = xhr.responseText.trim();
         if (data === "success") {
           location.reload();
         } else {
-          alert("Error al actualizar la lista");
+          alert("Error al actualizar la lista: " + data);
         }
-      });
+      } else {
+        alert("Error en la respuesta del servidor.");
+      }
+    };
+    xhr.send(formData);
   }
 
   window.mostrarDetallesLista = mostrarDetallesLista;

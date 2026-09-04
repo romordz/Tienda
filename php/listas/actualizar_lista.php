@@ -4,6 +4,10 @@ require __DIR__ . '/../DB/conexion.php';
 require __DIR__ . '/../config.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])) {
+        echo 'error';
+        exit();
+    }
     header("Location: " . urlFor('pantallas/Perfil.php'));
     exit();
 }
@@ -14,12 +18,11 @@ $descripcion = $_POST['descripcion'] ?? '';
 $privacidad = $_POST['privacidad'] ?? 'pública';
 
 if (empty($lista_id) || empty($nombre)) {
-    echo "Error: El nombre de la lista es obligatorio.";
+    echo 'error';
     exit();
 }
 
 $user_id = $_SESSION['user_id'];
-
 $sql_check = "SELECT id FROM listas WHERE id = :id AND usuario_id = :user_id";
 $stmt_check = $pdo->prepare($sql_check);
 $stmt_check->bindParam(':id', $lista_id);
@@ -27,7 +30,7 @@ $stmt_check->bindParam(':user_id', $user_id);
 $stmt_check->execute();
 
 if ($stmt_check->rowCount() === 0) {
-    echo "Error: No tienes permisos para editar esta lista.";
+    echo 'error';
     exit();
 }
 
@@ -40,13 +43,17 @@ $stmt->bindParam(':id', $lista_id);
 
 try {
     if ($stmt->execute()) {
-        header("Location: " . urlFor('pantallas/Perfil.php?update=success'));
+        if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
+            echo 'success';
+        } else {
+            header("Location: " . urlFor('pantallas/Perfil.php'));
+        }
         exit();
     } else {
-        echo "Error al actualizar la lista.";
+        echo 'error';
     }
 } catch (PDOException $e) {
     error_log("Error en actualizar_lista.php: " . $e->getMessage());
-    echo "Error de base de datos.";
+    echo 'error';
 }
 ?>
