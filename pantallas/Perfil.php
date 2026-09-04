@@ -19,9 +19,9 @@ $stmt->execute([$profile_user_id]);
 $profile_privacy = $stmt->fetchColumn();
 $is_private = $profile_privacy === 'privado' && $session_user_id != $profile_user_id;
 
-require __DIR__ . '/../php/listas/obtener_listas.php';
-$listas = [];
 
+$listas = [];
+require __DIR__ . '/../php/listas/obtener_listas.php';
 $page_title = "Detalle del Producto";
 ?>
 <!DOCTYPE html>
