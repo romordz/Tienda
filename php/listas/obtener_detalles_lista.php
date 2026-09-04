@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../sesion/init.php'; 
+require __DIR__ . '/../sesion/init.php';
 include __DIR__ . '/../DB/conexion.php';
 
 if (!isset($_POST['lista_id'])) {
@@ -12,7 +12,7 @@ $usuario_id = $_SESSION['user_id'];
 
 try {
     error_log("Buscando lista con ID: $lista_id");
-    $stmt = $pdo->prepare("SELECT id, usuario_id, nombre_lista, descripcion, imagenes, privacidad FROM listas WHERE id = :lista_id");
+    $stmt = $pdo->prepare("SELECT id, usuario_id, nombre_lista, descripcion, imagenes_json, privacidad FROM listas WHERE id = :lista_id");
     $stmt->execute(['lista_id' => $lista_id]);
     $lista = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -39,14 +39,7 @@ try {
     error_log("Cantidad de productos encontrados: " . count($productos));
 
     foreach ($productos as &$producto) {
-        if ($producto['imagenes']) {
-            $producto['imagenes'] = base64_encode($producto['imagenes']);
-        }
-
-        if ($producto['imagenes_json']) {
-            $producto['imagenes_json'] = json_decode($producto['imagenes_json'], true);
-            error_log("Imagenes JSON del producto ID " . $producto['id'] . ": " . print_r($producto['imagenes_json'], true));
-        }
+        $producto['imagenes_json'] = json_decode($producto['imagenes_json'], true);
     }
 
     echo json_encode([
