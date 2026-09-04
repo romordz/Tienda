@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $lista_id = $_POST['lista_id'] ?? null;
 $nombre = $_POST['nombre_lista'] ?? '';
 $descripcion = $_POST['descripcion'] ?? '';
-$privacidad = $_POST['privacidad'] ?? 'pública';
+$privacidad = $_POST['privacidad'] ?? 'publica';
 
 if (empty($lista_id) || empty($nombre)) {
     echo 'error';

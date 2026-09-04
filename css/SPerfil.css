@@ -271,28 +271,30 @@ h2 {
     cursor: pointer;
 }
 
-.create-list-section h2 {
-    margin-bottom: 15px;
-}
-
-.create-list-section label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    display: block;
-    color: #ff9800;
-    font-size: 1.1em;
-}
-
-.create-list-section input, .create-list-section textarea, .create-list-section select {
-    width: 40%;
+/*-------------------------POPUP CREAR Y EDITAR LISTA-------------------- */
+.create-list-section input, 
+.create-list-section textarea, 
+.create-list-section select,
+#popup-editar-lista input, 
+#popup-editar-lista textarea, 
+#popup-editar-lista select {
+    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-bottom: 15px;
     font-size: 1em;
+    background-color: #424242;
+    color: #f0f0f0;
 }
 
-.create-list-section button {
+.create-list-section input::placeholder,
+#popup-editar-lista input::placeholder {
+    color: #888;
+}
+
+.create-list-section button,
+#popup-editar-lista button {
     background-color: #28a745;
     color: white;
     padding: 10px 15px;
@@ -301,10 +303,38 @@ h2 {
     cursor: pointer;
     font-size: 1em;
     transition: background-color 0.3s;
+    width: 100%;
 }
 
-.create-list-section button:hover {
+.create-list-section button:hover,
+#popup-editar-lista button:hover {
     background-color: #218838;
+}
+
+.create-list-section label,
+#popup-editar-lista label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #ff9800;
+    font-size: 1.1em;
+}
+
+.popup-content {
+    background-color: #333;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 100%;
+    max-width: 580px;
+    max-height: 80%;
+    overflow-y: auto;
+    border-radius: 8px;
+}
+
+.create-list-section h2,
+#popup-editar-lista h2 {
+    margin-bottom: 15px;
 }
 
 #listas-container {
@@ -507,7 +537,6 @@ input:focus:valid {
     background-color: #333
 }
 
-/* Estilo para el encabezado de la lista */
 .lista-header {
     display: flex;
     justify-content: space-between;
@@ -518,16 +547,14 @@ input:focus:valid {
 .lista-actions {
     display: flex;
     gap: 10px;
-    opacity: 0.7; /* Un poco transparente por defecto */
+    opacity: 0.7;
     transition: opacity 0.3s;
 }
 
-/* Al pasar el mouse sobre la lista, los botones se vuelven más visibles */
 .lista-preview:hover .lista-actions {
     opacity: 1;
 }
 
-/* Estilo base para los botones de iconos */
 .btn-icon {
     background: none;
     border: none;
@@ -541,16 +568,14 @@ input:focus:valid {
     justify-content: center;
 }
 
-/* Estilo para el botón de editar */
 .btn-edit-list:hover {
-    background-color: rgba(76, 175, 80, 0.2); /* Verde suave */
+    background-color: rgba(76, 175, 80, 0.2);
     color: #4CAF50;
     transform: scale(1.1);
 }
 
-/* Estilo para el botón de borrar */
 .btn-delete-list:hover {
-    background-color: rgba(244, 67, 54, 0.2); /* Rojo suave */
+    background-color: rgba(244, 67, 54, 0.2);
     color: #f44336;
     transform: scale(1.1);
 }

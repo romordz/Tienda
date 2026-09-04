@@ -142,7 +142,7 @@ $page_title = "Detalle del Producto";
 
                             <label for="privacidad">Privacidad:</label>
                             <select id="privacidad" name="privacidad">
-                                <option value="pública">Pública</option>
+                                <option value="publica">Pública</option>
                                 <option value="privada">Privada</option>
                             </select>
                             <br>
@@ -153,25 +153,28 @@ $page_title = "Detalle del Producto";
                 </div>
             </div>
             <!-- Popup para Editar Lista -->
+            <!-- Popup para Editar Lista -->
             <div id="popup-editar-lista" class="popup" style="display: none;">
                 <div class="popup-content">
                     <span class="close"
                         onclick="document.getElementById('popup-editar-lista').style.display='none'">&times;</span>
-                    <h2>Editar Lista</h2>
-                    <form id="form-editar-lista" onsubmit="event.preventDefault(); guardarEdicionLista();">
-                        <input type="hidden" id="edit-lista-id" name="lista_id">
-                        <label>Nombre:</label>
-                        <input type="text" id="edit-nombre" name="nombre_lista" required>
-                        <label>Descripción:</label>
-                        <textarea id="edit-descripcion" name="descripcion" required></textarea>
-                        <label>Privacidad:</label>
-                        <select id="edit-privacidad" name="privacidad">
-                            <option value="pública">Pública</option>
-                            <option value="privada">Privada</option>
-                        </select>
-                        <br><br>
-                        <button type="submit" class="btn-save">Guardar Cambios</button>
-                    </form>
+                    <div class="create-list-section">
+                        <h2>Editar Lista</h2>
+                        <form id="form-editar-lista" onsubmit="event.preventDefault(); guardarEdicionLista();">
+                            <input type="hidden" id="edit-lista-id" name="lista_id">
+                            <label>Nombre:</label>
+                            <input type="text" id="edit-nombre" name="nombre_lista" required>
+                            <label>Descripción:</label>
+                            <textarea id="edit-descripcion" name="descripcion" required></textarea>
+                            <label>Privacidad:</label>
+                            <select id="edit-privacidad" name="privacidad">
+                                <option value="publica">Pública</option>
+                                <option value="privada">Privada</option>
+                            </select>
+                            <br><br>
+                            <button type="submit" class="btn-save">Guardar Cambios</button>
+                        </form>
+                    </div>
                 </div>
             </div>
             <?php if ($_SESSION['role'] === 'cliente'): ?>
@@ -188,7 +191,6 @@ $page_title = "Detalle del Producto";
                                     <div class="lista-header">
                                         <h3><?php echo htmlspecialchars($lista['nombre_lista']); ?></h3>
 
-                                        <!-- Botones de acción (solo visibles para el dueño de la lista) -->
                                         <?php if ($session_user_id == $profile_user_id): ?>
                                             <div class="lista-actions" onclick="event.stopPropagation();">
                                                 <button class="btn-icon btn-edit-list"
@@ -299,4 +301,5 @@ $page_title = "Detalle del Producto";
     <script src="<?= urlFor('js/JValidaciones.js') ?>"></script>
     <script src="<?= urlFor('js/Listas.js') ?>"></script>
 </body>
+
 </html>
